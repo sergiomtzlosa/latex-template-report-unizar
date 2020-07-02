@@ -1,0 +1,290 @@
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[margin=2.2cm]{geometry}
+%\usepackage[pdftex]{graphicx} %% loaded twice
+\usepackage[nodayofweek]{datetime}
+\usepackage{indentfirst}
+\usepackage[labelfont=bf]{caption}
+\usepackage{acronym}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{extarrows}
+\usepackage{subfig}
+\usepackage{xifthen}
+\usepackage{twoopt}
+\usepackage{wasysym}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+
+\ifx\printabletext\trueValue
+	\usepackage[monochrome]{xcolor}
+\else
+	\usepackage[dvipsnames]{xcolor}
+\fi
+
+\usepackage{yfonts}
+\usepackage{todonotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,calc}
+\usepackage[siunitx, RPvoltages]{./packages/circuitikzgit}
+\usepackage{anyfontsize}
+\usepackage{minted}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[bottom]{footmisc}
+\usepackage[printwatermark]{xwatermark}
+%\usepackage{./packages/bibspacing}
+\usepackage{hyperref}
+\usepackage{glossaries} % always load glossaries AFTER hyperref
+
+\ifx\printabletext\trueValue
+
+	\hypersetup{
+		colorlinks = true,
+		linkcolor=black,
+		citecolor=black,
+		filecolor=black,
+		urlcolor=black,
+		runcolor=black,
+		menucolor=black,
+		linkbordercolor=black,
+		citebordercolor=black,
+		filebordercolor=black,
+		urlbordercolor=black,
+		runbordercolor=black,
+		menubordercolor=black,
+		pdfpagemode=UseOutlines,
+		hypertexnames = true,
+		pdfencoding = auto, 
+		psdextra, 
+		bookmarksdepth = 4
+		bookmarks=true,
+		bookmarksopen=true,    
+		bookmarksopenlevel=0,
+		bookmarksnumbered=true,
+		plainpages=false
+	}
+
+\else
+	
+	% style color setup: https://tex.stackexchange.com/questions/525261/better-default-colors-for-hyperref-links
+	
+	\hypersetup{
+		colorlinks = true,
+		linkcolor={[rgb]{0,0.2,0.6}},
+		citecolor={[rgb]{0,0.2,0.6}},
+		filecolor={[rgb]{0,0.2,0.6}},
+		urlcolor={[rgb]{0,0.2,0.6}},
+		runcolor={[rgb]{0,0.2,0.6}},
+		menucolor={[rgb]{0,0.2,0.6}},
+		linkbordercolor={[rgb]{0,0.2,0.6}},
+		citebordercolor={[rgb]{0,0.2,0.6}},
+		filebordercolor={[rgb]{0,0.2,0.6}},
+		urlbordercolor={[rgb]{0,0.2,0.6}},
+		runbordercolor={[rgb]{0,0.2,0.6}},
+		menubordercolor={[rgb]{0,0.2,0.6}},
+		pdfpagemode=UseOutlines,
+		hypertexnames = true,
+		pdfencoding = auto, 
+		psdextra, 
+		bookmarksdepth = 4
+		bookmarks=true,
+		bookmarksopen=true,    
+		bookmarksopenlevel=0,
+		bookmarksnumbered=true,
+		plainpages=false
+	}
+
+%	\hypersetup{
+%		colorlinks = true
+%		,linkcolor=NavyBlue %BrickRed
+%		,citecolor=Green
+%		,filecolor=Mulberry
+%		,urlcolor=NavyBlue
+%		,menucolor=BrickRed
+%		,runcolor=Mulberry
+%		,linkbordercolor=BrickRed
+%		,citebordercolor=Green
+%		,filebordercolor=Mulberry
+%		,urlbordercolor=NavyBlue
+%		,menubordercolor=BrickRed
+%		,runbordercolor=Mulberry
+%	}
+\fi
+
+\ifx\printabletext\trueValue
+	\typeout{!!!}
+	\typeout{!!! PRINTING BLACK AND WHITE TEXT}{}
+	\typeout{!!!}
+\else
+	\typeout{!!!}
+	\typeout{!!! PRINTING RGB TEXT}{}
+	\typeout{!!!}
+\fi
+
+\ifx\printableimages\trueValue
+	\typeout{!!!}
+	\typeout{!!! PRINTING BLACK AND WHITE IMAGES}{}
+	\typeout{!!!}
+\else 
+	\typeout{!!!}
+	\typeout{!!! PRINTING RGB IMAGES}{}
+	\typeout{!!!}
+\fi
+
+% https://tex.stackexchange.com/questions/525261/better-default-colors-for-hyperref-links
+
+%\hypersetup{
+%	colorlinks = true,
+%	linkcolor={[rgb]{0,0.2,0.6}},
+%	citecolor={[rgb]{0,0.6,0.2}},
+%	filecolor={[rgb]{0.8,0,0.8}},
+%	urlcolor={[rgb]{0.8,0,0.8}},
+%	runcolor={[rgb]{0.8,0,0.8}},  % defaults to filecolor but it missing an
+%	% expansion for this syntax
+%	menucolor={[rgb]{0,0.2,0.6}}, % I never set or use this, so we'll see
+%	% it to link color
+%	linkbordercolor={[rgb]{0,0.2,0.6}},
+%	citebordercolor={[rgb]{0,0.6,0.2}},
+%	filebordercolor={[rgb]{0.8,0,0.8}},
+%	urlbordercolor={[rgb]{0.8,0,0.8}},
+%	runbordercolor={[rgb]{0.8,0,0.8}},
+%	menubordercolor={[rgb]{0,0.2,0.6}},
+%	hypertexnames=false 
+%}
+
+%\hypersetup{
+%	colorlinks = true,
+%	linkcolor = {[rgb]{0,0.2,0.6}},
+%	anchorcolor = {[rgb]{0,0.2,0.6}},
+%	citecolor = {[rgb]{0,0.2,0.6}},
+%	filecolor = {[rgb]{0,0.2,0.6}},
+%	urlcolor = {[rgb]{0,0.2,0.6}},
+%	hypertexnames=false
+%}
+
+%\hypersetup{
+%	colorlinks = true,
+%	linkcolor = blue,
+%	anchorcolor = blue,
+%	citecolor = blue,
+%	filecolor = blue,
+%	urlcolor = blue,
+%	hypertexnames=false
+%}
+
+% space in glossary entries, bibspacing
+%\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+
+% PDF compression parameters: https://latex.org/forum/viewtopic.php?t=21309
+\pdfminorversion=5
+\pdfcompresslevel=9
+\pdfobjcompresslevel=2
+\pdfinclusioncopyfonts=1
+
+\typeout{!!! pdfcompresslevel=\the\pdfcompresslevel}
+\typeout{!!!}
+\typeout{!!! pdfobjcompresslevel=\the\pdfobjcompresslevel}
+\typeout{!!!}
+\typeout{!!! pdfminorversion=\the\pdfminorversion}
+\typeout{!!!}
+
+\DeclareGraphicsExtensions{.png,.pdf}
+
+\newcommand{\keywords}{physics, resume, summary, report, phd, magnonics, quantum, simulations}
+
+\ifpdf
+	\makeatletter
+		\AtBeginDocument{
+			\hypersetup{
+				pdftitle={\@title~\expandonce\THETITLE},
+				pdfauthor={\@author},
+				pdfkeywords={\keywords},
+				pdfproducer={\expandonce\THEAUTHOR},
+				pdfcreator={\expandonce\THEAUTHOR}
+			}
+		}
+	\makeatother
+\fi
+
+\setlist[itemize]{itemsep=0.005cm}
+
+\newif\ifformat
+\formattrue
+
+% Do not expand styles in table of contents
+\AtBeginDocument{\addtocontents{toc}{\protect\formatfalse}}
+\AtEndDocument{\addtocontents{toc}{\protect\formattrue}}
+\makeatletter
+\DeclareRobustCommand{\maybe}[1]{%
+	\ifformat
+		\expandafter#1%
+	\else
+		\expandafter\@firstofone
+	\fi
+}
+\makeatother
+
+% Do not expand styles in list of tables
+\AtBeginDocument{\addtocontents{lot}{\protect\formatfalse}}
+\AtEndDocument{\addtocontents{lot}{\protect\formattrue}}
+\makeatletter
+	\DeclareRobustCommand{\maybe}[1]{%
+		\ifformat
+			\expandafter#1%
+		\else
+			\expandafter\@firstofone
+		\fi
+	}
+\makeatother
+
+% Do not expand styles in list of figures
+% https://tex.stackexchange.com/questions/131930/remove-font-styles-in-list-of-figures
+\AtBeginDocument{\addtocontents{lof}{\protect\formatfalse}}
+\AtEndDocument{\addtocontents{lof}{\protect\formattrue}}
+\makeatletter
+	\DeclareRobustCommand{\maybe}[1]{%
+		\ifformat
+			\expandafter#1%
+		\else
+			\expandafter\@firstofone
+		\fi
+	}
+\makeatother
+
+% remove word Chapter at the beginning of each chapter
+%\titleformat{\chapter}[block]{\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}\titlespacing*{\chapter}{0pt}{-19pt}{0pt}
+% https://tex.stackexchange.com/questions/62516/how-to-suppress-chapter-in-chapter-while-keeping-numbering
+\makeatletter
+\def\@makechapterhead#1{%
+	\vspace*{-19\p@}%
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+			\if@mainmatter
+				%\huge\bfseries \@chapapp\space \thechapter
+				\Huge\bfseries \thechapter.\space%
+				%\par\nobreak
+				%\vskip 20\p@
+			\fi
+		\fi
+		\interlinepenalty\@M
+		\Huge \bfseries #1\par\nobreak
+		\vskip 10\p@
+}}
+\makeatother
+
+\ifx\printableimages\trueValue
+	\graphicspath{{./images-grayscale/}}
+\else
+	\graphicspath{{./images/}}
+\fi
+
+% Continous footnote counter
+% https://tex.stackexchange.com/questions/10448/continuous-footnote-numbering
+\counterwithout{footnote}{chapter}

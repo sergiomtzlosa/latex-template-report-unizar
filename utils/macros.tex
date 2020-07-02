@@ -1,0 +1,384 @@
+% renew commands
+
+\renewcommand\thepage{\romannumeral\numexpr\value{page}-1\relax}
+
+\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
+
+\renewcommand{\arraystretch}{1.2}
+
+% glossary custom style: 
+% https://tex.stackexchange.com/questions/327328/glossaries-style-change-add-units
+\newglossarystyle{betterglossary}{%
+	\setglossarystyle{list}%
+
+	\renewcommand*{\glossentry}[2]{%
+
+		\item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]
+
+		\glossentrydesc{##1} ##2
+	}%
+
+	\renewcommand*{\glsgroupskip}{}%
+}
+
+%\renewcommand because amssymb package has a command called \bold
+\renewcommand{\bold}[1]{\textbf{#1}}
+
+% better parallel symbol
+\renewcommand{\parallel}{\mathbin{\!/\mkern-5mu/\!}}
+
+% system modifications
+ 
+\setlength{\heavyrulewidth}{0.07em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+\newcommand{\monthtoday}{\date{\monthyeardate\today}}
+
+% https://tex.stackexchange.com/questions/112932/today-month-as-text
+\newdateformat{coverdate}{\monthname[\THEMONTH] \THEYEAR}
+
+% new commands
+
+\newcommand{\ket}[1]{$\left|{#1}\right\rangle$} 
+
+\newcommand{\bra}[1]{$\left\langle{#1}\right|$}
+
+%\newcommand{\braket}[2]{$\left\langle{#1}\middle|{#2}\right\rangle$}
+
+\newcommand{\fract}[2]{$\frac{#1}{#2}$}
+
+\newcommand{\matrixbraket}[2]{
+	$\begin{pmatrix}
+	#1 \\
+	#2 \\
+	\end{pmatrix}$
+}
+
+\newminted{mumax3}{frame=lines,framerule=2pt}
+
+\newcommand{\newquote}[1]{``#1''}
+
+\newcommand{\italic}[1]{\textit{#1}}
+
+\newcommand{\fixheaderbadness}{
+	\hbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+	\vbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+	\hfuzz=100pt % A parameter that allows hbox's to be overfull by [length] before an overfull error occurs. 
+	\pretolerance=10000
+}
+
+\newcommand{\newchapter}[2]{
+	
+	\protect\chapter{#1}
+	\label{#2}
+	\setlength{\parskip}{1em}	
+}
+
+\newcommand{\centerItem}[1]{
+	
+	\begin{center}
+		#1
+	\end{center}
+}
+
+\newcommand{\imagefigurecaption}[4][0.35]{
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#1\textwidth,height=\textheight,keepaspectratio]{#2}
+		\captionsetup{justification=centering}
+		\caption{#3}
+		\ifthenelse{\equal{#4}{}}{}{\label{#4}}
+	\end{figure}	
+}
+
+\newcommand{\imagefigure}[3][0.35]{
+	
+	\imagefigurecaption[#1]{#2}{#3}{}	
+}
+
+\newcommand{\tikzimagefigure}[2]{
+	
+	\begin{figure}[H]
+		\centering
+		#1
+		\captionsetup{justification=centering}
+		\caption{#2}
+	\end{figure}	
+}
+
+\newcommand{\tikzimagefigurelabel}[3]{
+	
+	\begin{figure}[H]
+		\centering
+		#2
+		\captionsetup{justification=centering}
+		\caption{#3}
+		\ifthenelse{\equal{#1}{}}{}{\label{#1}}
+	\end{figure}	
+}
+
+% https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
+\newcommand{\asideimages}[8]{
+	
+	\begin{figure}[H]
+		
+		\centering
+		\subfloat[#4]{
+			{\includegraphics[width=#1]{#3}}
+		}
+		\qquad
+		\subfloat[#6]{
+			{\includegraphics[width=#2]{#5}}
+		}
+		\caption{#7}
+		\label{#8}
+		
+	\end{figure}
+
+}
+
+\newenvironment{changemargin}[2]{%
+	
+	\begin{list}{}{%
+			\setlength{\topsep}{3pt}%
+			\setlength{\leftmargin}{#1}%
+			\setlength{\rightmargin}{#2}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+	\item[]}{\end{list}}
+	
+	
+\newcommand{\centercaption}[1]{	
+	\captionsetup{justification=centering}
+	\protect\caption{#1}
+}
+
+\DeclareCaptionType{equ}[][]
+
+\newcommand{\setequation}[5] {
+
+	\begin{equ}[H]
+		\begin{changemargin}{#1}{#2}
+			\begin{figure}[H]
+				#3
+				\vspace{-0.5cm}
+				\centercaption{#5}
+				\label{#4}
+			\end{figure}
+		\end{changemargin}	
+	\vspace{-1.5cm}
+	\end{equ}
+}
+
+\newcommand{\centerformula}[1]{
+	\vspace{-0.8cm}
+	\begin{align}
+		#1
+	\end{align}
+}
+
+\newcommand{\mumax}{$mumax^3\ $}
+
+\newcommand{\tpower}[1]{
+
+	\ensuremath{\times\ 10^{#1}}
+}
+
+\newcommand{\super}[1]{\textsuperscript{#1}}
+
+\newcommand{\sub}[1]{\textsubscript{#1}}
+
+\newcommand{\formularefactor}[2]{
+	\begin{equation}
+		\vspace{-1.0cm}
+		$$
+			\centering{#1}
+			\vspace{#2}%
+		$$
+	\end{equation}
+}
+
+% better diameter symbol
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareRobustCommand{\diameter}{%
+	\text{\usefont{LS1}{stixscr}{m}{n}\symbol{"60}}%
+}
+
+\global\def\enableTODO{true}
+
+\newcommand{\showtodos}[1] {
+	\global\def\enableTODO{#1}
+}
+
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+
+\newcommand{\TODO}[1]{
+	\def\trueOption{true}
+	\ifx\enableTODO\trueOption
+		\ifx\printableimages\trueValue
+			\todo[inline, bordercolor=black, color=white]{\bold{TODO}: #1}
+		\else
+			\todo[inline, bordercolor=black, color=red!50]{\bold{TODO}: #1}
+		\fi
+	\fi
+}
+
+\newcommand{\sticker}[1]{
+	
+	\ifx\printableimages\trueValue
+		\todo[inline, bordercolor=black, color=white]{#1}
+	\else
+		\todo[inline, bordercolor=black, color=amber!50]{#1}
+	\fi
+}
+
+% https://tex.stackexchange.com/questions/40561/table-with-multiple-lines-in-some-cells
+\newcommand{\celltwolines}[2]{%
+
+	\begin{tabular}{@{}c@{}}
+		#1 \\ #2
+	\end{tabular}
+}
+
+%% WATERMARK STUFF
+%Customize watermark
+\global\def\optionWatermark{true}
+
+\newcommand{\docwatermark}[1]{
+	
+	\global\def\optionWatermark{#1}
+	\newsavebox\mybox
+	\savebox\mybox{\tikz[color=gray,opacity=0.3,font=\sffamily]\node{#1};}
+	\newwatermark*[allpages,angle=45,scale=10,xpos=-30,ypos=15]{\usebox\mybox}
+}
+
+\newcommand{\showwatermark}[2]{
+	
+	\def\constPreliminary{PRELIMINARY}
+	\def\truestr{true}
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	\def\valueNull{\par}
+	
+	\ifx\tmp\valueNull
+		\docwatermark{\constPreliminary}
+		\global\def\optionWatermark{true}
+	\else
+		\ifx\tmp\truestr
+			\ignorespaces\def\optValue{#2}\unskip
+	
+			\ifx\optValue\valueNull
+				\docwatermark{\constPreliminary}
+			\else
+				\def\voidValue{}
+				\ifx\optValue\voidValue
+					\docwatermark{\constPreliminary}
+				\else 
+					\docwatermark{\uppercase{#2}}
+				\fi
+			\fi
+	
+			\global\def\optionWatermark{true}
+		\else
+			\global\def\optionWatermark{false}
+		\fi
+	\fi
+}
+
+\newcommand{\preliminary}[2]{
+	
+	\showwatermark{#1}{#2}
+}
+
+\newcommand{\showpreliminary}[2]{
+	
+	\showwatermark{#1}{#2}
+}
+
+\newcommand{\gothicletter}[2][black]{
+	
+	\yinipar{\color{#1}#2}\hspace{-0.5em}
+}
+
+\newcommand{\changeTitleDocument}[1]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	
+	\ifx\tmp\empty
+		% value empty, nothing to do
+	\else
+		\global\def\THETITLE{#1}
+	\end
+}
+
+% https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
+% remove work chapter from header
+\pagestyle{fancy}
+\fancypagestyle{phdfancy}{%
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\leftmark}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+% rework plain style to fancy
+\fancypagestyle{plain}{
+
+	\pagestyle{fancy}
+	\fancypagestyle{phdfancyplain}{%
+		\fancyhead{} % Clean headers
+		\fancyfoot[C]{\thepage}
+		\renewcommand{\footrulewidth}{0.4pt}
+		\renewcommand{\headrulewidth}{0.0pt}
+	}
+
+	\pagestyle{phdfancyplain}
+}
+
+% no gap between page line and footnote
+%\setlength{\footskip}{17pt}
+% https://tex.stackexchange.com/questions/164367/how-to-make-footnotes-appear-at-bottom-of-the-footers-bar
+
+%% START FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+\makeatletter
+\renewcommand\footnoterule{%
+	\kern20\p@
+	\hrule\@width\linewidth
+	\kern2.6\p@}
+\makeatother
+
+\fancypagestyle{phdfancyfootnote}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\leftmark}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+%% END FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+
+%% BETTER FOOTNOTE WITH FANCY STYLE
+\newcommand\footnoteurl[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnote}\footnote{\href{#2}{#1}}}
+
+\newenvironment{startpagenumbering}[2][0] {
+	
+%	\pagestyle{plain}
+
+	\pagestyle{phdfancy}
+%	\setlength{\footskip}{17pt}
+	\pagenumbering{arabic}
+	\setcounter{page}{#1}{
+		#2
+	}
+}{}

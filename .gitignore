@@ -1,0 +1,12 @@
+_minted-report
+*.pdf
+*.aux
+*.glo
+*.ist
+*.out
+*.toc
+*.xwm
+*.gz
+*.idx
+*.log
+*.pdf

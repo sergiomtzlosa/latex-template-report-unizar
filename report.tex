@@ -1,0 +1,90 @@
+% !TeX encoding = UTF-8
+% !TeX root = report.tex
+% !TeX spellcheck = en-GB
+\documentclass[a4paper,11pt,spanish,english]{report}
+
+\input{utils/super_macro}
+
+\checkforceprintable
+
+\input{utils/imports}
+\input{utils/macros}
+\input{utils/mute_warnings}
+
+\showtodos{true}
+
+% Show or hide watermark by calling \showwatermark{true} or \preliminary{true} both are equals
+%\showwatermark{true}
+\preliminary{false}
+
+% NECESSARY TITLE & AUTHOR
+\title{\THETITLE}
+\author{\THEAUTHOR}
+
+\makeindex
+
+\setglossarystyle{betterglossary}
+\makeglossaries
+\input{chapters/glossary}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagenumbering{roman}
+\setcounter{page}{-1}
+
+% supress page numbering	
+\pagenumbering{gobble}
+	
+% insert cover
+% other fancy cover: https://tex.stackexchange.com/questions/475597/how-to-create-a-cover-page-like-this
+% https://latexdraw.com/how-to-create-a-beautiful-cover-page-in-latex-using-tikz/
+\begin{titlepage}
+	
+	\pagestyle{empty}
+	\protect\thispagestyle{empty}
+	
+	\ifx\printableimages\trueValue
+		\input{utils/cover_bw}
+	\else
+		\input{utils/cover_colour}
+	\fi
+	
+\end{titlepage}
+
+\relax\pagenumbering{alph}
+
+\protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
+\setcounter{tocdepth}{2}
+\pagestyle{empty}\tableofcontents
+\protect\thispagestyle{empty}
+
+%\renewcommand{\listfigurename}{Figures}
+%\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
+%\pagestyle{empty}\listoffigures
+%\protect\thispagestyle{empty}
+
+%\renewcommand{\listtablename}{Tables}
+%\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
+%\pagestyle{empty}\listoftables
+%\protect\thispagestyle{empty}
+
+%\pagestyle{empty}\printglossaries
+%\protect\thispagestyle{empty}
+
+%\chapter*{Abstract}
+%Abstract goes here
+
+\begin{startpagenumbering}
+
+	\input{chapters/00_introduction}
+	\input{chapters/01_first_chapter}
+	
+\end{startpagenumbering}
+
+% Bibliography 
+%\bibliographystyle{./packages/ieeetr-redux}
+%\bibliography{./utils/report-bib}
+%\thispagestyle{empty}
+
+\end{document}
