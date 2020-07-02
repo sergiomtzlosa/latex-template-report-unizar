@@ -1,1 +1,1 @@
-Latex template for Phd report
+Latex template for PhD report
