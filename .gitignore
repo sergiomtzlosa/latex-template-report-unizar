@@ -9,7 +9,6 @@ _minted-report
 *.gz
 *.idx
 *.log
-*.pdf
 *.bbl
 *.blg
 *.gls
