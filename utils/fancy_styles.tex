@@ -1,0 +1,67 @@
+% https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
+% remove work chapter from header
+\pagestyle{fancy}
+\fancypagestyle{phdfancy}{%
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\leftmark}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+% rework plain style to fancy
+\fancypagestyle{plain}{
+	
+	\pagestyle{fancy}
+	\fancypagestyle{phdfancyplain}{%
+		\fancyhead{} % Clean headers
+		\fancyfoot[C]{\thepage}
+		\renewcommand{\footrulewidth}{0.4pt}
+		\renewcommand{\headrulewidth}{0.0pt}
+	}
+	
+	\pagestyle{phdfancyplain}
+}
+
+% no gap between page line and footnote
+%\setlength{\footskip}{17pt}
+% https://tex.stackexchange.com/questions/164367/how-to-make-footnotes-appear-at-bottom-of-the-footers-bar
+
+%% START FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+\makeatletter
+\renewcommand\footnoterule{%
+	\kern20\p@
+	\hrule\@width\linewidth
+	\kern2.6\p@}
+\makeatother
+
+\fancypagestyle{phdfancyfootnote}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\leftmark}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+%% END FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+
+%% BETTER FOOTNOTE WITH FANCY STYLE
+\newcommand\footnoteurl[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnote}\footnote{\href{#2}{#1}}}
+
+\newenvironment{startpagenumbering}[2][0] {
+	
+	%	\pagestyle{plain}
+	
+	\pagestyle{phdfancy}
+	%	\setlength{\footskip}{17pt}
+	\pagenumbering{arabic}
+	\setcounter{page}{#1}{
+		#2
+	}
+}{}

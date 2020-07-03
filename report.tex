@@ -75,6 +75,8 @@
 %\chapter*{Abstract}
 %Abstract goes here
 
+\input{utils/fancy_styles}
+
 \begin{startpagenumbering}
 
 	\input{chapters/00_introduction}
@@ -83,8 +85,8 @@
 \end{startpagenumbering}
 
 % Bibliography 
-\bibliographystyle{./packages/ieeetr-redux}
-\bibliography{./utils/report-bib}
-\thispagestyle{empty}
+\protect\bibliographystyle{./packages/ieeetr-redux}
+\pagestyle{empty}\bibliography{./utils/report-bib}
+\protect\thispagestyle{empty}
 
 \end{document}
