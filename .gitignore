@@ -1,3 +1,4 @@
+.DS_Store
 _minted-report
 *.pdf
 *.aux
@@ -10,3 +11,7 @@ _minted-report
 *.idx
 *.log
 *.pdf
+*.bbl
+*.blg
+*.gls
+*.glg
