@@ -1,6 +1,5 @@
 .DS_Store
 _minted-report
-*.pdf
 *.aux
 *.glo
 *.ist

@@ -1,6 +1,6 @@
-## Plantilla de LaTex no oficial para la Universidad de Zaragoza
+## Plantilla de LaTeX no oficial para la Universidad de Zaragoza
 
-Platilla de LaTex para realizar informes con imagen de la Universidad de Zaragoza.
+Platilla de LaTeX para realizar informes con imagen de la Universidad de Zaragoza.
 
 Compilar report.tex:
 
