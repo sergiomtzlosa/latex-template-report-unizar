@@ -24,9 +24,6 @@
 %\renewcommand because amssymb package has a command called \bold
 \renewcommand{\bold}[1]{\textbf{#1}}
 
-% better parallel symbol
-\renewcommand{\parallel}{\mathbin{\!/\mkern-5mu/\!}}
-
 % system modifications
  
 \setlength{\heavyrulewidth}{0.07em}
@@ -39,15 +36,6 @@
 \newdateformat{coverdate}{\monthname[\THEMONTH] \THEYEAR}
 
 % new commands
-
-\newcommand{\ket}[1]{$\left|{#1}\right\rangle$} 
-
-\newcommand{\bra}[1]{$\left\langle{#1}\right|$}
-
-%\newcommand{\braket}[2]{$\left\langle{#1}\middle|{#2}\right\rangle$}
-
-\newcommand{\fract}[2]{$\frac{#1}{#2}$}
-
 \newcommand{\matrixbraket}[2]{
 	$\begin{pmatrix}
 	#1 \\
@@ -96,27 +84,6 @@
 \newcommand{\imagefigure}[3][0.35]{
 	
 	\imagefigurecaption[#1]{#2}{#3}{}	
-}
-
-\newcommand{\tikzimagefigure}[2]{
-	
-	\begin{figure}[H]
-		\centering
-		#1
-		\captionsetup{justification=centering}
-		\caption{#2}
-	\end{figure}	
-}
-
-\newcommand{\tikzimagefigurelabel}[3]{
-	
-	\begin{figure}[H]
-		\centering
-		#2
-		\captionsetup{justification=centering}
-		\caption{#3}
-		\ifthenelse{\equal{#1}{}}{}{\label{#1}}
-	\end{figure}	
 }
 
 % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
@@ -181,26 +148,9 @@
 	\end{align}
 }
 
-\newcommand{\mumax}{$mumax^3\ $}
-
-\newcommand{\tpower}[1]{
-
-	\ensuremath{\times\ 10^{#1}}
-}
-
 \newcommand{\super}[1]{\textsuperscript{#1}}
 
 \newcommand{\sub}[1]{\textsubscript{#1}}
-
-\newcommand{\formularefactor}[2]{
-	\begin{equation}
-		\vspace{-1.0cm}
-		$$
-			\centering{#1}
-			\vspace{#2}%
-		$$
-	\end{equation}
-}
 
 % better diameter symbol
 \DeclareFontEncoding{LS1}{}{}
@@ -228,14 +178,6 @@
 	\fi
 }
 
-\newcommand{\sticker}[1]{
-	
-	\ifx\printableimages\trueValue
-		\todo[inline, bordercolor=black, color=white]{#1}
-	\else
-		\todo[inline, bordercolor=black, color=amber!50]{#1}
-	\fi
-}
 
 % https://tex.stackexchange.com/questions/40561/table-with-multiple-lines-in-some-cells
 \newcommand{\celltwolines}[2]{%
