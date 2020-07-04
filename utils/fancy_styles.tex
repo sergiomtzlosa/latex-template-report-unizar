@@ -1,3 +1,4 @@
+
 % https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
 % remove work chapter from header
 \pagestyle{fancy}
@@ -9,20 +10,6 @@
 	\renewcommand{\footrulewidth}{0.4pt}
 	\renewcommand{\headrulewidth}{0.4pt}
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
-}
-
-% rework plain style to fancy
-\fancypagestyle{plain}{
-	
-	\pagestyle{fancy}
-	\fancypagestyle{phdfancyplain}{%
-		\fancyhead{} % Clean headers
-		\fancyfoot[C]{\thepage}
-		\renewcommand{\footrulewidth}{0.4pt}
-		\renewcommand{\headrulewidth}{0.0pt}
-	}
-	
-	\pagestyle{phdfancyplain}
 }
 
 % no gap between page line and footnote
@@ -56,6 +43,20 @@
 
 \newenvironment{startpagenumbering}[2][0] {
 	
+	% rework plain style to fancy
+	\fancypagestyle{plain}{
+		
+		\pagestyle{fancy}
+		\fancypagestyle{phdfancyplain}{%
+			\fancyhead{} % Clean headers
+			\fancyfoot[C]{\thepage}
+			\renewcommand{\footrulewidth}{0.4pt}
+			\renewcommand{\headrulewidth}{0.0pt}
+		}
+		
+		\pagestyle{phdfancyplain}
+	}
+
 	%	\pagestyle{plain}
 	
 	\pagestyle{phdfancy}
