@@ -257,5 +257,11 @@
 	\end
 }
 
+% redefine plain style to empty style
+% https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+
 %%% FancyHDR page style
 \input{utils/fancy_styles}
