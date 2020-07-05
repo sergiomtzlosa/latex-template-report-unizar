@@ -36,10 +36,25 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
 }
 
+\fancypagestyle{phdfancyfootnotewithoutheader}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
 %% END FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
 
 %% BETTER FOOTNOTE WITH FANCY STYLE
 \newcommand\footnoteurl[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnote}\footnote{\href{#2}{#1}}}
+
+%% FOOTNOTE WITHOUT HEADER
+\newcommand\footnoteurlwithoutheader[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{\href{#2}{#1}}}
 
 \newenvironment{startpagenumbering}[2][0] {
 	
