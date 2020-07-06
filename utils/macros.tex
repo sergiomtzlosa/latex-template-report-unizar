@@ -2,7 +2,11 @@
 
 \renewcommand\thepage{\romannumeral\numexpr\value{page}-1\relax}
 
-\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
+% rework glossary title
+%\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
+
+% rework glossary title (better)
+\renewcommand{\glossarypreamble}{\vspace{-1.8cm}{\hspace{-0.5cm}\rule{\linewidth}{1pt}\vspace*{3ex}}}
 
 \renewcommand{\arraystretch}{1.2}
 
@@ -256,6 +260,11 @@
 		\global\def\THETITLE{#1}
 	\end
 }
+
+% rework toc, lot and lof title, add line below
+\renewcommand{\cftaftertoctitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
+\renewcommand{\cftafterlottitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
+\renewcommand{\cftafterloftitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
 
 % redefine plain style to empty style
 % https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
