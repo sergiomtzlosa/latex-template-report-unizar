@@ -269,7 +269,10 @@
 % rework bibliography title
 % https://tex.stackexchange.com/questions/70025/titlesec-and-bibliography
 % https://latex.org/forum/viewtopic.php?t=28709
-\addto{\captionsenglish}{\renewcommand{\bibname}{Bibliography}}
+\newcommand{\titlebibliography}[1]{
+	\addto{\captionsenglish}{\renewcommand{\bibname}{#1}}
+}
+
 \patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\bibname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-0.5cm}}}{}{}
 
 % redefine plain style to empty style
