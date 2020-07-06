@@ -266,6 +266,12 @@
 \renewcommand{\cftafterlottitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
 \renewcommand{\cftafterloftitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
 
+% rework bibliography title
+% https://tex.stackexchange.com/questions/70025/titlesec-and-bibliography
+% https://latex.org/forum/viewtopic.php?t=28709
+\addto{\captionsenglish}{\renewcommand{\bibname}{Bibliography}}
+\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\bibname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-0.5cm}}}{}{}
+
 % redefine plain style to empty style
 % https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
 \makeatletter
