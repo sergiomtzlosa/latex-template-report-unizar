@@ -80,4 +80,11 @@
 	\setcounter{page}{#1}{
 		#2
 	}
+
+		%% REWORK TITLE CHAPTERS
+	\definecolor{gray75}{gray}{0.75}
+	\newcommand{\hsp}{\hspace{0pt}}
+	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright
+	\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ 
+	\vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
 }{}
