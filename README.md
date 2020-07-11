@@ -8,4 +8,4 @@ Compilar report.tex:
 make all
 ``` 
 
-Editor LaTex recomendado: [TeXstudio](https://www.texstudio.org/)
+Editor LaTeX recomendado: [TeXstudio](https://www.texstudio.org/)
