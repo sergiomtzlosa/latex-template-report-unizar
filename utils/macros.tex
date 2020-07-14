@@ -94,7 +94,14 @@
 \newcommand{\asideimages}[8]{
 	
 	\begin{figure}[H]
-		
+
+		% if captions from subfire are empty, remove the marker below the image
+		\ifthenelse{\equal{#4}{}}{
+			\ifthenelse{\equal{#6}{}}{
+				\captionsetup[subfigure]{labelformat=empty}
+			}{}
+		}{}
+	
 		\centering
 		\subfloat[#4]{
 			{\includegraphics[width=#1]{#3}}
