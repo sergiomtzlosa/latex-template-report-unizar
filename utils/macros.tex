@@ -288,5 +288,19 @@
 \let\ps@plain\ps@empty
 \makeatother
 
+% create new chapter without page reference in TOC, optional, to set an horizontal line below the title
+\newcommand{\chaptercutompageintoc}[3]{
+	
+	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
+	\ifthenelse{\equal{#2}{showrule}}{
+		
+		\chapter*{#1\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-0.5cm}}
+	}{
+		\chapter*{#1}
+	}
+	
+	\cftaddtitleline{toc}{chapter}{#1}{#3}
+}
+
 %%% FancyHDR page style
 \input{utils/fancy_styles}
