@@ -12,6 +12,16 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
 }
 
+\pagestyle{fancy}
+\fancypagestyle{phdfancyempty}{%
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
 % no gap between page line and footnote
 %\setlength{\footskip}{17pt}
 % https://tex.stackexchange.com/questions/164367/how-to-make-footnotes-appear-at-bottom-of-the-footers-bar
