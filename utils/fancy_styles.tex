@@ -1,8 +1,8 @@
 
 % https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
 % remove work chapter from header
-\pagestyle{fancy}
 \fancypagestyle{phdfancy}{%
+	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
 	\fancyhead[LE,RO]{\leftmark}
 	\fancyhead[RE,LO]{\THETITLE}
@@ -12,8 +12,8 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
 }
 
-\pagestyle{fancy}
 \fancypagestyle{phdfancyempty}{%
+	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
 	\fancyhead[LE,RO]{}
 	\fancyhead[RE,LO]{}

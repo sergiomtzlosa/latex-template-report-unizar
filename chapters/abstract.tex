@@ -1,4 +1,9 @@
-\chaptercutompageintoc{Abstract}{showrule}{I}
+\ifthenelse{\equal{\showpageabstract}{false}}{
+	
+	\chaptercutompageintoc{Abstract}{showrule}{}
+}{
+	\chapterpagenumberintoc{Abstract}
+}
 
 \begin{justified}
 

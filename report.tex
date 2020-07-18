@@ -73,8 +73,20 @@
 \protect\thispagestyle{empty}
 
 % abstract section
-%\protect\pagestyle{empty}\input{chapters/abstract}
-%\protect\thispagestyle{empty}
+%\def\showpageabstract{true}
+%
+%\ifthenelse{\equal{\showpageabstract}{false}}{
+%	
+%	%abstract without page numbers and without page number in TOC
+%	\protect\pagestyle{empty}\input{chapters/abstract}
+%	\protect\thispagestyle{empty}
+%}{
+%
+%	% abstract with page numers and page number in TOC
+%	\protect\pagestyle{phdfancyempty}\input{chapters/abstract}
+%	\protect\thispagestyle{phdfancyempty}
+%}
+%
 %\clearpage
 
 \begin{startpagenumbering}[0]
