@@ -303,10 +303,16 @@
 }
 
 % plain pagestyle
-\newcommand{\chapterpagenumberintoc}[1] {
+\newcommand{\chapterpagenumberintoc}[2][showrule] {
 
-	\chapter*{#1\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
-	\addcontentsline{toc}{chapter}{#1}
+	\ifthenelse{\equal{#1}{showrule}}{
+		
+		\chapter*{#2\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+	}{
+		\chapter*{{#2}\\\vspace{-1.0cm}}
+	}
+
+	\addcontentsline{toc}{chapter}{#2}
 }
 
 %% input file for abstract
@@ -343,7 +349,7 @@
 		
 		\chaptercustompageintoc{Abstract}{\showrule}{}
 	}{
-		\chapterpagenumberintoc{Abstract}
+		\chapterpagenumberintoc[\showrule]{Abstract}
 	}
 }
 
