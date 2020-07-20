@@ -19,5 +19,4 @@ pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 ```
 
 On windows, install 
-[pygments](https://tex.stackexchange.com/questions/462083/pygments-error-texstudio-in-windows-10), for *nix 
-systems see [Makefile](Makefile).
+[pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7), for *nix systems see [Makefile](Makefile).
