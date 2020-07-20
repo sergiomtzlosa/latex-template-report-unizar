@@ -12,7 +12,7 @@ make all
 
 Editor LaTeX recomendado OpenSource: [TeXstudio](https://www.texstudio.org/)
 
-## WINDOWS
+## Configurar TeXStudio
 
 En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la seccion de PdfLaTex:
 
@@ -20,4 +20,8 @@ En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la 
 pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 ```
 
-En windows, instalar [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7), para instalar pygments en sistemas unix mirar [Makefile](Makefile).
+## Instalar pygments 
+
+Instalar pygments en windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).
+
+Para instalar pygments en sistemas unix mirar [Makefile](Makefile).
