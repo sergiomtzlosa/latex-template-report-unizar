@@ -72,25 +72,11 @@
 \pagestyle{empty}\printglossaries
 \protect\thispagestyle{empty}
 
-% start abstract section
-%\def\showpageabstract{true}
-%
-%\ifthenelse{\equal{\showpageabstract}{false}}{
-%	
-%	%abstract without page numbers and without page number in TOC
-%	\protect\pagestyle{empty}\input{chapters/abstract}
-%	\protect\thispagestyle{empty}
-%}{
-%
-%	% abstract with page numers and page number in TOC
-%	\protect\pagestyle{phdfancyempty}\input{chapters/abstract}
-%	\protect\thispagestyle{phdfancyempty}
-%}
-%
-%\clearpage
-% end abstract section
+%% start abstract section
+\inputabstract[false]{chapters/abstract}
+%% end abstract section
 
-\begin{startpagenumbering}[0]
+\begin{startpagenumbering}[1]
 
 	\input{chapters/00_introduction}
 	\input{chapters/01_first_chapter}

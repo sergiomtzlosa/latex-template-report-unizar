@@ -289,7 +289,7 @@
 \makeatother
 
 % create new chapter without page reference in TOC, optional, to set an horizontal line below the title
-\newcommand{\chaptercutompageintoc}[3]{
+\newcommand{\chaptercustompageintoc}[3]{
 	
 	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
 	\ifthenelse{\equal{#2}{showrule}}{
@@ -308,6 +308,46 @@
 	\chapter*{#1\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	\addcontentsline{toc}{chapter}{#1}
 }
+
+%% input file for abstract
+
+\global\def\showpageabstract{false}
+\global\def\showrule{showrule}
+
+\newcommandtwoopt{\inputabstract}[3][false][showrule]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}
+	\global\def\showpageabstract{\tmp}
+	
+	\ignorespaces\lowercase{\def\tmprule{#2}}
+	\global\def\showrule{\tmprule}
+	
+	\ifthenelse{\equal{\tmp}{false}}{
+		
+		% abstract without page numbers and without page number in TOC
+		\protect\pagestyle{empty}\input{#3}
+		\protect\thispagestyle{empty}
+	}{
+		
+		% abstract with page numers and page number in TOC
+		\protect\pagestyle{phdfancyempty}\input{#3}
+		\protect\thispagestyle{phdfancyempty}
+	}
+	
+	\clearpage
+}
+
+\newcommand{\inputabstracttitle}{
+	
+	\ifthenelse{\equal{\showpageabstract}{false}}{
+		
+		\chaptercustompageintoc{Abstract}{\showrule}{}
+	}{
+		\chapterpagenumberintoc{Abstract}
+	}
+}
+
+%% end input file for abstract
 
 % environment for justified text
 \newenvironment{justified}[1] {
