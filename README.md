@@ -12,7 +12,7 @@ make all
 
 Editor LaTeX recomendado: [TeXstudio](https://www.texstudio.org/)
 
-In Options -> Texstudio configuration -> Orders set the following command for PdfLaTex:
+In Options -> Texstudio configuration -> Orders, set the following command for PdfLaTex:
 
 ```
 pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
