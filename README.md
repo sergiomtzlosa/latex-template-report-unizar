@@ -4,13 +4,15 @@ Platilla de LaTeX para realizar informes con imagen de la Universidad de Zaragoz
 
 Archivo PDF resultante [aqui](report.pdf).
 
-Compilar report.tex:
+Compilar report.tex en  sistemas *nix:
 
 ```
 make all
 ``` 
 
-Editor LaTeX recomendado: [TeXstudio](https://www.texstudio.org/)
+Editor LaTeX recomendado OpenSource: [TeXstudio](https://www.texstudio.org/)
+
+## WINDOWS
 
 In Options -> Texstudio configuration -> Orders, set the following command for PdfLaTex:
 
