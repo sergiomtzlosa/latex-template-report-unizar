@@ -289,17 +289,17 @@
 \makeatother
 
 % create new chapter without page reference in TOC, optional, to set an horizontal line below the title
-\newcommand{\chaptercustompageintoc}[3]{
+\newcommand{\chaptercustompageintoc}[3][showrule]{
 	
 	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
-	\ifthenelse{\equal{#2}{showrule}}{
+	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#1\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{#2\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
-		\chapter*{{#1}\\\vspace{-1.0cm}}
+		\chapter*{{#2}\\\vspace{-1.0cm}}
 	}
 	
-	\cftaddtitleline{toc}{chapter}{#1}{#3}
+	\cftaddtitleline{toc}{chapter}{#2}{#3}
 }
 
 % plain pagestyle
@@ -346,8 +346,8 @@
 \newcommand{\inputabstracttitle}{
 	
 	\ifthenelse{\equal{\showpageabstract}{false}}{
-		
-		\chaptercustompageintoc{Abstract}{\showrule}{}
+
+		\chaptercustompageintoc[\showrule]{Abstract}{}		
 	}{
 		\chapterpagenumberintoc[\showrule]{Abstract}
 	}
