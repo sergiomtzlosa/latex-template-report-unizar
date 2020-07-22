@@ -30,7 +30,7 @@
 \begin{document}
 
 \thispagestyle{empty}
-\pagenumbering{roman}
+\pagenumbering{alph}
 \setcounter{page}{-1}
 
 % supress page numbering	
@@ -52,22 +52,25 @@
 	
 \end{titlepage}
 
-\relax\pagenumbering{alph}
+\pagenumbering{roman}
 
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
 \setcounter{tocdepth}{2}
 \pagestyle{empty}\tableofcontents
 \protect\thispagestyle{empty}
+\clearpage
 
 %\renewcommand{\listfigurename}{Figures}
 %\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
 %\pagestyle{empty}\listoffigures
 %\protect\thispagestyle{empty}
+%\clearpage
 
 %\renewcommand{\listtablename}{Tables}
 %\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
 %\pagestyle{empty}\listoftables
 %\protect\thispagestyle{empty}
+%\clearpage
 
 \pagestyle{empty}\printglossaries
 \protect\thispagestyle{empty}
