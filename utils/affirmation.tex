@@ -30,13 +30,13 @@
 	
 		% affirmation without page numbers and without page number in TOC
 		\protect\pagestyle{empty}\phantomsection\affirmation
-		\cftaddtitleline{toc}{chapter}{Affirmation}{}
+		\cftaddtitleline{toc}{chapter}{\labelAffirmation}{}
 		\protect\thispagestyle{empty}
 	}{
 		
 		% affirmation with page numers and page number in TOC	
 		\protect\pagestyle{phdfancyempty}\phantomsection\affirmation
-		\addcontentsline{toc}{chapter}{Affirmation}
+		\addcontentsline{toc}{chapter}{\labelAffirmation}
 		\protect\thispagestyle{phdfancyempty}
 	}
 
