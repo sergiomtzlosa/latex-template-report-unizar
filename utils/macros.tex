@@ -293,40 +293,45 @@
 \makeatother
 
 % create new chapter without page reference in TOC, optional, to set an horizontal line below the title
-\newcommand{\chaptercustompageintoc}[3][showrule]{
+\newcommandtwoopt{\chaptercustompageintoc}[4][showrule][true]{
 	
 	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#2\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
-	
-		\chapter*{{#2}\\\vspace{-1.0cm}}
+		
+		\chapter*{{#3}\\\vspace{-1.0cm}}
 	}
 	
-	\cftaddtitleline{toc}{chapter}{#2}{#3}
+	\ifthenelse{\equal{#2}{true}}{
+		\cftaddtitleline{toc}{chapter}{#3}{#4}
+	}
 }
 
 % plain pagestyle
-\newcommand{\chapterpagenumberintoc}[2][showrule] {
-
+\newcommandtwoopt{\chapterpagenumberintoc}[3][showrule][true] {
+	
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#2\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
-	
-		\chapter*{{#2}\\\vspace{-1.0cm}}
+		
+		\chapter*{{#3}\\\vspace{-1.0cm}}
 	}
-
-	\addcontentsline{toc}{chapter}{#2}
+	
+	\ifthenelse{\equal{#2}{true}}{
+		\addcontentsline{toc}{chapter}{#3}
+	}
 }
 
 %% input file for abstract
 
 \global\def\showpageabstract{false}
 \global\def\showrule{showrule}
+\global\def\showintoc{true}
 
-\newcommandtwoopt{\inputabstract}[3][false][showrule]{
+\newcommandtwoopt{\inputabstract}[4][false][showrule]{
 	
 	\ignorespaces\lowercase{\def\tmp{#1}}
 	\global\def\showpageabstract{\tmp}
@@ -334,15 +339,19 @@
 	\ignorespaces\lowercase{\def\tmprule{#2}}
 	\global\def\showrule{\tmprule}
 	
+	% whether or not to show in TOC
+	\ignorespaces\lowercase{\def\tmptoc{#3}}
+	\global\def\showintoc{\tmptoc}
+	
 	\ifthenelse{\equal{\tmp}{false}}{
 		
 		% abstract without page numbers and without page number in TOC
-		\protect\pagestyle{empty}\input{#3}
+		\protect\pagestyle{empty}\input{#4}
 		\protect\thispagestyle{empty}
 	}{
 		
 		% abstract with page numers and page number in TOC
-		\protect\pagestyle{phdfancyempty}\input{#3}
+		\protect\pagestyle{phdfancyempty}\input{#4}
 		\protect\thispagestyle{phdfancyempty}
 	}
 	
@@ -353,10 +362,10 @@
 	
 	\ifthenelse{\equal{\showpageabstract}{false}}{
 
-		\chaptercustompageintoc[\showrule]{Abstract}{}		
+		\chaptercustompageintoc[\showrule][\showintoc]{Abstract}{}		
 	}{
 	
-		\chapterpagenumberintoc[\showrule]{Abstract}
+		\chapterpagenumberintoc[\showrule][\showintoc]{Abstract}
 	}
 }
 
