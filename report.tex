@@ -77,10 +77,16 @@
 \clearpage
 
 % report declaration of authenticity
+% #1 declaration without page numbers and without page number in TOC or declaration with page numers and page number in TOC	
+% #2 show or not to show in TOC
 \inputdeclaration[true][true]
 
 %% start abstract section
-\inputabstract[true]{true}{chapters/abstract}
+% #1 show page number or not
+% #2 show or hide rule below title
+% #3 show in TOC or not
+% #4 input text file
+\inputabstract[true][showrule]{true}{chapters/abstract}
 %% end abstract section
 
 \begin{startpagenumbering}[1]
