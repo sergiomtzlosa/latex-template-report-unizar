@@ -91,6 +91,8 @@ endif
 ifeq ($(OS_NAME),darwin)
 	pdf2htmlEX --zoom 1.5 $(DOC).pdf html/$(DOC).html
 endif
+	zip html/report.zip html/report.html
+	rm html/report.html
 
 # compile, convert images to black and white and convert pdf to html
 full-print: all print-images pdf-html
