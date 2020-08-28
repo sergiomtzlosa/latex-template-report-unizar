@@ -61,19 +61,22 @@
 \clearpage
 
 %\renewcommand{\listfigurename}{Figures}
-%\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
-%\pagestyle{empty}\listoffigures
-%\protect\thispagestyle{empty}
+%\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+%\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
+%\pagestyle{phdfancyempty}\listoffigures
+%\protect\thispagestyle{phdfancyempty}
 %\clearpage
 
 %\renewcommand{\listtablename}{Tables}
-%\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
-%\pagestyle{empty}\listoftables
-%\protect\thispagestyle{empty}
+%\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+%\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
+%\pagestyle{phdfancyempty}\listoftables
+%\protect\thispagestyle{phdfancyempty}
 %\clearpage
 
-\pagestyle{empty}\printglossaries
-\protect\thispagestyle{empty}
+\phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
+\protect\pagestyle{phdfancyempty}\printglossaries
+\protect\thispagestyle{phdfancyempty}
 \clearpage
 
 % report declaration of authenticity
