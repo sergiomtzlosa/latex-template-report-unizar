@@ -102,8 +102,16 @@
 % Bibliography 
 \titlebibliography{Bibliography}
 \protect\bibliographystyle{./packages/ieeetr-redux}
-\pagestyle{empty}\bibliography{./utils/report-bib}
-\protect\thispagestyle{empty}
+%\pagestyle{empty}\bibliography{./utils/report-bib}
+%\protect\thispagestyle{empty}
+\pagestyle{phdplainfancy}\bibliography{./utils/report-bib}
+\protect\thispagestyle{phdplainfancy}
 \addcontentsline{toc}{chapter}{\bibname}
+\clearpage
+
+\phantomsection\addcontentsline{toc}{chapter}{Epilogue}
+\protect\pagestyle{phdplainfancy}\input{utils/epilogue}
+\protect\thispagestyle{phdplainfancy}
+\clearpage
 
 \end{document}
