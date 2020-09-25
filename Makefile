@@ -120,7 +120,7 @@ cover-latex:
 	echo ""
 
 # compile all with cover
-all-cover: cover-latex all
+all-cover: all cover-latex
 	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf -dBATCH book_cover.pdf report.pdf
 
 
