@@ -13,3 +13,17 @@ _minted-report
 *.blg
 *.gls
 *.glg
+
+book-cover/*.aux
+book-cover/*.glo
+book-cover/*.ist
+book-cover/*.out
+book-cover/*.toc
+book-cover/*.xwm
+book-cover/*.gz
+book-cover/*.idx
+book-cover/*.log
+book-cover/*.bbl
+book-cover/*.blg
+book-cover/*.gls
+book-cover/*.glg

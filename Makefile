@@ -99,3 +99,29 @@ full-print: all print-images pdf-html
 
 # compile and convert pdf to html
 full: all print-images pdf-html
+
+# compile book cover
+cover-pdflatex:
+	cd book-cover && \
+	pdflatex --shell-escape book_cover.tex && \
+	cp book_cover.pdf ../ && \
+	echo "" && \
+	echo "\033[33;1mDONE !!!\033[0m" && \
+	echo ""
+
+#compile cover with latex
+cover-latex:
+	cd book-cover && \
+	latex --shell-escape "\def\latexcompiler{}\input{book_cover}" book_cover.tex && \
+	dvipdf book_cover.dvi book_cover.pdf && \
+	cp book_cover.pdf ../ && \
+	echo "" && \
+	echo "\033[33;1mDONE !!!\033[0m" && \
+	echo ""
+
+# compile all with cover
+all-cover: cover-latex all
+	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf -dBATCH book_cover.pdf report.pdf
+
+
+
