@@ -5,7 +5,7 @@ Compilar con Makeflie:
 - Versión LaTEX:
 
 ```
-make cover-later
+make cover-latex
 ```
 
 - Versión PDFLaTEX:
