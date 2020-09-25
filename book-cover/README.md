@@ -8,10 +8,10 @@ Compilar con Makeflie:
 make cover-later
 ```
 
-- Versión PdfLaTEX:
+- Versión PDFLaTEX:
 
 ```
-make cover-dflatex
+make cover-pdflatex
 ```
 
 Unir portada y documento principal:
