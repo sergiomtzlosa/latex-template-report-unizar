@@ -76,7 +76,7 @@ compress-big:
 install-deps:
 ifeq ($(OS_NAME),linux)
 	sudo apt-get update && \
-	sudo apt-get install texlive-full docker python-pygments python3-pygments
+	sudo apt-get install texlive-full docker python-pygments python3-pygments cm-super
 endif
 ifeq ($(OS_NAME),darwin)
 	brew install docker pygments pdf2htmlEX
