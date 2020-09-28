@@ -121,6 +121,8 @@ cover-latex:
 
 # compile all with cover
 all-cover: all cover-latex
-	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf report.pdf
-
+	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf report.pdf && \
+        echo "" && \
+        echo "\033[33;1mpdf merged !!!\033[0m" && \
+        echo ""
 
