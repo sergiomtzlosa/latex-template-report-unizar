@@ -74,6 +74,13 @@
 %\protect\thispagestyle{phdfancyempty}
 %\clearpage
 
+% Custom section - list of equations
+\phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
+\textposition{\textwidth}{2.2cm}{7.3cm}{Page} % Block width, X, Y, text
+\protect\pagestyle{phdfancyempty}\listofmyequations
+\protect\thispagestyle{phdfancyempty}
+\clearpage
+
 \phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
 \protect\pagestyle{phdfancyempty}\printglossaries
 \protect\thispagestyle{phdfancyempty}

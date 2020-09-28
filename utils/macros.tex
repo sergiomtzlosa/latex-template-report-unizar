@@ -137,18 +137,25 @@
 
 \DeclareCaptionType{equ}[][]
 
-\newcommand{\setequation}[5] {
+% https://tex.stackexchange.com/questions/39315/how-to-change-the-numbering-for-different-figures
+\DeclareFloatingEnvironment[name={Equation}]{eqfigure}
 
+\newcommand{\setequation}[5] {
+	
 	\begin{equ}[H]
+		
+		% https://tex.stackexchange.com/questions/316646/renaming-the-label-of-figure-just-in-some-cases
+		%		\renewcommand{\figurename}{Equation}
 		\begin{changemargin}{#1}{#2}
-			\begin{figure}[H]
+			\begin{eqfigure}[H]
 				#3
 				\vspace{-0.5cm}
 				\centercaption{#5}
 				\label{#4}
-			\end{figure}
+				\myequations{#5} % this is for equations listing
+			\end{eqfigure}
 		\end{changemargin}	
-	\vspace{-1.5cm}
+		\vspace{-1.5cm}
 	\end{equ}
 }
 
@@ -400,6 +407,36 @@
 	\setlength{\parskip}{1em}
 	#1
 }{}
+
+%% START Create a list of equations
+
+% https://tex.stackexchange.com/questions/270611/creating-list-of-equations
+\newcommand{\listequationsname}{List of Equations}
+\newcommand{\listequationtitle}{\listequationsname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{1.5cm}}
+\newlistof{myequations}{equ}{\listequationtitle}
+\newcommand{\myequations}[1]{%
+	\addcontentsline{equ}{myequations}{\protect\numberline{\theeqfigure}#1}\par}
+\addtolength{\cftmyequationsnumwidth}{13pt}
+\setlength{\cftmyequationsindent}{1.5em}
+\setlength{\cftmyequationsnumwidth}{2.3em}
+
+%% END Create a list of equations
+
+% Absolute text position
+\newcommand{\textposition}[4]{ % Block width, X, Y, text
+	
+	\begin{textblock*}{#1}(#2,#3) % {block width} (coords) 
+		\protect{~\hfill\textbf{#4}\par\protect\thispagestyle{phdfancyempty}}
+	\end{textblock*}
+}
+
+
+\newcommandtwoopt{\KittelEquationExpandedX}[2][Theoretical Kittel equation expanded for a Permalloy thin-film for X-axe][fig:kittel-x]{
+	\vspace{-0.5cm}
+	\setequation{0cm}{0cm}{
+		\small{\[\textit{f} = 28\cdot\sqrt{(B_{DC}+(N_y-N_x)\cdot0.86\cdot10^6\cdot4\pi\cdot10^{-7})\cdot(B_{DC}+(N_z-N_x)\cdot0.86\cdot10^6)\cdot4\pi\cdot10^{-7}}\]}
+	}{#2}{#1}
+}
 
 %%% Affirmation
 \input{utils/declaration}
