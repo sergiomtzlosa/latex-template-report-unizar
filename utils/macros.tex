@@ -412,7 +412,7 @@
 
 % https://tex.stackexchange.com/questions/270611/creating-list-of-equations
 \newcommand{\listequationsname}{List of Equations}
-\newcommand{\listequationtitle}{\listequationsname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{1.5cm}}
+\newcommand{\listequationtitle}{\vspace{-0.4cm}\listequationsname\vskip0cm\vspace{-0.59cm}\rule{\linewidth}{1pt}\vspace{1.8cm}\\\protect{\hspace*{0pt}\hfill\fontsize{11}{12}\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{-1.0cm}}}
 \newlistof{myequations}{equ}{\listequationtitle}
 \newcommand{\myequations}[1]{%
 	\addcontentsline{equ}{myequations}{\protect\numberline{\theeqfigure}#1}\par}
@@ -421,15 +421,6 @@
 \setlength{\cftmyequationsnumwidth}{2.3em}
 
 %% END Create a list of equations
-
-% Absolute text position
-\newcommand{\textposition}[4]{ % Block width, X, Y, text
-	
-	\begin{textblock*}{#1}(#2,#3) % {block width} (coords) 
-		\protect{~\hfill\textbf{#4}\par\protect\thispagestyle{phdfancyempty}}
-	\end{textblock*}
-}
-
 
 \newcommandtwoopt{\KittelEquationExpandedX}[2][Theoretical Kittel equation expanded for a Permalloy thin-film for X-axe][fig:kittel-x]{
 	\vspace{-0.5cm}
