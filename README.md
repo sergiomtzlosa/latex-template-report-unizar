@@ -1,4 +1,4 @@
-# Unofficial latex template for Universidad de Zaragoza
+# Unofficial LaTeX template for Universidad de Zaragoza
 
 Latex template to create reports/documents with the image of Universidad de Zaragoza.
 
