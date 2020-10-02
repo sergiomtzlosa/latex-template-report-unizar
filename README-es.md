@@ -30,7 +30,10 @@ Para instalar pygments en sistemas unix mirar [Makefile](Makefile).
 
 Instalar el paquete cm-super con el [administrador grafico de MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) y refrescar las fuentes.
 
-En sistemas GNU/Linux: sudo apt-get install cm-super
+En sistemas GNU/Linux: 
 
+```
+sudo apt-get install cm-super
+```
 
 

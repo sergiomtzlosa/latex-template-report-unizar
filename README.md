@@ -14,7 +14,7 @@ Recommended OpenSource LaTex editor: [TeXstudio](https://www.texstudio.org/)
 
 ## Configure TeXStudio
 
-Over Options -> Texstudio configuration -> Orders, set the following line in sectionponer *PdfLaTex*:
+Over Options -> Texstudio configuration -> Orders, set the following line in section *PdfLaTex*:
 
 ```
 pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
@@ -30,6 +30,9 @@ See [Makefile](Makefile) to install pygments on unix systems.
 
 Install the cm-super package using the  [grafic package administrator from MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) and refresh the installed fonts.
 
-On GNU/Linux systems: sudo apt-get install cm-super
+On GNU/Linux systems: 
 
+```
+sudo apt-get install cm-super
+```
 
