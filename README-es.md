@@ -10,7 +10,7 @@ Compilar el archivo report.tex en sistemas unix:
 make all
 ``` 
 
-Editor LaTeX recomendado OpenSource: [TeXstudio](https://www.texstudio.org/)
+Editor LaTeX OpenSource recomendado: [TeXstudio](https://www.texstudio.org/)
 
 ## Configurar TeXStudio
 
