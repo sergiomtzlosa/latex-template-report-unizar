@@ -1,35 +1,35 @@
-# Plantilla de LaTeX no oficial para la Universidad de Zaragoza
+# Unofficial latex template for Universidad de Zaragoza
 
-Platilla de LaTeX para realizar informes con imagen de la Universidad de Zaragoza.
+Latex template to create reports/documents with the image of Universidad de Zaragoza.
 
-Archivo PDF resultante [aqui](report.pdf).
+Ouput PDF [here](report.pdf).
 
-Compilar report.tex en sistemas unix:
+Compile the report.tex in unix systems:
 
 ```
 make all
 ``` 
 
-Editor LaTeX recomendado OpenSource: [TeXstudio](https://www.texstudio.org/)
+Recommended OpenSource LaTex editor: [TeXstudio](https://www.texstudio.org/)
 
-## Configurar TeXStudio
+## Configure TeXStudio
 
-En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la seccion de PdfLaTex:
+Over Options -> Texstudio configuration -> Orders, set the following line in sectionponer *PdfLaTex*:
 
 ```
 pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 ```
 
-## Instalar pygments 
+## Install pygments 
 
-Instalar pygments en windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).
+Install pygments on windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).
 
-Para instalar pygments en sistemas unix mirar [Makefile](Makefile).
+See [Makefile](Makefile) to install pygments on unix systems.
 
-## Instalar cm-super
+## Install cm-super
 
-Instalar el paquete cm-super con el administrador [grafico de MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) y refrescar las fuentes.
+Install the cm-super package using the  [grafic package administrator from MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) and refresh the installed fonts.
 
-Sistemas GNU/Linux: sudo apt-get install cm-super
+On GNU/Linux systems: sudo apt-get install cm-super
 
 
