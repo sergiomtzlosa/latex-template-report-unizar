@@ -4,7 +4,7 @@ Latex template to create reports/documents with the image of Universidad de Zara
 
 Ouput PDF [here](report.pdf).
 
-Compile the report.tex in unix systems:
+Compile the report.tex file in unix systems:
 
 ```
 make all

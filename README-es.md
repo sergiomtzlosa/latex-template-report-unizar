@@ -4,7 +4,7 @@ Platilla de LaTeX para realizar informes con imagen de la Universidad de Zaragoz
 
 Archivo PDF resultante [aqui](report.pdf).
 
-Compilar report.tex en sistemas unix:
+Compilar el archivo report.tex en sistemas unix:
 
 ```
 make all
