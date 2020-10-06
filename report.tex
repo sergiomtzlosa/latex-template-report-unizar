@@ -27,6 +27,10 @@
 \makeglossaries
 \input{chapters/glossary}
 
+\ifmultibib
+	\newcites{publications}{\listofpublicationsname} % multibib bibliography section
+\fi
+
 \begin{document}
 
 \thispagestyle{empty}
@@ -114,6 +118,17 @@
 \protect\thispagestyle{phdplainfancy}
 \addcontentsline{toc}{chapter}{\bibname}
 \clearpage
+
+% List of publications
+\ifmultibib
+	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
+	\protect\pagestyle{phdplainfancy}
+	\nocitepublications{*}
+	\bibliographystylepublications{./packages/ieeetr-redux}
+	\bibliographypublications{./utils/publications.bib}
+	\protect\thispagestyle{phdplainfancy}
+	\clearpage
+\fi
 
 \phantomsection\addcontentsline{toc}{chapter}{Epilogue}
 \protect\pagestyle{phdplainfancy}\input{utils/epilogue}

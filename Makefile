@@ -1,4 +1,6 @@
 DOC := report
+PUBS := publications
+CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 # base compilation
@@ -12,11 +14,14 @@ nobib:
 
 # compile with index and bibliography
 all:
-	pdflatex --shell-escape $(DOC).tex && \
-	makeglossaries $(DOC) && \
-	bibtex $(DOC) && \
-	pdflatex --shell-escape $(DOC).tex && \
-	pdflatex --shell-escape $(DOC).tex && \
+	pdflatex --shell-escape $(DOC).tex
+	makeglossaries $(DOC)
+	bibtex $(DOC).aux
+ifeq ($(CHECKPUBS),true)
+	bibtex $(PUBS).aux
+endif
+	pdflatex --shell-escape $(DOC).tex
+	pdflatex --shell-escape $(DOC).tex
 	echo "" && \
 	echo "\033[33;1mPdfLaTex compilation finished !!!\033[0m" && \
 	echo ""
@@ -30,7 +35,7 @@ simple:
 
 # clean compilation
 distclean:
-	rm -f $(DOC).aux \
+	rm -f *.aux \
         $(DOC).log \
         $(DOC).blg \
         $(DOC).bbl \
@@ -39,7 +44,7 @@ distclean:
 
 # clean compilation
 clean:
-	rm -f $(DOC).aux \
+	rm -f *.aux \
 	$(DOC).log \
 	$(DOC).blg \
 	$(DOC).bbl \

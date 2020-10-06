@@ -46,6 +46,15 @@
 \usepackage{hyperref}
 \usepackage{glossaries} % always load glossaries AFTER hyperref
 
+\newif\ifmultibib
+
+% set true or false to view the list of publications 
+\multibibtrue
+
+\ifmultibib
+	\usepackage[resetlabels]{multibib} % multiple biblipography
+\fi
+
 \ifx\printabletext\trueValue
 
 	\hypersetup{
