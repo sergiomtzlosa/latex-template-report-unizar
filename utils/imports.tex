@@ -300,3 +300,72 @@
 % Continous footnote counter
 % https://tex.stackexchange.com/questions/10448/continuous-footnote-numbering
 \counterwithout{footnote}{chapter}
+
+%% START TOC STYLE
+% https://tex.stackexchange.com/questions/154646/is-there-an-easy-way-to-get-the-frontmatter-mainmatter-and-backmatter-in-a-l/154666
+% https://tex.stackexchange.com/questions/419555/remove-bold-style-for-chapter-names-in-table-of-contents
+
+\makeatletter
+
+\newcommand*{\enableboldchapterintoc}{%
+	
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\bfseries}}
+	
+\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
+	
+\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% 
+dot leaders in bold
+}
+
+\newcommand*{\enableitalicchapterintoc}{%
+	
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\itshape}}
+	
+\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill}}
+}
+
+\newcommand*{\disablestylechapterintoc}{%
+	
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
+	
+\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
+}
+
+\newcommand{\frontmatter}{%
+	
+	\disablestylechapterintoc
+	\enableitalicchapterintoc
+	
+	\cleardoublepage
+	%\@mainmatterfalse
+	\pagenumbering{Roman}
+}
+
+\newcommand{\mainmatter}{%
+	
+	\disablestylechapterintoc
+	\enableboldchapterintoc
+	
+	\cleardoublepage
+	% \@mainmattertrue
+	\pagenumbering{arabic}
+}
+
+\newcommand{\backmatter}{%
+	
+	\disablestylechapterintoc
+	\enableitalicchapterintoc
+	
+	\if@openright
+		\cleardoublepage
+	\else
+		\clearpage
+	\fi
+	% \@mainmatterfalse
+}
+
+\makeatother
+
+%% END TOC STYLE

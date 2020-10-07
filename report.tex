@@ -56,6 +56,7 @@
 	
 \end{titlepage}
 
+\frontmatter % apply TOC styles frontmatter
 \pagenumbering{Roman}
 
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
@@ -102,12 +103,16 @@
 \inputabstract[true][showrule]{true}{chapters/abstract}
 %% end abstract section
 
+\mainmatter % apply TOC styles mainmatter
+
 \begin{startpagenumbering}[1]
 
 	\input{chapters/00_introduction}
 	\input{chapters/01_first_chapter}
 	
 \end{startpagenumbering}
+
+\backmatter % apply TOC styles backmatter
 
 % Bibliography 
 \titlebibliography{Bibliography}
