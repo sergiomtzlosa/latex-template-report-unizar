@@ -310,17 +310,15 @@
 \newcommand*{\enableboldchapterintoc}{%
 	
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\bfseries}}
-	
-\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
-	
-\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% dot leaders in bold
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
+%	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% dot leaders in bold
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\hfill}}
 }
 
 \newcommand*{\enableitalicchapterintoc}{%
 	
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\itshape}}
-	
-\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill}}
 }
 
@@ -328,8 +326,7 @@
 	
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
-	
-\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
 }
 
 \newcommand{\frontmatter}{%
