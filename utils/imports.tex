@@ -304,22 +304,26 @@
 %% START TOC STYLE
 % https://tex.stackexchange.com/questions/154646/is-there-an-easy-way-to-get-the-frontmatter-mainmatter-and-backmatter-in-a-l/154666
 % https://tex.stackexchange.com/questions/419555/remove-bold-style-for-chapter-names-in-table-of-contents
+% https://tex.stackexchange.com/questions/123774/remove-the-dots-next-to-chapter-in-memoir
+% https://tex.stackexchange.com/questions/299074/removing-number-on-toc-but-maintaining-the-position-of-the-text
 
 \makeatletter
 
 \newcommand*{\enableboldchapterintoc}{%
 	
+	\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\bfseries}}
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
-%	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% dot leaders in bold
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\hfill}}
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\hfill\relax}}
+	%	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% dot leaders in bold
 }
 
 \newcommand*{\enableitalicchapterintoc}{%
 	
+	\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\itshape}}
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill}}
+	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill\relax}}
 }
 
 \newcommand*{\disablestylechapterintoc}{%
