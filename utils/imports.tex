@@ -29,6 +29,11 @@
 	\usepackage[dvipsnames]{xcolor}
 \fi
 
+\ifdefined\mainmatter
+	\usepackage{tocbasic} % mainmatter style book
+	\usepackage{xpatch} % mainmatter style book
+\fi
+
 \usepackage{newfloat} % float environment for equation listing
 \usepackage[subfigure]{tocloft}
 \usepackage{yfonts}
@@ -313,66 +318,89 @@
 % https://tex.stackexchange.com/questions/419555/remove-bold-style-for-chapter-names-in-table-of-contents
 % https://tex.stackexchange.com/questions/123774/remove-the-dots-next-to-chapter-in-memoir
 % https://tex.stackexchange.com/questions/299074/removing-number-on-toc-but-maintaining-the-position-of-the-text
+% http://www.texfaq.org/FAQ-isdef
 
-\makeatletter
+\ifdefined\mainmatter
 
-\newcommand*{\enableboldchapterintoc}{%
+	% https://tex.stackexchange.com/questions/439926/different-style-for-backmatter-chapters-in-toc
+	% \mainmatter defined
+	\typeout{!!!!!!!!!!!!!}
+	\typeout{!!!!!!!!!!!!! mainmatter defined}
+	\typeout{!!!!!!!!!!!!!}
 	
-	\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\bfseries}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\hfill\relax}}
-	%	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}}% dot leaders in bold
-}
+	\DeclareTOCStyleEntry[entryformat=\chapterentryformat,pagenumberformat=\chapterentryformat]{tocline}{chapter}
+	
+	\newif\ifmainmatterintoc
+	
+	\newcommand*\chapterentryformat[1]{{\ifmainmatterintoc\normalfont\bfseries\else\normalfont\slshape\fi#1}}
+	
+	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{}{\mmPatchFailed}
+	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{}{\appPatchFailed}
 
-\newcommand*{\enableitalicchapterintoc}{%
-	
-	\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\itshape}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill\relax}}
-}
+\else
 
-\newcommand*{\disablestylechapterintoc}{%
+	% \mainmatter not defined
+	\typeout{!!!!!!!!!!!!!}
+	\typeout{!!!!!!!!!!!!! mainmatter NOT defined}
+	\makeatletter
+	\typeout{!!!!!!!!!!!!!}
 	
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
-	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
-}
-
-\renewcommand{\frontmatter}{%
+	\newcommand*{\enableboldchapterintoc}{%
+		
+		\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\bfseries}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\bfseries}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\hfill\relax}}
+		%	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\bfseries\protect\cftdotfill{\protect\cftsecdotsep}}} % dot leaders in bold
+	}
 	
-	\disablestylechapterintoc
-	\enableitalicchapterintoc
+	\newcommand*{\enableitalicchapterintoc}{%
+		
+		\addtocontents{toc}{\protect\unexpanded{\protect\unexpanded{\string\renewcommand{\protect\cftchapdotsep}{\protect\cftnodots}}}} % remove dots
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont\protect\itshape}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont\protect\itshape}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\itshape\hfill\relax}}
+	}
 	
-	\cleardoublepage
-	%\@mainmatterfalse
-	\pagenumbering{Roman}
-}
-
-\renewcommand{\mainmatter}{%
+	\newcommand*{\disablestylechapterintoc}{%
+		
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
+		\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
+	}
 	
-	\disablestylechapterintoc
-	\enableboldchapterintoc
-	
-	\cleardoublepage
-	% \@mainmattertrue
-	\pagenumbering{arabic}
-}
-
-\renewcommand{\backmatter}{%
-	
-	\disablestylechapterintoc
-	\enableitalicchapterintoc
-	
-	\if@openright
+	\newcommand{\frontmatter}{%
+		
+		\disablestylechapterintoc
+		\enableitalicchapterintoc
+		
 		\cleardoublepage
-	\else
+		\pagenumbering{Roman}
+	}
+	
+	\newcommand{\mainmatter}{%
+		
+		\disablestylechapterintoc
+		\enableboldchapterintoc
+		
+		\cleardoublepage
+		\pagenumbering{arabic}
+	}
+	
+	\newcommand{\backmatter}{%
+		
+		\disablestylechapterintoc
+		\enableitalicchapterintoc
+		
+		\if@openright
+		\cleardoublepage
+		\else
 		\clearpage
-	\fi
-	% \@mainmatterfalse
-}
+		\fi
+	}
+	
+	\makeatother
 
-\makeatother
+\fi
 
 %% END TOC STYLE
