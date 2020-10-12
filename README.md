@@ -2,7 +2,7 @@
 
 Latex template to create reports/documents with the image of Universidad de Zaragoza.
 
-Ouput PDF [here](report.pdf).
+Output PDF [here](report.pdf).
 
 Compile the report.tex file in unix systems:
 
