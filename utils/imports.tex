@@ -333,7 +333,7 @@
 	\addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
 }
 
-\newcommand{\frontmatter}{%
+\renewcommand{\frontmatter}{%
 	
 	\disablestylechapterintoc
 	\enableitalicchapterintoc
@@ -343,7 +343,7 @@
 	\pagenumbering{Roman}
 }
 
-\newcommand{\mainmatter}{%
+\renewcommand{\mainmatter}{%
 	
 	\disablestylechapterintoc
 	\enableboldchapterintoc
@@ -353,7 +353,7 @@
 	\pagenumbering{arabic}
 }
 
-\newcommand{\backmatter}{%
+\renewcommand{\backmatter}{%
 	
 	\disablestylechapterintoc
 	\enableitalicchapterintoc
