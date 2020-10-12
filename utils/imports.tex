@@ -219,7 +219,14 @@
 				pdfauthor={\@author},
 				pdfkeywords={\keywords},
 				pdfproducer={\expandonce\THEAUTHOR},
-				pdfcreator={\expandonce\THEAUTHOR}
+				pdfcreator={\expandonce\THEAUTHOR},
+				pdfsubject={\expandonce\THETITLE},
+				pdfinfo={
+					Title={\THETITLE},
+					Author={\THEAUTHOR},
+					Creator={\THEAUTHOR},
+					Producer={\THEAUTHOR}
+				}
 			}
 		}
 	\makeatother
