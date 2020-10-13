@@ -342,8 +342,9 @@
 	% \mainmatter not defined
 	\typeout{!!!!!!!!!!!!!}
 	\typeout{!!!!!!!!!!!!! mainmatter NOT defined}
+	\typeout{!!!!!!!!!!!!!} 
+
 	\makeatletter
-	\typeout{!!!!!!!!!!!!!}
 	
 	\newcommand*{\enableboldchapterintoc}{%
 		
@@ -393,9 +394,9 @@
 		\enableitalicchapterintoc
 		
 		\if@openright
-		\cleardoublepage
+			\cleardoublepage
 		\else
-		\clearpage
+			\clearpage
 		\fi
 	}
 	
