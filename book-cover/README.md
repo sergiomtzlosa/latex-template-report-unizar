@@ -14,7 +14,7 @@ make cover-latex
 make cover-pdflatex
 ```
 
-Merger cover and main document:
+Merge cover and main document:
 
 ```
 make all-cover
