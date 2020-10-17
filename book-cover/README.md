@@ -1,20 +1,20 @@
-## PORTADA PARA LIBRO
+## BOOK COVER
 
-Compilar con Makeflie:
+Compile with Makeflie:
 
-- Versión LaTEX:
+- LaTEX version:
 
 ```
 make cover-latex
 ```
 
-- Versión PDFLaTEX:
+- PDFLaTEX version:
 
 ```
 make cover-pdflatex
 ```
 
-Unir portada y documento principal:
+Merger cover and main document:
 
 ```
 make all-cover

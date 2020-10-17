@@ -105,7 +105,7 @@ full-print: all print-images pdf-html
 # compile and convert pdf to html
 full: all print-images pdf-html
 
-# compile book cover
+# compile book cover with pdflatex
 cover-pdflatex:
 	cd book-cover && \
 	pdflatex --shell-escape book_cover.tex && \
@@ -114,7 +114,7 @@ cover-pdflatex:
 	echo "\033[33;1mDONE !!!\033[0m" && \
 	echo ""
 
-#compile cover with latex
+# compile cover with latex
 cover-latex:
 	cd book-cover && \
 	latex --shell-escape "\def\latexcompiler{}\input{book_cover}" book_cover.tex && \
