@@ -59,35 +59,41 @@
 \frontmatter % apply TOC styles frontmatter
 \pagenumbering{Roman}
 
-\protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{empty}}
+\SetContentTitle{\MakeUppercase{\contentsname}}
+\protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+\protect\pagestyle{phdfancyspecialempty}
 \setcounter{tocdepth}{2}
-\pagestyle{empty}\tableofcontents
-\protect\thispagestyle{empty}
+\tableofcontents
 \clearpage
 
+% https://tex.stackexchange.com/questions/48509/insert-list-of-figures-in-the-table-of-contents
+
 %\renewcommand{\listfigurename}{Figures}
+%\SetContentTitle{\MakeUppercase{\listfigurename}}
 %\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 %\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
-%\pagestyle{phdfancyempty}\listoffigures
-%\protect\thispagestyle{phdfancyempty}
+%\protect\pagestyle{phdfancyspecialempty}\listoffigures
 %\clearpage
 
 %\renewcommand{\listtablename}{Tables}
+%\SetContentTitle{\MakeUppercase{\listtablename}}
 %\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 %\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
-%\pagestyle{phdfancyempty}\listoftables
-%\protect\thispagestyle{phdfancyempty}
+%\protect\pagestyle{phdfancyspecialempty}\listoftables
 %\clearpage
 
 % Custom section - list of equations
-\phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
-\protect\pagestyle{phdfancyempty}\listofmyequations
+\SetContentTitle{\MakeUppercase{\listequationsname}}
 \protect\thispagestyle{phdfancyempty}
+\phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
+\protect\pagestyle{phdfancyspecialempty}\listofmyequations
 \clearpage
 
-\phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
-\protect\pagestyle{phdfancyempty}\printglossaries
+% show glossary items
+\SetContentTitle{\MakeUppercase{\glossaryname}}
 \protect\thispagestyle{phdfancyempty}
+\phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
+\protect\pagestyle{phdfancyspecialempty}\printglossaries
 \clearpage
 
 % report declaration of authenticity

@@ -12,6 +12,21 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
 }
 
+\newcommand{\SetContentTitle}[1]{
+	\global\def\contentTitle{#1}
+}
+
+\fancypagestyle{phdfancyspecialempty}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[RE,LO]{\contentTitle}
+	\fancyfoot[C]{}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
 \fancypagestyle{phdfancyempty}{%
 	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
