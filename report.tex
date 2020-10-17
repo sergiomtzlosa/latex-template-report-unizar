@@ -59,7 +59,7 @@
 \frontmatter % apply TOC styles frontmatter
 \pagenumbering{Roman}
 
-\SetContentTitle{\MakeUppercase{\contentsname}}
+\SetHeaderTitle{\MakeUppercase{\contentsname}}
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \protect\pagestyle{phdfancyspecialempty}
 \setcounter{tocdepth}{2}
@@ -83,14 +83,14 @@
 %\clearpage
 
 % Custom section - list of equations
-\SetContentTitle{\MakeUppercase{\listequationsname}}
+\SetHeaderTitle{\MakeUppercase{\listequationsname}}
 \protect\thispagestyle{phdfancyempty}
 \phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
 \protect\pagestyle{phdfancyspecialempty}\listofmyequations
 \clearpage
 
 % show glossary items
-\SetContentTitle{\MakeUppercase{\glossaryname}}
+\SetHeaderTitle{\MakeUppercase{\glossaryname}}
 \phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
 \protect\pagestyle{phdfancyspecialempty}
 \printglossaries\protect\thispagestyle{phdfancyempty}
@@ -122,14 +122,14 @@
 
 % Custom section - Epilogue
 \def\epilogueTitle{Epilogue}
-\SetContentTitle{\MakeUppercase{\epilogueTitle}}
+\SetHeaderTitle{\MakeUppercase{\epilogueTitle}}
 \phantomsection\addcontentsline{toc}{chapter}{\epilogueTitle}
 \protect\pagestyle{phdfancyspecialempty}\input{utils/epilogue}
 \clearpage
 
 % Bibliography
 \titlebibliography{Bibliography}
-\SetContentTitle{\MakeUppercase{\titlebibliography}}
+\SetHeaderTitle{\MakeUppercase{\titlebibliography}}
 \protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
 \pagestyle{phdfancyspecialempty}\bibliography{./utils/report-bib}
 \protect\thispagestyle{phdfancyempty}
@@ -138,7 +138,7 @@
 
 % List of publications
 \ifmultibib
-	\SetContentTitle{\MakeUppercase{\listofpublicationsname}}
+	\SetHeaderTitle{\MakeUppercase{\listofpublicationsname}}
 	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
 	\protect\pagestyle{phdfancyspecialempty}
 	\nocitepublications{*}
