@@ -120,30 +120,32 @@
 
 \backmatter % apply TOC styles backmatter
 
-% Bibliography 
+% Custom section - Epilogue
+\def\epilogueTitle{Epilogue}
+\SetContentTitle{\MakeUppercase{\epilogueTitle}}
+\phantomsection\addcontentsline{toc}{chapter}{\epilogueTitle}
+\protect\pagestyle{phdfancyspecialempty}\input{utils/epilogue}
+\clearpage
+
+% Bibliography
 \titlebibliography{Bibliography}
-\protect\bibliographystyle{./packages/ieeetr-redux}
-%\pagestyle{empty}\bibliography{./utils/report-bib}
-%\protect\thispagestyle{empty}
-\pagestyle{phdplainfancy}\bibliography{./utils/report-bib}
-\protect\thispagestyle{phdplainfancy}
+\SetContentTitle{\MakeUppercase{\titlebibliography}}
+\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+\pagestyle{phdfancyspecialempty}\bibliography{./utils/report-bib}
+\protect\thispagestyle{phdfancyempty}
 \addcontentsline{toc}{chapter}{\bibname}
 \clearpage
 
 % List of publications
 \ifmultibib
+	\SetContentTitle{\MakeUppercase{\listofpublicationsname}}
 	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
-	\protect\pagestyle{phdplainfancy}
+	\protect\pagestyle{phdfancyspecialempty}
 	\nocitepublications{*}
 	\bibliographystylepublications{./packages/ieeetr-redux}
 	\bibliographypublications{./utils/publications.bib}
-	\protect\thispagestyle{phdplainfancy}
+	\protect\thispagestyle{phdfancyempty}
 	\clearpage
 \fi
-
-\phantomsection\addcontentsline{toc}{chapter}{Epilogue}
-\protect\pagestyle{phdplainfancy}\input{utils/epilogue}
-\protect\thispagestyle{phdplainfancy}
-\clearpage
 
 \end{document}
