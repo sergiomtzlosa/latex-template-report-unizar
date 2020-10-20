@@ -152,7 +152,7 @@
 				\vspace{-0.5cm}
 				\centercaption{#5}
 				\label{#4}
-				\myequations{#5} % this is for equations listing
+				\addequations{#5} % this is for equations listing
 			\end{eqfigure}
 		\end{changemargin}	
 		\vspace{-1.5cm}
@@ -413,12 +413,12 @@
 % https://tex.stackexchange.com/questions/270611/creating-list-of-equations
 \newcommand{\listequationsname}{List of Equations}
 \newcommand{\listequationtitle}{\vspace{-0.4cm}\listequationsname\vskip0cm\vspace{-0.59cm}\rule{\linewidth}{1pt}\vspace{1.8cm}\\\protect{\hspace*{0pt}\hfill\fontsize{11}{12}\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{-1.0cm}}}
-\newlistof{myequations}{equ}{\listequationtitle}
-\newcommand{\myequations}[1]{%
-	\addcontentsline{equ}{myequations}{\protect\numberline{\theeqfigure}#1}\par}
-\addtolength{\cftmyequationsnumwidth}{13pt}
-\setlength{\cftmyequationsindent}{1.5em}
-\setlength{\cftmyequationsnumwidth}{2.3em}
+\newlistof{addequations}{equ}{\listequationtitle}
+\newcommand{\addequations}[1]{%
+	\addcontentsline{equ}{addequations}{\protect\numberline{\theeqfigure}#1}\par}
+\addtolength{\cftaddequationsnumwidth}{13pt}
+\setlength{\cftaddequationsindent}{1.5em}
+\setlength{\cftaddequationsnumwidth}{2.3em}
 
 %% END Create a list of equations
 
