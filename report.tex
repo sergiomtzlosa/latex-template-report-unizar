@@ -28,7 +28,7 @@
 \input{chapters/glossary}
 
 \ifmultibib
-	\newcites{publications}{\listofpublicationsname} % multibib bibliography section
+	\newcites{publications}{\listofpublicationsname\protect\thispagestyle{phdfancyempty}} % multibib bibliography section
 \fi
 
 \begin{document}
@@ -127,11 +127,11 @@
 \clearpage
 
 % Bibliography
-\titlebibliography{Bibliography}
-\SetHeaderTitle{\MakeUppercase{\titlebibliography}}
+\SetTitleBibliography{Bibliography}
+\SetHeaderTitle{\MakeUppercase{\bibname}}
 \protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
-\protect\pagestyle{phdfancyspecialempty}\bibliography{./utils/report-bib}
-\protect\thispagestyle{phdfancyempty}
+\bibliography{./utils/report-bib}
+\protect\pagestyle{phdfancyspecialempty}
 \addcontentsline{toc}{chapter}{\bibname}
 \clearpage
 
@@ -143,7 +143,6 @@
 	\nocitepublications{*}
 	\bibliographystylepublications{./packages/ieeetr-redux}
 	\bibliographypublications{./utils/publications.bib}
-	\protect\thispagestyle{phdfancyempty}
 	\clearpage
 \fi
 
