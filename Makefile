@@ -1,3 +1,5 @@
+.PHONY: all clean distclean
+
 DOC := report
 PUBS := publications
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
@@ -81,11 +83,15 @@ compress-big:
 install-deps:
 ifeq ($(OS_NAME),linux)
 	sudo apt-get update && \
-	sudo apt-get install texlive-full docker python-pygments python3-pygments cm-super
+	sudo apt-get install texlive-full docker python-pygments python3-pygments cm-super pdfgrep
 endif
 ifeq ($(OS_NAME),darwin)
-	brew install docker pygments pdf2htmlEX
+	brew install docker pygments pdf2htmlEX pdfgrep
 endif
+
+# USAGE: make search-pdf SEARCH_TERM=Kittel
+search-pdf:
+	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf
 
 # convert pdf to html
 pdf-html:
@@ -107,22 +113,22 @@ full: all print-images pdf-html
 
 # compile book cover with pdflatex
 cover-pdflatex:
-	cd book-cover && \
+	cd book-cover/universal && \
 	pdflatex --shell-escape book_cover.tex && \
-	cp book_cover.pdf ../ && \
+	cp book_cover.pdf ../../ && \
 	echo "" && \
-	echo "\033[33;1mDONE !!!\033[0m" && \
-	echo ""
+        echo "\033[33;1mDONE !!!\033[0m" && \
+        echo ""
 
-# compile cover with latex
+#compile cover with latex
 cover-latex:
-	cd book-cover && \
-	latex --shell-escape "\def\latexcompiler{}\input{book_cover}" book_cover.tex && \
+	cd book-cover/universal && \
+	latex --shell-escape "\def\latexcompiler{}\input{book_cover}" book-cover/universal/book_cover.tex && \
 	dvipdf book_cover.dvi book_cover.pdf && \
-	cp book_cover.pdf ../ && \
-	echo "" && \
-	echo "\033[33;1mDONE !!!\033[0m" && \
-	echo ""
+	cp book_cover.pdf ../../ && \
+        echo "" && \
+        echo "\033[33;1mDONE !!!\033[0m" && \
+        echo ""
 
 # compile all with cover
 all-cover: all cover-latex
@@ -130,4 +136,3 @@ all-cover: all cover-latex
         echo "" && \
         echo "\033[33;1mpdf merged !!!\033[0m" && \
         echo ""
-
