@@ -1,11 +1,12 @@
-
 % https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
 % remove work chapter from header
+
 \fancypagestyle{phdfancy}{%
+	
 	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
-	\fancyhead[LE,RO]{\leftmark}
-	\fancyhead[RE,LO]{\THETITLE}
+	\fancyhead[LE,RO]{\THETITLE}
+	\fancyhead[RE,LO]{\leftmark}
 	\fancyfoot[C]{\thepage}
 	\renewcommand{\footrulewidth}{0.4pt}
 	\renewcommand{\headrulewidth}{0.4pt}
@@ -28,6 +29,7 @@
 }
 
 \fancypagestyle{phdfancyempty}{%
+	
 	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
 	\fancyhead[LE,RO]{}
@@ -38,6 +40,7 @@
 }
 
 \fancypagestyle{phdplainfancy}{%
+	
 	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
 	\fancyhead[LE,RO]{}
@@ -63,8 +66,8 @@
 	
 	\pagestyle{fancy}
 	\fancyhead{} % Clean headers
-	\fancyhead[LE,RO]{\leftmark}
-	\fancyhead[RE,LO]{\THETITLE}
+	\fancyhead[LE,RO]{\THETITLE}
+	\fancyhead[RE,LO]{\leftmark}
 	\fancyfoot[C]{\thepage}
 	\renewcommand{\footrulewidth}{0.0pt}
 	\renewcommand{\headrulewidth}{0.4pt}
@@ -96,7 +99,16 @@
 \newcommand\footnotewithoutheader[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{#1}}
 
 \newenvironment{startpagenumbering}[2][0] {
+
+	%	\pagestyle{plain}
 	
+	\pagestyle{phdfancy}
+	%	\setlength{\footskip}{17pt}
+	\pagenumbering{arabic}
+	\setcounter{page}{#1}{
+		#2
+	}
+
 	% rework plain style to fancy
 	\fancypagestyle{plain}{
 		
@@ -111,19 +123,24 @@
 		\pagestyle{phdfancyplain}
 	}
 
-	%	\pagestyle{plain}
-	
-	\pagestyle{phdfancy}
-	%	\setlength{\footskip}{17pt}
-	\pagenumbering{arabic}
-	\setcounter{page}{#1}{
-		#2
-	}
-
 	%% REWORK TITLE CHAPTERS
 	\definecolor{gray75}{gray}{0.75}
 	\newcommand{\hsp}{\hspace{0pt}}
 	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright
-	\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ 
-	\vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
+		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
+
+%\titleformat{\chapter}[display]{}{}{2ex}{
+%	\begin{center}
+%		\hspace*{\dimexpr0em-10pt\relax}
+%		\advance\hsize4em\advance\hsize10pt\rule[0.5ex]{4em}{1pt}\hspace{10pt}
+%		\begin{varwidth}{\textwidth}\Large\thechapter\end{varwidth}
+%		\hspace*{10pt}\rule[0.5ex]{4em}{1pt}
+%	\end{center}
+%	\vskip 1cm
+%	\begin{center}
+%		\hspace*{\dimexpr5em-10pt\relax}
+%		\Large #1
+%	\end{center}
+%}
+
 }{}
