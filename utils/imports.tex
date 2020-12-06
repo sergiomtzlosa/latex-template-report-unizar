@@ -1,8 +1,8 @@
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage[english]{babel}
 \usepackage{float}
-\usepackage{titlesec}
 \usepackage{booktabs}
 \usepackage[a4paper,margin=2.2cm]{geometry}
 %\usepackage[pdftex]{graphicx} %% loaded twice
@@ -21,12 +21,17 @@
 \usepackage{wasysym}
 \usepackage{fancyhdr}
 \usepackage{siunitx}
-\usepackage[protrusion=true,expansion]{microtype}  % install cm-super -> https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super#88374
+\usepackage{fix-cm} % mandatory for Package cover 
+\usepackage{titlesec} % mandatory for Package cover 
+\usepackage[T1]{fontenc} % mandatory for Package cover 
+\usepackage{adjustbox} % mandatory for alt colour cover
+\usepackage[protrusion=true,expansion]{microtype} % install cm-super -> https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super#88374
 
 \ifx\printabletext\trueValue
 	\usepackage[monochrome]{xcolor}
 \else
-	\usepackage[dvipsnames]{xcolor}
+	\usepackage[dvipsnames, table]{xcolor}
+	\usepackage{color, colortbl}
 \fi
 
 \ifdefined\mainmatter
@@ -36,6 +41,7 @@
 
 \usepackage{newfloat} % float environment for equation listing
 \usepackage[subfigure]{tocloft}
+\usepackage{etoolbox}
 \usepackage{yfonts}
 \usepackage{todonotes}
 \usepackage{tikz}
@@ -50,6 +56,7 @@
 %\usepackage{./packages/bibspacing}
 \usepackage{hyperref}
 \usepackage{glossaries} % always load glossaries AFTER hyperref
+\usepackage{ifplatform}
 
 \newif\ifmultibib
 
@@ -58,6 +65,22 @@
 
 \ifmultibib
 	\usepackage[resetlabels]{multibib} % multiple biblipography
+\fi
+
+\newif\ifnotwindows
+
+\ifwindows
+	% do nothing
+	\relax
+\else
+	\notwindowstrue
+\fi
+
+\ifnotwindows
+
+	% https://tex.stackexchange.com/questions/12701/where-is-texmf-on-a-windows-install
+	\pdfmapfile{=tolkien.map}
+	\usepackage{tolkienfonts}
 \fi
 
 \ifx\printabletext\trueValue
@@ -216,6 +239,7 @@
 
 \newcommand{\keywords}{physics, resume, summary, report, phd, magnonics, quantum, simulations}
 
+% https://tex.stackexchange.com/questions/48067/pdfinfo-doesnt-appear-to-be-working#48070
 \ifpdf
 	\makeatletter
 		\AtBeginDocument{
@@ -304,6 +328,7 @@
 \makeatother
 
 \ifx\printableimages\trueValue
+%	\immediate\write18{chmod +x utils/convert-grayscale.sh && ./utils/convert-grayscale.sh &>/dev/null}
 	\graphicspath{{./images-grayscale/}}
 \else
 	\graphicspath{{./images/}}
@@ -361,9 +386,8 @@
 	% \mainmatter not defined
 	\typeout{!!!!!!!!!!!!!}
 	\typeout{!!!!!!!!!!!!! mainmatter NOT defined}
-	\typeout{!!!!!!!!!!!!!} 
-
 	\makeatletter
+	\typeout{!!!!!!!!!!!!!}
 	
 	\newcommand*{\enableboldchapterintoc}{%
 		
