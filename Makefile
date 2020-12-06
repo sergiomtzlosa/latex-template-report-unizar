@@ -80,6 +80,8 @@ compress-big:
 
 # install dependencies to convert pdf to html
 # install ImageMagick 7: https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/
+install: install-deps
+
 install-deps:
 ifeq ($(OS_NAME),linux)
 	sudo apt-get update && \
