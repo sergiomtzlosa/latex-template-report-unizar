@@ -342,6 +342,9 @@
 
 \indentfirstfalse
 
+\def\indentspace{\hspace*{1em}}
+\def\noindentspace{\hspace*{0em}}
+
 \ifindentfirst
 
 	% START INDENT ONLY FIRST PARAGRAPH OTHER PARAGRAPHS NOT INDENT
@@ -353,7 +356,7 @@
 			\if@nobreak
 				\@nobreakfalse
 				\clubpenalty \@M
-				\hspace*{1em}%
+				\indentspace%
 			\else
 				\clubpenalty \@clubpenalty
 				\everypar{}%
@@ -366,7 +369,7 @@
 \else
 
 	%% START NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
-
+	
 	\makeatletter
 	\def\@afterheading{%
 		\@nobreaktrue
@@ -374,15 +377,35 @@
 			\if@nobreak
 				\@nobreakfalse
 				\clubpenalty \@M
-				\hspace*{0em}%
+				\noindentspace%
 			\else
 				\clubpenalty \@M
-				\hspace*{1em}%
+				\indentspace
 			\fi}}
 	\makeatother
-	\setlength{\parindent}{0pt}
-
+	\setlength{\parindent}{0em}
+	
 	%% END NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
+
+	%% PATCH INDENT AFTER ENVIRONMENT LIST BASED
+	% https://tex.stackexchange.com/questions/112404/reliable-code-for-automatic-noindent-after-specific-environments
+	% https://tex.stackexchange.com/questions/23062/an-unexpected-value-of-clubpenalty
+	
+	\makeatletter
+	\let\nearly@afterheading\@afterheading
+	\patchcmd\nearly@afterheading
+		{\@M} % original temporary setting for \clubpenalty replaced by ...
+		{\@clubpenalty\protect\indentspace} % ... or whichever value you deem right
+		{}{}
+
+	\newcommand*\IndentAfterEnv[1]{%
+		\AfterEndEnvironment{#1}{\par\@afterindentfalse\nearly@afterheading}}
+	\makeatother
+	
+	\IndentAfterEnv{itemize}
+	\IndentAfterEnv{enumerate}
+	
+	%% END PATCH INDENT AFTER ENVIRONMENT LIST BASED
 
 \fi
 %% END INDENTATION REVIEW
