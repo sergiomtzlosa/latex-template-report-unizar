@@ -337,24 +337,55 @@
 % https://tex.stackexchange.com/questions/10448/continuous-footnote-numbering
 \counterwithout{footnote}{chapter}
 
-%% START INDENT ONLY FIRST PARAGRAPH
+%% INDENTATION REVIEW
+\newif\ifindentfirst
 
-\makeatletter
-\def\@afterheading{%
-	\@nobreaktrue
-	\everypar{%
-		\if@nobreak
-			\@nobreakfalse
-			\clubpenalty \@M
-			\hspace*{1em}%
-		\else
-			\clubpenalty \@clubpenalty
-			\everypar{}%
-		\fi}}
-\makeatother
-\setlength{\parindent}{0pt}
+\indentfirstfalse
 
-%% END INDENT ONLY FIRST PARAGRAPH
+\ifindentfirst
+
+	% START INDENT ONLY FIRST PARAGRAPH OTHER PARAGRAPHS NOT INDENT
+
+	\makeatletter
+	\def\@afterheading{%
+		\@nobreaktrue
+		\everypar{%
+			\if@nobreak
+				\@nobreakfalse
+				\clubpenalty \@M
+				\hspace*{1em}%
+			\else
+				\clubpenalty \@clubpenalty
+				\everypar{}%
+			\fi}}
+	\makeatother
+	\setlength{\parindent}{0pt}
+
+	% END INDENT ONLY FIRST PARAGRAPH OTHER PARAGRAPHS NOT INDENT
+
+\else
+
+	%% START NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
+
+	\makeatletter
+	\def\@afterheading{%
+		\@nobreaktrue
+		\everypar{%
+			\if@nobreak
+				\@nobreakfalse
+				\clubpenalty \@M
+				\hspace*{0em}%
+			\else
+				\clubpenalty \@M
+				\hspace*{1em}%
+			\fi}}
+	\makeatother
+	\setlength{\parindent}{0pt}
+
+	%% END NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
+
+\fi
+%% END INDENTATION REVIEW
 
 %% START TOC STYLE
 % https://tex.stackexchange.com/questions/154646/is-there-an-easy-way-to-get-the-frontmatter-mainmatter-and-backmatter-in-a-l/154666
