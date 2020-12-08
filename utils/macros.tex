@@ -1,3 +1,6 @@
+% set paragraph spacing
+\setlength{\parskip}{1em}
+
 % renew commands
 
 \renewcommand\thepage{\romannumeral\numexpr\value{page}-1\relax}
@@ -64,7 +67,7 @@
 	
 	\protect\chapter{#1}
 	\label{#2}
-	\setlength{\parskip}{1em}	
+	\setlength{\parsep}{\parskip}%
 }
 
 \newcommand{\centerItem}[1]{
@@ -408,7 +411,7 @@
 % environment for justified text
 \newenvironment{justified}[1] {
 	\setlength\parindent{0pt}
-	\setlength{\parskip}{1em}
+	\setlength{\parsep}{\parskip}%
 	#1
 }{}
 
