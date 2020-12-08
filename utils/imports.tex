@@ -339,8 +339,10 @@
 
 %% INDENTATION REVIEW
 \newif\ifindentfirst
+\newif\ifindentall
 
 \indentfirstfalse
+\indentallfalse
 
 \def\indentspace{\hspace*{1em}}
 \def\noindentspace{\hspace*{0em}}
@@ -368,44 +370,51 @@
 
 \else
 
-	%% START NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
+	\ifindentall
 	
-	\makeatletter
-	\def\@afterheading{%
-		\@nobreaktrue
-		\everypar{%
-			\if@nobreak
-				\@nobreakfalse
-				\clubpenalty \@M
-				\noindentspace%
-			\else
-				\clubpenalty \@M
-				\indentspace
-			\fi}}
-	\makeatother
-	\setlength{\parindent}{0em}
+		\setlength{\parindent}{1em}
+		
+	\else
 	
-	%% END NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
-
-	%% PATCH INDENT AFTER ENVIRONMENT LIST BASED
-	% https://tex.stackexchange.com/questions/112404/reliable-code-for-automatic-noindent-after-specific-environments
-	% https://tex.stackexchange.com/questions/23062/an-unexpected-value-of-clubpenalty
+		%% START NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
+		
+		\makeatletter
+		\def\@afterheading{%
+			\@nobreaktrue
+			\everypar{%
+				\if@nobreak
+					\@nobreakfalse
+					\clubpenalty \@M
+					\noindentspace%
+				\else
+					\clubpenalty \@M
+					\indentspace
+				\fi}}
+		\makeatother
+		\setlength{\parindent}{0em}
+		
+		%% END NOT INDENT FIRST PARAGRAPH OTHER PARAGRAPHS INDENT
 	
-	\makeatletter
-	\let\nearly@afterheading\@afterheading
-	\patchcmd\nearly@afterheading
-		{\@M} % original temporary setting for \clubpenalty replaced by ...
-		{\@clubpenalty\protect\indentspace} % ... or whichever value you deem right
-		{}{}
-
-	\newcommand*\IndentAfterEnv[1]{%
-		\AfterEndEnvironment{#1}{\par\@afterindentfalse\nearly@afterheading}}
-	\makeatother
+		%% PATCH INDENT AFTER ENVIRONMENT LIST BASED
+		% https://tex.stackexchange.com/questions/112404/reliable-code-for-automatic-noindent-after-specific-environments
+		% https://tex.stackexchange.com/questions/23062/an-unexpected-value-of-clubpenalty
+		
+		\makeatletter
+		\let\nearly@afterheading\@afterheading
+		\patchcmd\nearly@afterheading
+			{\@M} % original temporary setting for \clubpenalty replaced by ...
+			{\@clubpenalty\protect\indentspace} % ... or whichever value you deem right
+			{}{}
 	
-	\IndentAfterEnv{itemize}
-	\IndentAfterEnv{enumerate}
-	
-	%% END PATCH INDENT AFTER ENVIRONMENT LIST BASED
+		\newcommand*\IndentAfterEnv[1]{%
+			\AfterEndEnvironment{#1}{\par\@afterindentfalse\nearly@afterheading}}
+		\makeatother
+		
+		\IndentAfterEnv{itemize}
+		\IndentAfterEnv{enumerate}
+		
+		%% END PATCH INDENT AFTER ENVIRONMENT LIST BASED
+	\fi
 
 \fi
 %% END INDENTATION REVIEW
