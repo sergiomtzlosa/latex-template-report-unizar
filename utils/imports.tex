@@ -408,10 +408,18 @@
 	
 		\newcommand*\IndentAfterEnv[1]{%
 			\AfterEndEnvironment{#1}{\par\@afterindentfalse\nearly@afterheading}}
-		\makeatother
 		
+		\newcommand*\SpaceBeforeEnv[1]{%
+			\BeforeBeginEnvironment{#1}{\par\protect\vspace*{0.5em}}}
+		\makeatother
+
+		% indent after environment
 		\IndentAfterEnv{itemize}
 		\IndentAfterEnv{enumerate}
+		
+		% mandatory for a \parskip of 0.7em
+		\SpaceBeforeEnv{itemize}
+		\SpaceBeforeEnv{enumerate}
 		
 		%% END PATCH INDENT AFTER ENVIRONMENT LIST BASED
 	\fi
