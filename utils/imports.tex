@@ -518,3 +518,10 @@
 \fi
 
 %% END TOC STYLE
+
+% CLEAN DOUBLE PAGES ON TWOSIDE MODE
+% https://tex.stackexchange.com/questions/62572/twoside-introduces-incorrect-linespacing-at-end-of-section
+\raggedbottom
+% https://stackoverflow.com/questions/491904/how-do-i-remove-blank-pages-coming-between-two-chapters-in-appendix
+\let\cleardoublepage\clearpage
+% END CLEAN DOUBLE PAGES ON TWOSIDE MODE
