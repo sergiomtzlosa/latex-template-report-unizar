@@ -203,29 +203,38 @@
 	\fi
 }
 
-\newcommand{\sticker}[2][]{
+\makeatletter
+\newcommandtwoopt{\sticker}[3][][true]{%
 	
 	\ignorespaces\lowercase{\def\valueTmp{#1}}
+	\ignorespaces\lowercase{\def\indentStatusParagraph{#2}}
+
 	\def\itemWidth{long}
 	
 	\ifx\printableimages\trueValue
 	
 		\ifx\valueTmp\itemWidth
-			\todo[inline, shadow=0.8, bordercolor=black, color=white]{#2}
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{#3}
 		\else
-			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\centerline{#2}}
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\centerline{#3}}
 		\fi
 		
 	\else
 	
 		\ifx\valueTmp\itemWidth
-			\todo[inline, shadow=0.8, bordercolor=black, color=amber!50]{#2}
+			\todo[inline, shadow=0.8, bordercolor=black, color=amber!50]{#3}
 		\else
-			\todo[inline, shadow=0.8,bordercolor=black, color=amber!50]{\centerline{#2}}
+			\todo[inline, shadow=0.8,bordercolor=black, color=amber!50]{\centerline{#3}}
 		\fi
 		
 	\fi
+	
+	\ifx\indentStatusParagraph\trueValue
+		\par\@afterindentfalse\@afterheading % avoid indent on first paragraph after TODO note
+	\fi
+	% https://tex.stackexchange.com/questions/229001/do-not-indent-second-paragraph-after-macro-was-used
 }
+\makeatother
 
 % https://tex.stackexchange.com/questions/40561/table-with-multiple-lines-in-some-cells
 \newcommand{\celltwolines}[2]{%
