@@ -196,9 +196,9 @@
 	\def\trueOption{true}
 	\ifx\enableTODO\trueOption
 		\ifx\printableimages\trueValue
-			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\bold{TODO}: #1}
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad\bold{TODO}: #1}
 		\else
-			\todo[inline, shadow=0.8, bordercolor=black, color=red!50]{\bold{TODO}: #1}
+			\todo[inline, shadow=0.8, bordercolor=black, color=red!50]{\qquad\bold{TODO}: #1}
 		\fi
 	\fi
 }
@@ -214,17 +214,17 @@
 	\ifx\printableimages\trueValue
 	
 		\ifx\valueTmp\itemWidth
-			\todo[inline, shadow=0.8, bordercolor=black, color=white]{#3}
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad#3}
 		\else
-			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\centerline{#3}}
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad\centerline{#3}}
 		\fi
 		
 	\else
 	
 		\ifx\valueTmp\itemWidth
-			\todo[inline, shadow=0.8, bordercolor=black, color=amber!50]{#3}
+			\todo[inline, shadow=0.8, bordercolor=black, color=amber!50]{\qquad#3}
 		\else
-			\todo[inline, shadow=0.8,bordercolor=black, color=amber!50]{\centerline{#3}}
+			\todo[inline, shadow=0.8,bordercolor=black, color=amber!50]{\qquad\centerline{#3}}
 		\fi
 		
 	\fi
