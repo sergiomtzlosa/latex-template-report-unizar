@@ -9,13 +9,14 @@
 %\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
 
 % rework glossary title (better)
-\renewcommand{\glossarypreamble}{\vspace{-1.4cm}{\hspace{-0.5cm}\rule{\linewidth}{1pt}\vspace*{3ex}}\protect\thispagestyle{phdfancyempty}}
+\renewcommand{\glossarypreamble}{\vspace{-1.5cm}{\flushright\rule{\linewidth}{1pt}\vspace*{3ex}}\protect\thispagestyle{phdfancyempty}}
 
 \renewcommand{\arraystretch}{1.2}
 
 % glossary custom style: 
 % https://tex.stackexchange.com/questions/327328/glossaries-style-change-add-units
 \newglossarystyle{betterglossary}{%
+	
 	\setglossarystyle{list}%
 
 	\renewcommand*{\glossentry}[2]{%
@@ -330,7 +331,10 @@
 	\addto{\captionsenglish}{\bibname}
 }
 
-\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\bibname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+\def\customquad{\hskip\baselineskip\relax}
+
+\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\flushleft\bibname\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+
 
 % redefine plain style to empty style
 % https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
@@ -344,10 +348,11 @@
 	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{\flushleft#3\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		
 	}{
 		
-		\chapter*{{#3}\\\vspace{-1.0cm}}
+		\chapter*{\flushleft{#3}\vspace{-0.5cm}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
@@ -360,10 +365,10 @@
 	
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{\flushleft#3\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
 		
-		\chapter*{{#3}\\\vspace{-1.0cm}}
+		\chapter*{\flushleft{#3}\vspace{-0.6cm}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
