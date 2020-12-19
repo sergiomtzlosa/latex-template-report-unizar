@@ -330,7 +330,9 @@
 	\addto{\captionsenglish}{\bibname}
 }
 
-\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\bibname\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+\def\customquad{\hskip\baselineskip\relax}
+
+\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\flushleft\bibname\vspace{-0.4cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
 
 % redefine plain style to empty style
 % https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
@@ -339,15 +341,17 @@
 \makeatother
 
 % create new chapter without page reference in TOC, optional, to set an horizontal line below the title
+% create new chapter without page reference in TOC, optional, to set an horizontal line below the title
 \newcommandtwoopt{\chaptercustompageintoc}[4][showrule][true]{
 	
 	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{\flushleft#3\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		
 	}{
 		
-		\chapter*{{#3}\\\vspace{-1.0cm}}
+		\chapter*{\flushleft{#3}\vspace{-1.0cm}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
@@ -360,17 +364,16 @@
 	
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{#3\\\vspace{-0.5cm}\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{\flushleft#3\vspace{-0.8cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
 		
-		\chapter*{{#3}\\\vspace{-1.0cm}}
+		\chapter*{\flushleft{#3}\vspace{-1.0cm}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
 		\addcontentsline{toc}{chapter}{#3}
 	}
 }
-
 %% input file for abstract
 
 \global\def\showpageabstract{false}
