@@ -9,7 +9,7 @@
 %\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
 
 % rework glossary title (better)
-\renewcommand{\glossarypreamble}{\vspace{-1.4cm}{\hspace{-0.5cm}\rule{\linewidth}{1pt}\vspace*{3ex}}\protect\thispagestyle{phdfancyempty}}
+\renewcommand{\glossarypreamble}{\vspace{-1.5cm}{\flushright\rule{\linewidth}{1pt}\vspace*{3ex}}\protect\thispagestyle{phdfancyempty}}
 
 \renewcommand{\arraystretch}{1.2}
 
@@ -332,7 +332,7 @@
 
 \def\customquad{\hskip\baselineskip\relax}
 
-\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\flushleft\bibname\vspace{-0.4cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\flushleft\bibname\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
 
 % redefine plain style to empty style
 % https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
@@ -351,7 +351,7 @@
 		
 	}{
 		
-		\chapter*{\flushleft{#3}\vspace{-1.0cm}\customquad}
+		\chapter*{\flushleft{#3}\vspace{-0.5m}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
@@ -364,10 +364,10 @@
 	
 	\ifthenelse{\equal{#1}{showrule}}{
 		
-		\chapter*{\flushleft#3\vspace{-0.8cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		\chapter*{\flushleft#3\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
 	}{
 		
-		\chapter*{\flushleft{#3}\vspace{-1.0cm}\customquad}
+		\chapter*{\flushleft{#3}\vspace{-0.6cm}\customquad}
 	}
 	
 	\ifthenelse{\equal{#2}{true}}{
