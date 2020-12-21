@@ -265,9 +265,22 @@
 \newif\ifformat
 \formattrue
 
+% Command to avoid style expand in TOC/LOT/LOF
+\newcommand{\donotexpandstyles}[1]{
+	\AtBeginDocument{\addtocontents{#1}{\protect\formatfalse}}
+	\AtEndDocument{\addtocontents{#1}{\protect\formattrue}}
+}
+
 % Do not expand styles in table of contents
-\AtBeginDocument{\addtocontents{toc}{\protect\formatfalse}}
-\AtEndDocument{\addtocontents{toc}{\protect\formattrue}}
+\donotexpandstyles{toc}
+% Do not expand styles in list of tables
+\donotexpandstyles{lot}
+% Do not expand styles in list of figures
+\donotexpandstyles{lof}
+% Do not expand styles in list of equations
+\donotexpandstyles{equ}
+
+% Do not show styles on TOC/LOT/LOF, put \maybe before styled text
 \makeatletter
 \DeclareRobustCommand{\maybe}[1]{%
 	\ifformat
@@ -276,33 +289,6 @@
 		\expandafter\@firstofone
 	\fi
 }
-\makeatother
-
-% Do not expand styles in list of tables
-\AtBeginDocument{\addtocontents{lot}{\protect\formatfalse}}
-\AtEndDocument{\addtocontents{lot}{\protect\formattrue}}
-\makeatletter
-	\DeclareRobustCommand{\maybe}[1]{%
-		\ifformat
-			\expandafter#1%
-		\else
-			\expandafter\@firstofone
-		\fi
-	}
-\makeatother
-
-% Do not expand styles in list of figures
-% https://tex.stackexchange.com/questions/131930/remove-font-styles-in-list-of-figures
-\AtBeginDocument{\addtocontents{lof}{\protect\formatfalse}}
-\AtEndDocument{\addtocontents{lof}{\protect\formattrue}}
-\makeatletter
-	\DeclareRobustCommand{\maybe}[1]{%
-		\ifformat
-			\expandafter#1%
-		\else
-			\expandafter\@firstofone
-		\fi
-	}
 \makeatother
 
 % remove word Chapter at the beginning of each chapter
