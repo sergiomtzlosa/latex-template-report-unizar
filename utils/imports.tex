@@ -505,6 +505,15 @@
 
 %% END TOC STYLE
 
+% https://tex.stackexchange.com/questions/323455/bold-math-in-title-but-not-in-toc
+\newcommand\AvoidBoldMathInTocFor[1]{
+	\titleformat*{#1}{\bfseries\boldmath}
+}
+
+\AvoidBoldMathInTocFor{\section}
+\AvoidBoldMathInTocFor{\subsection}
+\AvoidBoldMathInTocFor{\subsubsection}
+
 % CLEAN DOUBLE PAGES ON TWOSIDE MODE
 % https://tex.stackexchange.com/questions/62572/twoside-introduces-incorrect-linespacing-at-end-of-section
 \raggedbottom
