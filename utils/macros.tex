@@ -138,6 +138,11 @@
 	\protect\caption{#1}
 }
 
+\newcommand{\centercaptionlisting}[1]{
+	\captionsetup{justification=centering}
+	\protect\caption[#1]{\boldmath{#1}}
+}
+
 \DeclareCaptionType{equ}[][]
 
 % https://tex.stackexchange.com/questions/39315/how-to-change-the-numbering-for-different-figures
