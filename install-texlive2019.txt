@@ -4,5 +4,5 @@ wget ftp://tug.org/historic/systems/texlive/2019/tlnet-final/install-tl-unx.tar.
 tar -xzf install-tl-unx.tar.gz
 cd install-tl-20200301/
 sudo ./install-tl -scheme=full -repository=ftp://tug.org/historic/systems/texlive/2019/tlnet-final                    
-sudo apt-get install texlive-pstricks docker python3-pygments cm-super pdfgrep poppler-utils texlive-pstricks
+sudo apt-get install texlive-pstricks docker python3-pygments cm-super pdfgrep poppler-utils
 sudo apt -y install texlive-science
