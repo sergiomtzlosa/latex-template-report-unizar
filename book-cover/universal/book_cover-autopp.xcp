@@ -1,0 +1,193 @@
+%!
+TeXDict begin
+/XC@red{1 0 0}XCrgb
+/XC@green{0 1 0}XCrgb
+/XC@blue{0 0 1}XCrgb
+/XC@brown{0.75 0.5 0.25}XCrgb
+/XC@lime{0.75 1 0}XCrgb
+/XC@orange{1 0.5 0}XCrgb
+/XC@pink{1 0.75 0.75}XCrgb
+/XC@purple{0.75 0 0.25}XCrgb
+/XC@teal{0 0.5 0.5}XCrgb
+/XC@violet{0.5 0 0.5}XCrgb
+/XC@cyan{1 0 0 0}XCcmyk
+/XC@magenta{0 1 0 0}XCcmyk
+/XC@yellow{0 0 1 0}XCcmyk
+/XC@olive{0 0 1 0.5}XCcmyk
+/XC@black{0}XCgray
+/XC@darkgray{0.25}XCgray
+/XC@gray{0.5}XCgray
+/XC@lightgray{0.75}XCgray
+/XC@white{1}XCgray
+/XC@AliceBlue{0.94 0.972 1}XCrgb
+/XC@AntiqueWhite{0.98 0.92 0.844}XCrgb
+/XC@Aqua{0 1 1}XCrgb
+/XC@Aquamarine{0.498 1 0.83}XCrgb
+/XC@Azure{0.94 1 1}XCrgb
+/XC@Beige{0.96 0.96 0.864}XCrgb
+/XC@Bisque{1 0.894 0.77}XCrgb
+/XC@Black{0 0 0}XCrgb
+/XC@BlanchedAlmond{1 0.92 0.804}XCrgb
+/XC@Blue{0 0 1}XCrgb
+/XC@BlueViolet{0.54 0.17 0.888}XCrgb
+/XC@Brown{0.648 0.165 0.165}XCrgb
+/XC@BurlyWood{0.87 0.72 0.53}XCrgb
+/XC@CadetBlue{0.372 0.62 0.628}XCrgb
+/XC@Chartreuse{0.498 1 0}XCrgb
+/XC@Chocolate{0.824 0.41 0.116}XCrgb
+/XC@Coral{1 0.498 0.312}XCrgb
+/XC@CornflowerBlue{0.392 0.585 0.93}XCrgb
+/XC@Cornsilk{1 0.972 0.864}XCrgb
+/XC@Crimson{0.864 0.08 0.235}XCrgb
+/XC@Cyan{0 1 1}XCrgb
+/XC@DarkBlue{0 0 0.545}XCrgb
+/XC@DarkCyan{0 0.545 0.545}XCrgb
+/XC@DarkGoldenrod{0.72 0.525 0.044}XCrgb
+/XC@DarkGray{0.664 0.664 0.664}XCrgb
+/XC@DarkGreen{0 0.392 0}XCrgb
+/XC@DarkGrey{0.664 0.664 0.664}XCrgb
+/XC@DarkKhaki{0.74 0.716 0.42}XCrgb
+/XC@DarkMagenta{0.545 0 0.545}XCrgb
+/XC@DarkOliveGreen{0.332 0.42 0.185}XCrgb
+/XC@DarkOrange{1 0.55 0}XCrgb
+/XC@DarkOrchid{0.6 0.196 0.8}XCrgb
+/XC@DarkRed{0.545 0 0}XCrgb
+/XC@DarkSalmon{0.912 0.59 0.48}XCrgb
+/XC@DarkSeaGreen{0.56 0.736 0.56}XCrgb
+/XC@DarkSlateBlue{0.284 0.24 0.545}XCrgb
+/XC@DarkSlateGray{0.185 0.31 0.31}XCrgb
+/XC@DarkSlateGrey{0.185 0.31 0.31}XCrgb
+/XC@DarkTurquoise{0 0.808 0.82}XCrgb
+/XC@DarkViolet{0.58 0 0.828}XCrgb
+/XC@DeepPink{1 0.08 0.576}XCrgb
+/XC@DeepSkyBlue{0 0.75 1}XCrgb
+/XC@DimGray{0.41 0.41 0.41}XCrgb
+/XC@DimGrey{0.41 0.41 0.41}XCrgb
+/XC@DodgerBlue{0.116 0.565 1}XCrgb
+/XC@FireBrick{0.698 0.132 0.132}XCrgb
+/XC@FloralWhite{1 0.98 0.94}XCrgb
+/XC@ForestGreen{0.132 0.545 0.132}XCrgb
+/XC@Fuchsia{1 0 1}XCrgb
+/XC@Gainsboro{0.864 0.864 0.864}XCrgb
+/XC@GhostWhite{0.972 0.972 1}XCrgb
+/XC@Gold{1 0.844 0}XCrgb
+/XC@Goldenrod{0.855 0.648 0.125}XCrgb
+/XC@Gray{0.5 0.5 0.5}XCrgb
+/XC@Green{0 0.5 0}XCrgb
+/XC@GreenYellow{0.68 1 0.185}XCrgb
+/XC@Grey{0.5 0.5 0.5}XCrgb
+/XC@Honeydew{0.94 1 0.94}XCrgb
+/XC@HotPink{1 0.41 0.705}XCrgb
+/XC@IndianRed{0.804 0.36 0.36}XCrgb
+/XC@Indigo{0.294 0 0.51}XCrgb
+/XC@Ivory{1 1 0.94}XCrgb
+/XC@Khaki{0.94 0.9 0.55}XCrgb
+/XC@Lavender{0.9 0.9 0.98}XCrgb
+/XC@LavenderBlush{1 0.94 0.96}XCrgb
+/XC@LawnGreen{0.488 0.99 0}XCrgb
+/XC@LemonChiffon{1 0.98 0.804}XCrgb
+/XC@LightBlue{0.68 0.848 0.9}XCrgb
+/XC@LightCoral{0.94 0.5 0.5}XCrgb
+/XC@LightCyan{0.88 1 1}XCrgb
+/XC@LightGoldenrod{0.933 0.867 0.51}XCrgb
+/XC@LightGoldenrodYellow{0.98 0.98 0.824}XCrgb
+/XC@LightGray{0.828 0.828 0.828}XCrgb
+/XC@LightGreen{0.565 0.932 0.565}XCrgb
+/XC@LightGrey{0.828 0.828 0.828}XCrgb
+/XC@LightPink{1 0.712 0.756}XCrgb
+/XC@LightSalmon{1 0.628 0.48}XCrgb
+/XC@LightSeaGreen{0.125 0.698 0.668}XCrgb
+/XC@LightSkyBlue{0.53 0.808 0.98}XCrgb
+/XC@LightSlateBlue{0.518 0.44 1}XCrgb
+/XC@LightSlateGray{0.468 0.532 0.6}XCrgb
+/XC@LightSlateGrey{0.468 0.532 0.6}XCrgb
+/XC@LightSteelBlue{0.69 0.77 0.87}XCrgb
+/XC@LightYellow{1 1 0.88}XCrgb
+/XC@Lime{0 1 0}XCrgb
+/XC@LimeGreen{0.196 0.804 0.196}XCrgb
+/XC@Linen{0.98 0.94 0.9}XCrgb
+/XC@Magenta{1 0 1}XCrgb
+/XC@Maroon{0.5 0 0}XCrgb
+/XC@MediumAquamarine{0.4 0.804 0.668}XCrgb
+/XC@MediumBlue{0 0 0.804}XCrgb
+/XC@MediumOrchid{0.73 0.332 0.828}XCrgb
+/XC@MediumPurple{0.576 0.44 0.86}XCrgb
+/XC@MediumSeaGreen{0.235 0.7 0.444}XCrgb
+/XC@MediumSlateBlue{0.484 0.408 0.932}XCrgb
+/XC@MediumSpringGreen{0 0.98 0.604}XCrgb
+/XC@MediumTurquoise{0.284 0.82 0.8}XCrgb
+/XC@MediumVioletRed{0.78 0.084 0.52}XCrgb
+/XC@MidnightBlue{0.098 0.098 0.44}XCrgb
+/XC@MintCream{0.96 1 0.98}XCrgb
+/XC@MistyRose{1 0.894 0.884}XCrgb
+/XC@Moccasin{1 0.894 0.71}XCrgb
+/XC@NavajoWhite{1 0.87 0.68}XCrgb
+/XC@Navy{0 0 0.5}XCrgb
+/XC@NavyBlue{0 0 0.5}XCrgb
+/XC@OldLace{0.992 0.96 0.9}XCrgb
+/XC@Olive{0.5 0.5 0}XCrgb
+/XC@OliveDrab{0.42 0.556 0.136}XCrgb
+/XC@Orange{1 0.648 0}XCrgb
+/XC@OrangeRed{1 0.27 0}XCrgb
+/XC@Orchid{0.855 0.44 0.84}XCrgb
+/XC@PaleGoldenrod{0.932 0.91 0.668}XCrgb
+/XC@PaleGreen{0.596 0.985 0.596}XCrgb
+/XC@PaleTurquoise{0.688 0.932 0.932}XCrgb
+/XC@PaleVioletRed{0.86 0.44 0.576}XCrgb
+/XC@PapayaWhip{1 0.936 0.835}XCrgb
+/XC@PeachPuff{1 0.855 0.725}XCrgb
+/XC@Peru{0.804 0.52 0.248}XCrgb
+/XC@Pink{1 0.752 0.796}XCrgb
+/XC@Plum{0.868 0.628 0.868}XCrgb
+/XC@PowderBlue{0.69 0.88 0.9}XCrgb
+/XC@Purple{0.5 0 0.5}XCrgb
+/XC@Red{1 0 0}XCrgb
+/XC@RosyBrown{0.736 0.56 0.56}XCrgb
+/XC@RoyalBlue{0.255 0.41 0.884}XCrgb
+/XC@SaddleBrown{0.545 0.27 0.075}XCrgb
+/XC@Salmon{0.98 0.5 0.448}XCrgb
+/XC@SandyBrown{0.956 0.644 0.376}XCrgb
+/XC@SeaGreen{0.18 0.545 0.34}XCrgb
+/XC@Seashell{1 0.96 0.932}XCrgb
+/XC@Sienna{0.628 0.32 0.176}XCrgb
+/XC@Silver{0.752 0.752 0.752}XCrgb
+/XC@SkyBlue{0.53 0.808 0.92}XCrgb
+/XC@SlateBlue{0.415 0.352 0.804}XCrgb
+/XC@SlateGray{0.44 0.5 0.565}XCrgb
+/XC@SlateGrey{0.44 0.5 0.565}XCrgb
+/XC@Snow{1 0.98 0.98}XCrgb
+/XC@SpringGreen{0 1 0.498}XCrgb
+/XC@SteelBlue{0.275 0.51 0.705}XCrgb
+/XC@Tan{0.824 0.705 0.55}XCrgb
+/XC@Teal{0 0.5 0.5}XCrgb
+/XC@Thistle{0.848 0.75 0.848}XCrgb
+/XC@Tomato{1 0.39 0.28}XCrgb
+/XC@Turquoise{0.25 0.88 0.815}XCrgb
+/XC@Violet{0.932 0.51 0.932}XCrgb
+/XC@VioletRed{0.816 0.125 0.565}XCrgb
+/XC@Wheat{0.96 0.87 0.7}XCrgb
+/XC@White{1 1 1}XCrgb
+/XC@WhiteSmoke{0.96 0.96 0.96}XCrgb
+/XC@Yellow{1 1 0}XCrgb
+/XC@YellowGreen{0.604 0.804 0.196}XCrgb
+/XC@gradbegin{0 1 1}XCrgb
+/XC@gradend{0 0.1 0.95}XCrgb
+/XC@black{0}XCgray
+/XC@darkgray{0.25}XCgray
+/XC@gray{0.5}XCgray
+/XC@lightgray{0.75}XCgray
+/XC@white{1}XCgray
+/XC@red{1 0 0}XCrgb
+/XC@green{0 1 0}XCrgb
+/XC@blue{0 0 1}XCrgb
+/XC@yellow{0 0 1 0}XCcmyk
+/XC@cyan{1 0 0 0}XCcmyk
+/XC@magenta{0 1 0 0}XCcmyk
+/XC@OlympicRed{0.87 0 0.14}XCrgb
+/XC@OlympicGreen{0 0.62 0.24}XCrgb
+/XC@OlympicBlue{0 0.52 0.78}XCrgb
+/XC@OlympicYellow{0.96 0.78 0}XCrgb
+/XC@gradbegin{0 0.1 0.95}XCrgb
+/XC@gradend{0 1 1}XCrgb
+/XC@unizarBlue{0.03647 0.12706 0.23451}XCrgb
+end
