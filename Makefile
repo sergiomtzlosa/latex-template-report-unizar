@@ -137,7 +137,7 @@ cover-pdflatex:
 cover-latex:
 	cd book-cover/universal && \
 	latex --shell-escape "\def\latexcompiler{}\input{book_cover}" book-cover/universal/book_cover.tex && \
-	dvipdf book_cover.dvi book_cover.pdf && \
+	dvipdf -dALLOWPSTRANSPARENCY book_cover.dvi book_cover.pdf && \
 	cp book_cover.pdf ../../ && \
         echo "" && \
         echo "\033[33;1mLATEX COVER COMPILATION DONE !!!\033[0m" && \
