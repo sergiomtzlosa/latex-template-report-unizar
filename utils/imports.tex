@@ -507,9 +507,28 @@
 \AvoidBoldMathInTocFor{\subsection}
 \AvoidBoldMathInTocFor{\subsubsection}
 
-% CLEAN DOUBLE PAGES ON TWOSIDE MODE
-% https://tex.stackexchange.com/questions/62572/twoside-introduces-incorrect-linespacing-at-end-of-section
-\raggedbottom
-% https://stackoverflow.com/questions/491904/how-do-i-remove-blank-pages-coming-between-two-chapters-in-appendix
-\let\cleardoublepage\clearpage
-% END CLEAN DOUBLE PAGES ON TWOSIDE MODE
+% Check twoside or oneside document
+\makeatletter
+% https://tex.stackexchange.com/questions/360785/how-do-i-check-if-a-document-is-oneside-or-twoside#360791
+\if@twoside%
+
+	\typeout{!!!!!!!!!!!!!}
+	\typeout{!!!!!!!!!!!!! TWO-SIDE DOCUMENT}
+	\typeout{!!!!!!!!!!!!!}
+	
+	% CLEAN DOUBLE PAGES ON TWOSIDE MODE
+	% https://tex.stackexchange.com/questions/62572/twoside-introduces-incorrect-linespacing-at-end-of-section
+	\raggedbottom
+	% https://stackoverflow.com/questions/491904/how-do-i-remove-blank-pages-coming-between-two-chapters-in-appendix
+	\let\cleardoublepage\clearpage
+	% END CLEAN DOUBLE PAGES ON TWOSIDE MODE
+	
+\else%
+
+	\typeout{!!!!!!!!!!!!!}
+	\typeout{!!!!!!!!!!!!! ONE-SIDE DOCUMENT}
+	\typeout{!!!!!!!!!!!!!}
+	
+\fi%  
+
+\makeatother
