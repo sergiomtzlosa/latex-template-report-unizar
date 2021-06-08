@@ -57,6 +57,26 @@
 \usepackage{glossaries} % always load glossaries AFTER hyperref
 \usepackage{ifplatform}
 
+\iftwoside
+
+	\typeout{!!!}
+	\typeout{!!!!! SELECTED TWO-SIDE}
+	\typeout{!!!}
+	
+	\makeatletter
+		\@twosidetrue
+	\makeatother
+\else
+
+	\typeout{!!!}
+	\typeout{!!!!! SELECTED ONE-SIDE}
+	\typeout{!!!}
+	
+	\makeatletter
+		\@twosidefalse
+	\makeatother
+\fi
+
 \newif\ifmultibib
 
 % set true or false to view the list of publications 
