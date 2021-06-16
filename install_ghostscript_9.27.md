@@ -15,7 +15,8 @@ If you need to downgrade version rather than provided by your Ubuntu-Version:
 2 .- Uncompress it (f.e. tar xvf ghostscript-9.27.tar.gz)
 3 .- go into this folder
 4 .- sudo ./configure
-5 .- sudo make install
-6 .- restart Terminal
-7 .- Test with gs -v
+5 .- sudo make
+6 .- sudo make install
+7 .- restart Terminal
+8 .- Test with gs -v
 ```
