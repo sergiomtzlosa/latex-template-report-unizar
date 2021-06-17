@@ -5,6 +5,7 @@ PUBS := publications
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
 OS_NAME := $(shell uname -s | tr A-Z a-z)
+CHECK_DOCKER := $(which docker)
 
 # base compilation
 base:
@@ -58,12 +59,18 @@ clean:
 # compile pdf and convert images to black and white
 print:  all
 	./utils/convert-grayscale.sh && \
-	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+        makeglossaries $(DOC) && \
+        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+        pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 
 # force print style
 print-force:
 	./utils/convert-grayscale.sh && \
-	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+        makeglossaries $(DOC) && \
+        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+        pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 
 # convert images to black and white
 print-images:
@@ -84,10 +91,14 @@ compress-big:
 install: install-deps
 	pip install wordcloud
 
+install-texlive:
+	sudo apt-get install texlive-full
+
 install-deps:
 ifeq ($(OS_NAME),linux)
 	sudo apt-get update && \
-	sudo apt-get install texlive-full docker python3-pygments cm-super pdfgrep poppler-utils
+	sudo apt-get install docker python3-pygments cm-super pdfgrep poppler-utils texlive-pstricks && \
+	sudo apt -y install texlive-science
 endif
 ifeq ($(OS_NAME),darwin)
 	brew install docker pygments pdf2htmlEX pdfgrep poppler
@@ -145,14 +156,37 @@ cover-latex:
 
 # merge main PDF file and cover
 merge-cover:
+ifneq ($(CHECK_DOCKER),'')
 	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf report.pdf && \
 	echo "" && \
 	echo "\033[33;1mPDF file + cover merged !!!\033[0m" && \
 	echo ""
+else
+	echo "" && \
+	echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m" && \
+	echo ""
+endif
+
+# reduce size main PDF
+reduce-pdf:
+ifneq ($(CHECK_DOCKER),'')
+	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-reduced.pdf report.pdf && \
+	echo "" && \
+	echo "\033[33;1mPDF file reduced !!!\033[0m" && \
+	echo ""
+else
+	echo "" && \
+	echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m" && \
+	echo ""
+endif
+
+# compile cover and merge with main document
+mm-cover: cover-latex merge-cover
 
 # compile all with cover
-all-cover: all cover-latex merge-cover
+all-cover: all cover-latex reduce-pdf merge-cover
 
 # compile all with cover and word cloud
 all-cover-wc: word-cloud all cover-latex merge-cover
 
+reduce-merge-pdf: cover-latex reduce-pdf merge-cover
