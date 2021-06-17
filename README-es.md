@@ -36,4 +36,4 @@ En sistemas GNU/Linux:
 sudo apt-get install cm-super
 ```
 
-
+Realizado con TexLive 2019

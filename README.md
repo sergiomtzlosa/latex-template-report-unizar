@@ -28,7 +28,7 @@ See [Makefile](Makefile) to install pygments on unix systems.
 
 ## Install cm-super
 
-Install the cm-super package using the  [graphical package administrator from MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) and refresh the installed fonts.
+Install the cm-super package using the [graphical package administrator from MikTex](https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super) and refresh the installed fonts.
 
 On GNU/Linux systems:
 
@@ -36,3 +36,4 @@ On GNU/Linux systems:
 sudo apt-get install cm-super
 ```
 
+Made with TexLive 2019
