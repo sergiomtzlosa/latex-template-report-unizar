@@ -6,7 +6,7 @@ rm -rf images-grayscale/* &>/dev/null
 
 cp -r images/* images-grayscale &>/dev/null
 
-find images-grayscale/* ! -name '*.png' -type f | xargs rm
+find images-grayscale/* ! -name '*.png' -type f | xargs rm -f
 
 FIND="images-grayscale/"
 
