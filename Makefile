@@ -17,13 +17,13 @@ nobib:
 
 # compile with index and bibliography
 all:
-	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	makeglossaries $(DOC)
 	bibtex $(DOC).aux
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
 endif
-	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
 	echo "" && \
 	echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m" && \
@@ -31,9 +31,9 @@ endif
 
 # compile with index and without bibliography
 simple:
-	pdflatex -enable-write18 --shell-escape $(DOC).tex && \
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex && \
 	makeglossaries $(DOC) && \
-	pdflatex -enable-write18 --shell-escape $(DOC).tex && \
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex && \
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
 
 # clean compilation
