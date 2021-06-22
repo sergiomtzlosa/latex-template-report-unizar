@@ -197,6 +197,8 @@
 
 \definecolor{amber}{rgb}{1.0, 0.75, 0.0}
 
+\definecolor{red-clean}{rgb}{1.0, 0.41, 0.38}
+
 \newcommand{\TODO}[1]{
 	\def\trueOption{true}
 	\ifx\enableTODO\trueOption
@@ -450,6 +452,16 @@
 \setlength{\cftaddequationsnumwidth}{2.3em}
 
 %% END Create a list of equations
+
+% change default color to superscript footnote
+% https://tex.stackexchange.com/questions/26693/change-the-color-of-footnote-marker-in-latex
+\makeatletter
+\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\color{red-clean}\@thefnmark}}}
+\renewcommand\@makefntext[1]{%
+	\parindent 1em\noindent
+	\hb@xt@1.8em{%
+		\hss\@textsuperscript{\normalfont\@thefnmark}}#1}
+\makeatother
 
 %% START List of Publications 
 
