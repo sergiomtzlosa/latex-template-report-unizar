@@ -140,7 +140,8 @@
 % Bibliography
 \SetTitleBibliography{Bibliography}
 \SetHeaderTitle{\MakeUppercase{\bibname}}
-\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+%\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+\protect\bibliographystyle{unsrt}
 \bibliography{./utils/report-bib}
 \protect\pagestyle{phdfancyspecialempty}
 \addcontentsline{toc}{chapter}{\bibname}
@@ -152,7 +153,7 @@
 	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
 	\protect\pagestyle{phdfancyspecialempty}
 	\nocitepublications{*}
-	\bibliographystylepublications{./packages/ieeetr-redux}
+	\protect\bibliographystylepublications{./packages/ieeetr-redux}
 	\bibliographypublications{./utils/publications.bib}
 	\clearpage
 \fi
