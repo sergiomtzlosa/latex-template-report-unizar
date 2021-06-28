@@ -104,6 +104,7 @@ ifeq ($(OS_NAME),darwin)
 	brew install docker pygments pdf2htmlEX pdfgrep poppler
 endif
 
+# search in pdf file
 # USAGE: make search-pdf SEARCH_TERM=Kittel
 search-pdf:
 	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf
@@ -189,4 +190,10 @@ all-cover: all cover-latex reduce-pdf merge-cover
 # compile all with cover and word cloud
 all-cover-wc: word-cloud all cover-latex merge-cover
 
+# reduce and merge pdf file
 reduce-merge-pdf: cover-latex reduce-pdf merge-cover
+
+# search in tex files
+ USAGE: make search-tex SEARCH_TERM=Kittel
+search-tex:
+	grep -rnw '.' -e '$(SEARCH_TERM)' --color=always
