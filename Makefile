@@ -107,7 +107,7 @@ endif
 # search in pdf file
 # USAGE: make search-pdf SEARCH_TERM=Kittel
 search-pdf:
-	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf
+	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf | cat
 
 # convert pdf to html
 pdf-html:
@@ -194,6 +194,6 @@ all-cover-wc: word-cloud all cover-latex merge-cover
 reduce-merge-pdf: cover-latex reduce-pdf merge-cover
 
 # search in tex files
- USAGE: make search-tex SEARCH_TERM=Kittel
+# USAGE: make search-tex SEARCH_TERM=Kittel
 search-tex:
-	grep -rnw '.' -e '$(SEARCH_TERM)' --color=always
+	grep -rnw --include \*.tex '.' -e '$(SEARCH_TERM)' --color=always | cat
