@@ -82,7 +82,8 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=#1\textwidth,height=\textheight,keepaspectratio]{#2}
-		\captionsetup{justification=centering}
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
 		\caption{#3}
 		\ifthenelse{\equal{#4}{}}{}{\label{#4}}
 	\end{figure}	
@@ -101,7 +102,8 @@
 		% if captions from subfire are empty, remove the marker below the image
 		\ifthenelse{\equal{#4}{}}{
 			\ifthenelse{\equal{#6}{}}{
-				\captionsetup[subfigure]{labelformat=empty}
+%				\captionsetup[subfigure]{labelformat=empty}
+				\captionsetup[subfigure]{labelformat=empty, justification=raggedright, singlelinecheck=true}
 			}{}
 		}{}
 	
@@ -134,12 +136,14 @@
 	
 	
 \newcommand{\centercaption}[1]{	
-	\captionsetup{justification=centering}
+%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
 }
 
 \newcommand{\centercaptionlisting}[1]{
-	\captionsetup{justification=centering}
+%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
 	\protect\caption[#1]{\boldmath{#1}}
 }
 
