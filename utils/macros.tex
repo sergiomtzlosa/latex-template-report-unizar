@@ -247,6 +247,31 @@
 }
 \makeatother
 
+
+\makeatletter
+
+\newcommandtwoopt{\stickerMultiline}[3][amber!50][true] {
+
+		% Set true if TODO note is right below the title else set false on #2
+		\ignorespaces\lowercase{\def\valueTmp{#2}}
+
+		\if\valueTmp\trueValue
+		
+			\todo[inline, shadow=0.8, bordercolor=black, color=#1]{#3}
+			% check if user sets the TODO right below title or not
+			\par\@afterindentfalse\@afterheading % avoid indent on first paragraph after TODO note
+			
+		\else
+		
+			\@nobreaktrue
+			\todo[inline, shadow=0.8, bordercolor=black, color=#1]{#3}
+			\@nobreakfalse
+			
+		\fi
+}
+
+\makeatother
+
 % https://tex.stackexchange.com/questions/40561/table-with-multiple-lines-in-some-cells
 \newcommand{\celltwolines}[2]{%
 
