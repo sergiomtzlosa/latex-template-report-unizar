@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{extarrows}
+\usepackage[makeroom]{cancel} % cross-out terms in equations
 \usepackage{subfig}
 \usepackage{xifthen}
 \usepackage{twoopt}
@@ -40,17 +41,20 @@
 	\usepackage{xpatch} % mainmatter style book
 \fi
 
+\usepackage{nicefrac} % diagonal fractions --> https://tex.stackexchange.com/questions/3372/how-do-i-typeset-arbitrary-fractions-like-the-standard-symbol-for-5-%C2%BD
 \usepackage{newfloat} % float environment for equation listing
 \usepackage[subfigure]{tocloft}
 \usepackage{etoolbox}
 \usepackage{yfonts}
 \usepackage{todonotes}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,calc}
+\usetikzlibrary{shapes.geometric, calc}
 \usepackage[siunitx, RPvoltages]{./packages/circuitikzgit}
 \usepackage{anyfontsize}
 \usepackage{minted}
 \usepackage{array}
+\usepackage[column=O]{cellspace}
+\usepackage{makecell} % https://tex.stackexchange.com/questions/558937/how-to-avoid-broken-horizontal-and-vertical-lines-when-using-multirow-and-multic
 \usepackage{multirow}
 \usepackage[bottom]{footmisc}
 \usepackage[printwatermark]{xwatermark}
@@ -58,6 +62,7 @@
 \usepackage{hyperref}
 \usepackage{glossaries} % always load glossaries AFTER hyperref
 \usepackage{ifplatform}
+\usepackage{catoptions}
 
 \iftwoside
 
@@ -560,3 +565,11 @@
 \makeatletter 
 	\renewcommand{\@citess}[1]{\textsuperscript{\,[#1]}} 
 \makeatother
+
+% https://tex.stackexchange.com/questions/29084/biblatex-separator-for-citing-multiple-sources-some-of-them-with-page-some-no
+%\renewcommand\multicitedelim{\addcomma\space}
+
+% cell spaces global
+% https://tex.stackexchange.com/questions/378268/makegapedcells-disables-rowcolor#378630
+\setlength\cellspacetoplimit{4pt}
+\setlength\cellspacebottomlimit{4pt}

@@ -15,4 +15,21 @@ Footnote url here with header\footnoteurl{http://google.com}{http://google.com}.
 
 This is a new section.
 
+\begin{table}[H]
+	\centering
+	\setcellgapes{2pt}
+	\makegapedcells
+	\begin{tabular}{c|c}
+		\Xhline{1pt}
+		\italic{\celltwolines{Item}{size1}} & \italic{\celltwolines{Item}{size2}} \\
+		(nm) & (nm) \\\Xhline{1pt}%
+		8 & 600 \\\cline{1-2}
+		10 & 400 \\\cline{1-2}
+		12 & 300 \\\Xhline{1pt}
+	\end{tabular}
+	\\[10pt]
+	\centercaption{Sample table}
+	\label{table:sample-data-table}
+\end{table}
+
 \clearpage
