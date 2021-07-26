@@ -508,6 +508,29 @@
 	}{#2}{#1}
 }
 
+\newcommand{\tikzimagefigure}[2]{
+
+	\begin{figure}[H]
+		\centering
+		#1
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
+		\caption{#2}
+	\end{figure}
+}
+
+\newcommand{\tikzimagefigurelabel}[3]{
+
+	\begin{figure}[H]
+		\centering
+		#2
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
+		\caption{#3}
+		\ifthenelse{\equal{#1}{}}{}{\label{#1}}
+	\end{figure}
+}
+
 %%% Affirmation
 \input{utils/declaration}
 

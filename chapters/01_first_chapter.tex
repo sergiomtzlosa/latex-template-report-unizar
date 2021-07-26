@@ -32,4 +32,25 @@ This is a new section.
 	\label{table:sample-data-table}
 \end{table}
 
+\vspace{0.1cm}
+\tikzimagefigure{
+	
+	\begin{tikzpicture}[>=latex,scale=8.5]
+		
+		\node[cylinder,draw=black,thick,aspect=3.7,minimum height=1.0cm,minimum width=2.5cm,shape border rotate=90,cylinder uses custom fill, cylinder body fill=white,cylinder end fill=white] (A) {};
+		\draw[dashed]
+		let \p1 = ($ (A.after bottom) - (A.before bottom) $),
+		\n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
+		\p2 = ($ (A.bottom) - (A.after bottom)!.5!(A.before bottom) $),
+		\n2 = {veclen(\x2,\y2)-\pgflinewidth}
+		in
+		([xshift=-\pgflinewidth] A.before bottom) arc [start angle=0, end angle=180,
+		x radius=\n1, y radius=\n2];
+		\draw[red, right, |<->|] ([xshift=0.5pt]A.after top) -- ([xshift=0.5pt]A.before bottom) node [right, midway, black] {150nm};
+		\draw[red, |<->|] ([yshift=0.1pt]A.before top) -- ([yshift=0.1pt]A.after top) node [midway, above, black] {500nm};
+		
+	\end{tikzpicture}
+	
+}{Disc sample figure}
+
 \clearpage
