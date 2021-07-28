@@ -67,7 +67,30 @@ This is a new section.
 	\end{tabular}
 	\\[10pt]
 	\centercaption{Table with complex cells}
-	\label{table:comple-cell-table}
+	\label{table:complex-cell-table}
 \end{table}
 
-\clearpage
+\begin{table}[H]
+	\centering
+	\setcellgapes{2pt}
+	\makegapedcells
+	\begin{tabular}{c|c|c|c|c|c}
+		\Xhline{1pt}
+		\italic{\celltwolines{Item}{size}} & \italic{Object} & \italic{\celltwolines{Object}{width}} & \italic{Current} & \italic{\celltwolines{Gap}{@ 500nm}} & \italic{\celltwolines{Gap}{@ 1\textmu{m}}} \\
+		(\textmu{m}) & (m) & (nm) & (mA) & (nT) & (nT) \\\Xhline{1pt} % \otoprule
+		\multirow{3.7}{*}{15 $\times$ 0.800 $\times$ 0.06} & \multirow{3.5}{*}{259.07} & 300 & \multirow{3.5}{*}{1.61000\tpower{4}} & 51.66902 & 29.08373 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 50.82305 & 28.93193 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 48.54992 & 28.49336 \\\Xhline{1pt}
+		\multirow{3.5}{*}{15 $\times$ 0.450 $\times$ 0.06} & \multirow{3.5}{*}{224.42} & 300 & \multirow{3.5}{*}{2.37000\tpower{4}} & 76.05934 & 42.81274 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 74.81401 & 42.58931 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 71.46784 & 41.94378 \\\Xhline{1pt}
+		\multirow{3.5}{*}{15 $\times$ 0.350 $\times$ 0.06} & \multirow{3.5}{*}{229.52} & 300 & \multirow{3.5}{*}{2.64000\tpower{4}} & 84.72435 & 47.69013 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 83.33715 & 47.44119 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 79.61009 & 46.72226 \\\Xhline{1pt}
+	\end{tabular}
+	\\[10pt]
+	\centercaption{Complex table 2}
+	\label{table:complex-table-cell2}
+\end{table}
+
+%\clearpage

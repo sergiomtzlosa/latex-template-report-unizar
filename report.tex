@@ -77,18 +77,18 @@
 % https://tex.stackexchange.com/questions/48509/insert-list-of-figures-in-the-table-of-contents
 
 %\renewcommand{\listfigurename}{Figures}
-%\SetContentTitle{\MakeUppercase{\listfigurename}}
-%\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
-%\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
-%\protect\pagestyle{phdfancyspecialempty}\listoffigures
-%\clearpage
+\SetHeaderTitle{\MakeUppercase{\listfigurename}}
+\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
+\protect\pagestyle{phdfancyspecialempty}\listoffigures
+\clearpage
 
 %\renewcommand{\listtablename}{Tables}
-%\SetContentTitle{\MakeUppercase{\listtablename}}
-%\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
-%\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
-%\protect\pagestyle{phdfancyspecialempty}\listoftables
-%\clearpage
+\SetHeaderTitle{\MakeUppercase{\listtablename}}
+\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
+\protect\pagestyle{phdfancyspecialempty}\listoftables
+\clearpage
 
 % Custom section - list of equations
 \SetHeaderTitle{\MakeUppercase{\listequationsname}}

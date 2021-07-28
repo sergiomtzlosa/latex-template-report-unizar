@@ -3,4 +3,6 @@
 ~\hfill \textbf {Page}\par \thispagestyle {phdfancyempty}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\formattrue 
+\contentsline {table}{\numberline {2.1}{\ignorespaces Sample table\relax }}{3}{table.caption.11}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Table with complex cells\relax }}{3}{table.caption.13}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Complex table 2\relax }}{4}{table.caption.14}%
