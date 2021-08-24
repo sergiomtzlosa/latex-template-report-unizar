@@ -262,17 +262,22 @@
 
 		% Set true if TODO note is right below the title else set false on #2
 		\ignorespaces\lowercase{\def\valueTmp{#2}}
+		\ignorespaces\lowercase{\def\valueBackColourTmp{#1}}
+		
+		\ifx\printableimages\trueValue
+			\ignorespaces\lowercase{\def\valueBackColourTmp{white}}
+		\fi 
 
 		\if\valueTmp\trueValue
 		
-			\todo[inline, shadow=0.8, bordercolor=black, color=#1]{#3}
+			\todo[inline, shadow=0.8, bordercolor=black, color=\valueBackColourTmp]{#3}
 			% check if user sets the TODO right below title or not
 			\par\@afterindentfalse\@afterheading % avoid indent on first paragraph after TODO note
 			
 		\else
 		
 			\@nobreaktrue
-			\todo[inline, shadow=0.8, bordercolor=black, color=#1]{#3}
+			\todo[inline, shadow=0.8, bordercolor=black, color=\valueBackColourTmp]{#3}
 			\@nobreakfalse
 			
 		\fi
