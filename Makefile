@@ -188,7 +188,6 @@ all-cover-wc: word-cloud all cover-latex merge-cover
 # reduce and merge pdf file
 reduce-merge-pdf: cover-latex reduce-pdf merge-cover
 
-
 # search in pdf file
 # USAGE: make search-pdf SEARCH_TERM=Kittel
 search-pdf:
