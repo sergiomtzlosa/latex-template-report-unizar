@@ -67,7 +67,9 @@
 \frontmatter % apply TOC styles frontmatter
 \pagenumbering{Roman}
 
-\SetHeaderTitle{\MakeUppercase{\contentsname}}
+\renewcommand{\contentsname}{Contents}
+%\SetHeaderTitle{\protect\MakeUppercase{\contentsname}}
+\SetHeaderTitle{\contentsname}
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \protect\pagestyle{phdfancyspecialempty}
 \setcounter{tocdepth}{2}
@@ -76,22 +78,30 @@
 
 % https://tex.stackexchange.com/questions/48509/insert-list-of-figures-in-the-table-of-contents
 
-%\renewcommand{\listfigurename}{Figures}
-\SetHeaderTitle{\MakeUppercase{\listfigurename}}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\figurename}{Figure}
+%\SetHeaderTitle{\protect\MakeUppercase{\listfigurename}}
+\SetHeaderTitle{\listfigurename}
 \protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
 \protect\pagestyle{phdfancyspecialempty}\listoffigures
 \clearpage
 
-%\renewcommand{\listtablename}{Tables}
-\SetHeaderTitle{\MakeUppercase{\listtablename}}
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\tablename}{Table}
+%\SetHeaderTitle{\protect\MakeUppercase{\listtablename}}
+\SetHeaderTitle{\listtablename}
 \protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \phantomsection\addcontentsline{toc}{chapter}{\listtablename}
 \protect\pagestyle{phdfancyspecialempty}\listoftables
 \clearpage
 
 % Custom section - list of equations
-\SetHeaderTitle{\MakeUppercase{\listequationsname}}
+\renewcommand{\listequationsname}{List of Equations}
+\renewcommand{\equationname}{Equation}
+\renewcommand{\equationpagetext}{Page}
+%\SetHeaderTitle{\protect\MakeUppercase{\listequationsname}}
+\SetHeaderTitle{\listequationsname}
 \protect\thispagestyle{phdfancyempty}
 \phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
 \protect\pagestyle{phdfancyspecialempty}\listofaddequations
