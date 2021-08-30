@@ -68,8 +68,7 @@
 \pagenumbering{Roman}
 
 \renewcommand{\contentsname}{Contents}
-%\SetHeaderTitle{\protect\MakeUppercase{\contentsname}}
-\SetHeaderTitle{\contentsname}
+\SetHeaderTitle{\MakeUppercase{\contentsname}}
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \protect\pagestyle{phdfancyspecialempty}
 \setcounter{tocdepth}{2}
@@ -80,8 +79,7 @@
 
 \renewcommand{\listfigurename}{List of Figures}
 \renewcommand{\figurename}{Figure}
-%\SetHeaderTitle{\protect\MakeUppercase{\listfigurename}}
-\SetHeaderTitle{\listfigurename}
+\SetHeaderTitle{\MakeUppercase{\listfigurename}}
 \protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
 \protect\pagestyle{phdfancyspecialempty}\listoffigures
@@ -89,8 +87,7 @@
 
 \renewcommand{\listtablename}{List of Tables}
 \renewcommand{\tablename}{Table}
-%\SetHeaderTitle{\protect\MakeUppercase{\listtablename}}
-\SetHeaderTitle{\listtablename}
+\SetHeaderTitle{\MakeUppercase{\listtablename}}
 \protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \phantomsection\addcontentsline{toc}{chapter}{\listtablename}
 \protect\pagestyle{phdfancyspecialempty}\listoftables
@@ -100,8 +97,7 @@
 \renewcommand{\listequationsname}{List of Equations}
 \renewcommand{\equationname}{Equation}
 \renewcommand{\equationpagetext}{Page}
-%\SetHeaderTitle{\protect\MakeUppercase{\listequationsname}}
-\SetHeaderTitle{\listequationsname}
+\SetHeaderTitle{\MakeUppercase{\listequationsname}}
 \protect\thispagestyle{phdfancyempty}
 \phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
 \protect\pagestyle{phdfancyspecialempty}\listofaddequations
