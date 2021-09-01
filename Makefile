@@ -127,10 +127,7 @@ endif
 
 # compile, convert images to black and white and convert pdf to html
 full-print: all print-images pdf-html
-
 # compile and convert pdf to html
-full: all print-images pdf-html
-
 # compile book cover with pdflatex
 cover-pdflatex:
 	cd book-cover/universal && \
