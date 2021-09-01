@@ -550,7 +550,7 @@
 % https://tex.stackexchange.com/questions/453254/continue-previous-page-numbering-roman-arabic-with-two-independent-counters
 % #1 -> Choose the numbering style: Arabic, Roman, etc.
 % #2 -> Choose variable holding the page number, default buit-in variable named "page"
-\newcommandtwoopt{\ContinuePaginingWithOldNumbering}[2][arabic][page] {
+\newcommandtwoopt{\ContinuePaginingWithNumbering}[2][arabic][page] {
 
 	\newcounter{savepagetoken}
 	\setcounter{savepagetoken}{\value{#2}}
