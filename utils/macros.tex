@@ -558,6 +558,15 @@
 	\setcounter{#2}{\value{savepagetoken}}
 }
 
+% change colour of glossary links
+% https://tex.stackexchange.com/questions/38544/glossary-links-color
+\def\glossarylinknewcolour{orange}
+
+\makeatletter
+\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
+\let\@glslink\glsplainhyperlink
+\makeatother
+
 %%% Affirmation
 \input{utils/declaration}
 
