@@ -457,14 +457,16 @@
 	\clearpage
 }
 
+\newcommand{\abstractname}{Abstract}
+
 \newcommand{\inputabstracttitle}{
 	
 	\ifthenelse{\equal{\showpageabstract}{false}}{
 
-		\chaptercustompageintoc[\showrule][\showintoc]{Abstract}{}		
+		\chaptercustompageintoc[\showrule][\showintoc]{\abstractname}{}		
 	}{
 	
-		\chapterpagenumberintoc[\showrule][\showintoc]{Abstract}
+		\chapterpagenumberintoc[\showrule][\showintoc]{\abstractname}
 	}
 }
 
