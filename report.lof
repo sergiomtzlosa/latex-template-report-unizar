@@ -1,6 +1,4 @@
 \babel@toc {english}{}
 \formatfalse 
-~\hfill \textbf {Page}\par \thispagestyle {phdfancyempty}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+~\hfill \textbf {Page}\par \thispagestyle {phdfancyempty}\vspace {0.4cm}
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Disc sample figure\relax }}{3}{figure.caption.12}%
