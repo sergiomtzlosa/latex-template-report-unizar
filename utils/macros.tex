@@ -579,8 +579,7 @@
 		\if@mainmatter
 			\refstepcounter{chapter}%
 			\typeout{\@chapapp\space\thechapter.}%
-			\addcontentsline{toc}{chapter}%
-			{\protect\numberline{\thechapter}#1}%
+			\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
 		\else
 			\addcontentsline{toc}{chapter}{#1}%
 		\fi
