@@ -57,13 +57,13 @@ clean:
 	$(DOC).pdf
 
 compile-grayscale:
-	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
-	makeglossaries $(DOC) && \
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+	makeglossaries $(DOC)
 	bibtex $(DOC).aux
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
 endif
-	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 	echo "" && \
 	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
@@ -177,7 +177,7 @@ reduce-pdf:
 ifneq ($(CHECK_DOCKER),'')
 	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-reduced.pdf report.pdf && \
 	echo "" && \
-	echo sh -c '"\033[33;1mPDF file reduced !!!\033[0m"' && \
+	sh -c 'echo "\033[33;1mPDF file reduced !!!\033[0m"' && \
 	echo ""
 else
 	echo "" && \
