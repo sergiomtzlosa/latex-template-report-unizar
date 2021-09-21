@@ -56,25 +56,34 @@ clean:
 	$(DOC).dvi \
 	$(DOC).pdf
 
-# compile pdf and convert images to black and white
-print:  all
-	./utils/convert-grayscale.sh && \
-        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
-        makeglossaries $(DOC) && \
-        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
-        pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
-
-# force print style
-print-force:
-	./utils/convert-grayscale.sh && \
+compile-grayscale:
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
-        makeglossaries $(DOC) && \
-        pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
-        pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+	makeglossaries $(DOC) && \
+	bibtex $(DOC).aux
+ifeq ($(CHECKPUBS),true)
+	bibtex $(PUBS).aux
+endif
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
+	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 
 # convert images to black and white
 print-images:
-	chmod +x utils/convert-grayscale.sh && ./utils/convert-grayscale.sh
+	chmod +x utils/convert-grayscale.sh && ./utils/convert-grayscale.sh && echo ""
+
+# compile pdf and convert images to black and white
+print: print-images compile-grayscale
+
+# check convert imagems to grayscale
+SHELL=bash
+convert-grayscale:
+	@read -p "Do you want to convert images to grayscale? [y/n]  " -n 1 -r; \
+	if [[ $$REPLY =~ ^[Yy] ]]; \
+	then \
+		echo "" && make print-images; \
+	fi
+
+# force print style
+print-force: convert-grayscale compile-grayscale
 
 # compress final pdf
 compress:
