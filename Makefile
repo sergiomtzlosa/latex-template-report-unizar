@@ -27,7 +27,7 @@ endif
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
 	echo "" && \
-	echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m" && \
+	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
 	echo ""
 
 # compile with index and without bibliography
@@ -65,6 +65,9 @@ ifeq ($(CHECKPUBS),true)
 endif
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex && \
 	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+	echo "" && \
+	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
+	echo ""
 
 # convert images to black and white
 print-images:
@@ -74,8 +77,7 @@ print-images:
 print: print-images compile-grayscale
 
 # check convert imagems to grayscale
-SHELL=bash
-convert-grayscale:
+convert-grayscale: $(eval SHELL:=/bin/bash)
 	@read -p "Do you want to convert images to grayscale? [y/n]  " -n 1 -r; \
 	if [[ $$REPLY =~ ^[Yy] ]]; \
 	then \
@@ -129,7 +131,7 @@ endif
 word-cloud:
 ifeq ($(CHECKREPORT),true)
 	echo "" && \
-	echo "\033[33;1mCreating word cloud, please wait ... \033[0m" && \
+	sh -c 'echo "\033[33;1mCreating word cloud, please wait ... \033[0m"' && \
 	echo "" && \
 	pdftotext report.pdf - | wordcloud_cli --height 3000 --width 2000 --background white --imagefile images/wordcloud.png
 endif
@@ -143,7 +145,7 @@ cover-pdflatex:
 	pdflatex -enable-write18 --shell-escape book_cover.tex && \
 	cp book_cover.pdf ../../ && \
 	echo "" && \
-        echo "\033[33;1mPDFLATEX COVER COMPILATION DONE !!!\033[0m" && \
+        sh -c 'echo "\033[33;1mPDFLATEX COVER COMPILATION DONE !!!\033[0m"' && \
         echo ""
 
 #compile cover with latex
@@ -153,7 +155,7 @@ cover-latex:
 	dvipdf -dNOSAFER -dALLOWPSTRANSPARENCY book_cover.dvi book_cover.pdf && \
 	cp book_cover.pdf ../../ && \
         echo "" && \
-        echo "\033[33;1mLATEX COVER COMPILATION DONE !!!\033[0m" && \
+        sh -c 'echo "\033[33;1mLATEX COVER COMPILATION DONE !!!\033[0m"' && \
         echo ""
 
 # merge main PDF file and cover
@@ -161,11 +163,11 @@ merge-cover:
 ifneq ($(CHECK_DOCKER),'')
 	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf report.pdf && \
 	echo "" && \
-	echo "\033[33;1mPDF file + cover merged !!!\033[0m" && \
+	sh -c 'echo "\033[33;1mPDF file + cover merged !!!\033[0m"' && \
 	echo ""
 else
 	echo "" && \
-	echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m" && \
+	sh -c 'echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m"' && \
 	echo ""
 endif
 
@@ -174,11 +176,11 @@ reduce-pdf:
 ifneq ($(CHECK_DOCKER),'')
 	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-reduced.pdf report.pdf && \
 	echo "" && \
-	echo "\033[33;1mPDF file reduced !!!\033[0m" && \
+	echo sh -c '"\033[33;1mPDF file reduced !!!\033[0m"' && \
 	echo ""
 else
 	echo "" && \
-	echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m" && \
+	sh -c 'echo "\033[33;1mDOCKER NOT INSTALLED !!!\033[0m"' && \
 	echo ""
 endif
 
