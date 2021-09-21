@@ -78,7 +78,8 @@ print: print-images compile-grayscale
 
 # check convert imagems to grayscale
 convert-grayscale: $(eval SHELL:=/bin/bash)
-	@read -p "Do you want to convert images to grayscale? [y/n]  " -n 1 -r; \
+	@read -p $$'\e[33;1mDo you want to convert images to grayscale? [y/n]\e[0m ' -n 1 -r; \
+	echo ""; \
 	if [[ $$REPLY =~ ^[Yy] ]]; \
 	then \
 		echo "" && make print-images; \
