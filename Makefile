@@ -53,10 +53,6 @@ ifeq ($(CHECKBIBS),true)
         echo "" && \
         sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
         echo ""
-#else
-#	echo "" && \
-#	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
-#	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
@@ -106,10 +102,6 @@ ifeq ($(CHECKBIBS),true)
 	echo "" && \
 	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
 	echo ""
-#else
-#	echo "" && \
-#	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
-#	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
