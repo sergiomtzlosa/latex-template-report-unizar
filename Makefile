@@ -5,6 +5,7 @@ PUBS := publications
 CHECKBIBS := $(shell test -f $(DOCS).aux && echo "true")
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
+SHELLGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always > /dev/null && echo "false")
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 CHECK_DOCKER := $(which docker)
 
@@ -15,7 +16,16 @@ base:
 # compile without bibliography
 nobib:
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
+ifeq ($(SHELLGLOSSARIES),false)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary not found !!!\033[0m"' && \
+	echo ""
+else
 	makeglossaries $(DOC)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary found !!!\033[0m"' && \
+	echo ""
+endif
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
 	echo "" && \
@@ -25,7 +35,16 @@ nobib:
 # compile with index and bibliography
 all:
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
+ifeq ($(SHELLGLOSSARIES),false)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary not found !!!\033[0m"' && \
+	echo ""
+else
 	makeglossaries $(DOC)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary found !!!\033[0m"' && \
+	echo ""
+endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
 endif
@@ -62,7 +81,16 @@ clean:
 
 compile-grayscale:
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
+ifeq ($(SHELLGLOSSARIES),false)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary not found !!!\033[0m"' && \
+	echo ""
+else
 	makeglossaries $(DOC)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary found !!!\033[0m"' && \
+	echo ""
+endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
 endif
