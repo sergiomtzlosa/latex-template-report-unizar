@@ -5,7 +5,10 @@ PUBS := publications
 CHECKBIBS := $(shell test -f $(DOCS).aux && echo "true")
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
-SHELLGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always > /dev/null && echo "false")
+EXISTSGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e 'makeglossaries' --color=always > /dev/null && echo "true")
+OUTGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always > /dev/null && echo "false")
+CHECKGLOSSARIES := $(shell if [ "$(OUTGLOSSARIES)" = "false" ]; then echo "false"; else echo "true"; fi)
+SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(CHECKGLOSSARIES)"; else echo "false"; fi)
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 CHECK_DOCKER := $(which docker)
 
@@ -47,6 +50,13 @@ else
 endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
+        echo "" && \
+        sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+        echo ""
+#else
+#	echo "" && \
+#	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
+#	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
@@ -93,9 +103,19 @@ else
 endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+	echo ""
+#else
+#	echo "" && \
+#	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
+#	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
+	echo ""
 endif
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 	pdflatex -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
