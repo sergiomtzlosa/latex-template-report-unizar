@@ -2,6 +2,7 @@
 
 DOC := report
 PUBS := publications
+CHECKBIBS := $(shell test -f $(DOCS).aux && echo "true")
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
 OS_NAME := $(shell uname -s | tr A-Z a-z)
@@ -13,14 +14,21 @@ base:
 
 # compile without bibliography
 nobib:
-	pdflatex -enable-write18 --shell-escape $(DOC).tex && \
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
+	makeglossaries $(DOC)
+	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	echo "" && \
+	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
+	echo ""
 
 # compile with index and bibliography
 all:
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	makeglossaries $(DOC)
+ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
+endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
 endif
@@ -31,11 +39,7 @@ endif
 	echo ""
 
 # compile with index and without bibliography
-simple:
-	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex && \
-	makeglossaries $(DOC) && \
-	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex && \
-	pdflatex -enable-write18 --shell-escape $(DOC).tex
+simple: nobib
 
 # clean compilation
 distclean:
@@ -59,7 +63,9 @@ clean:
 compile-grayscale:
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 	makeglossaries $(DOC)
+ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
+endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
 endif
@@ -138,7 +144,7 @@ ifeq ($(CHECKREPORT),true)
 endif
 
 # compile, convert images to black and white and convert pdf to html
-full-print: all print-images pdf-html
+full-print: all print pdf-html
 
 # compile book cover with pdflatex
 cover-pdflatex:
