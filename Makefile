@@ -74,7 +74,7 @@ print-images:
 	chmod +x utils/convert-grayscale.sh && ./utils/convert-grayscale.sh && echo ""
 
 # compile pdf and convert images to black and white
-print: print-images compile-grayscale
+print-force: print-images compile-grayscale
 
 # check convert imagems to grayscale
 convert-grayscale: $(eval SHELL:=/bin/bash)
@@ -86,7 +86,7 @@ convert-grayscale: $(eval SHELL:=/bin/bash)
 	fi
 
 # force print style
-print-force: convert-grayscale compile-grayscale
+print: convert-grayscale compile-grayscale
 
 # compress final pdf
 compress:
