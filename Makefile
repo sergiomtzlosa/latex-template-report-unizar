@@ -2,7 +2,7 @@
 
 DOC := report
 PUBS := publications
-CHECKBIBS := $(shell test -f $(DOCS).aux && echo "true")
+CHECKBIBS := $(shell test -f $(DOC).aux && echo "true")
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
 EXISTSGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e 'makeglossaries' --color=always > /dev/null && echo "true")
@@ -50,9 +50,9 @@ else
 endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
-        echo "" && \
-        sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
-        echo ""
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
