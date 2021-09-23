@@ -17,7 +17,7 @@ Editor LaTeX OpenSource recomendado: [TeXstudio](https://www.texstudio.org/)
 En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la seccion de *PdfLaTex*:
 
 ```
-pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
 ## Instalar pygments
@@ -35,5 +35,7 @@ En sistemas GNU/Linux:
 ```
 sudo apt-get install cm-super
 ```
+
+Finalmente, puedes importar la configuración para compilar el documento en TeXStudio usando el archivo **texstudio_profile.txsprofile**, menú **Options -> Load profile ...**
 
 Realizado con TexLive 2019
