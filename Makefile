@@ -271,7 +271,7 @@ search-tex:
 # Help command
 help:
 	echo "" && \
-	echo "Latex cmpilation help" && \
+	echo "Compilation help" && \
 	echo "---------------------" && \
 	sh -c 'echo "\033[33;1mmake base\033[0m --> Base compilation (unused)"' && \
 	sh -c 'echo "\033[33;1mmake nobib\033[0m --> Full compilation without bibliography"' && \
