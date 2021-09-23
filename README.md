@@ -17,7 +17,7 @@ Recommended OpenSource LaTex editor: [TeXstudio](https://www.texstudio.org/)
 Over Options -> Texstudio configuration -> Orders, set the following line in section *PdfLaTex*:
 
 ```
-pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
 ## Install pygments
