@@ -1,4 +1,4 @@
-# Informe de EEBB en Viena Universidad de Zaragoza
+# Unofficial LaTeX template for Universidad de Zaragoza 
 
 Output PDF [here](report.pdf).
 
