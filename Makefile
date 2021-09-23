@@ -17,7 +17,7 @@ CHECKGLOSSARIES := $(shell if [ "$(OUTGLOSSARIES)" = "false" ]; then echo "false
 SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(CHECKGLOSSARIES)"; else echo "false"; fi)
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
-CHECK_DOCKER := $(which docker)
+CHECK_DOCKER := $(shell which docker)
 
 # base compilation
 base:
