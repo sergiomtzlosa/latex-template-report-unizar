@@ -1,6 +1,4 @@
-# Unofficial LaTeX template for Universidad de Zaragoza
-
-Latex template to create reports/documents/books/thesis with the logo image of Universidad de Zaragoza.
+# Informe de EEBB en Viena Universidad de Zaragoza
 
 Output PDF [here](report.pdf).
 
@@ -35,5 +33,7 @@ On GNU/Linux systems:
 ```
 sudo apt-get install cm-super
 ```
+
+Finally, you can import building setting for TeXStudio using the **texstudio_profile.txsprofile** file, go to **Options --> Load profile...**.
 
 Made with TexLive 2019
