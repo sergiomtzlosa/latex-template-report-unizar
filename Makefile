@@ -2,13 +2,20 @@
 
 DOC := report
 PUBS := publications
-CHECKBIBS := $(shell test -f $(DOC).aux && echo "true")
+
+EXISTSBIBS := $(shell grep -rnw --include \*.tex '.' -e '\\bibliography{' --color=always > /dev/null && echo "true")
+OUTBIBS := $(shell grep -rnw --include \*.tex '.' -e '%\\bibliography{' --color=always > /dev/null && echo "false")
+SHELLBIBS := $(shell if [ "$(OUTBIBS)" = "false" ]; then echo "false"; else echo "true"; fi)
+CHECKBIBS := $(shell if [ "$(EXISTSBIBS)" = "true" ]; then echo "$(SHELLBIBS)"; else echo "false"; fi)
+
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
+
 EXISTSGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e 'makeglossaries' --color=always > /dev/null && echo "true")
 OUTGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always > /dev/null && echo "false")
 CHECKGLOSSARIES := $(shell if [ "$(OUTGLOSSARIES)" = "false" ]; then echo "false"; else echo "true"; fi)
 SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(CHECKGLOSSARIES)"; else echo "false"; fi)
+
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 CHECK_DOCKER := $(which docker)
 
@@ -52,6 +59,10 @@ ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
 	echo "" && \
 	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+	echo ""
+else
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
 	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
@@ -101,6 +112,10 @@ ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
 	echo "" && \
 	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+	echo ""
+else
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
 	echo ""
 endif
 ifeq ($(CHECKPUBS),true)
