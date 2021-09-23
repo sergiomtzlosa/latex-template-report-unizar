@@ -267,3 +267,33 @@ search-pdf:
 # USAGE: make search-tex SEARCH_TERM=Kittel
 search-tex:
 	grep -rnw --include \*.tex '.' -e '$(SEARCH_TERM)' --color=always | cat
+
+# Help command
+help:
+	echo "" && \
+	echo "Latex cmpilation help" && \
+	echo "---------------------" && \
+	sh -c 'echo "\033[33;1mmake base\033[0m --> Base compilation (unused)"' && \
+	sh -c 'echo "\033[33;1mmake nobib\033[0m --> Full compilation without bibliography"' && \
+	sh -c 'echo "\033[33;1mmake all\033[0m --> Full compilation with all latex options"' && \
+	sh -c 'echo "\033[33;1mmake simple\033[0m --> Same as make nobib"' && \
+	sh -c 'echo "\033[33;1mmake distclean\033[0m --> Clean compilation files"' && \
+	sh -c 'echo "\033[33;1mmake clean\033[0m --> Clean compilation files and pdf file"' && \
+	sh -c 'echo "\033[33;1mmake print\033[0m --> Full compilation in grayscale for printing"' && \
+	sh -c 'echo "\033[33;1mmake print\033[0m --> Force full compilation in grayscale for printing"' && \
+	sh -c 'echo "\033[33;1mmake compress\033[0m --> Compress output pdf"' && \
+	sh -c 'echo "\033[33;1mmake compress-big\033[0m --> Strong compressing output pdf"' && \
+	sh -c 'echo "\033[33;1mmake install\033[0m --> Install dependencies"' && \
+	sh -c 'echo "\033[33;1mmake install-texlive\033[0m --> Install TeXLive"' && \
+	sh -c 'echo "\033[33;1mmake pdf-html\033[0m --> Convert output pdf file into beautiful HTML"' && \
+	sh -c 'echo "\033[33;1mmake word-cloud\033[0m --> Create a fancy word cloud image"' && \
+	sh -c 'echo "\033[33;1mmake full-print\033[0m --> Compile in grayscale for printing and convert output pdf into HTML"' && \
+	sh -c 'echo "\033[33;1mmake cover-pdflatex\033[0m --> Compile book cover with pdflatex"' && \
+	sh -c 'echo "\033[33;1mmake cover-latex\033[0m --> Compile book cover with latex"' && \
+	sh -c 'echo "\033[33;1mmake mm-cover\033[0m --> Compile book cover and merge it with output main pdf"' && \
+	sh -c 'echo "\033[33;1mmake all-cover\033[0m --> Full compilation with all options, reduce size of main pdf and merge cover"' && \
+	sh -c 'echo "\033[33;1mmake all-cover-wc\033[0m --> Full compilation with all options, reduce size of main pdf, merge cover and create word cloud image"' && \
+	sh -c 'echo "\033[33;1mmake search-pdf\033[0m --> Search string in output pdf"' && \
+	sh -c 'echo "\033[33;1mmake search-tex\033[0m --> Search string in TeX files"' && \
+	echo ""
+
