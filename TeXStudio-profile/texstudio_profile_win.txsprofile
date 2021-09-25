@@ -11,7 +11,7 @@ created_by_Qt_version=330753
 
 [texmaker]
 Tools\Commands\latex="latex.exe -src -interaction=nonstopmode --shell-escape %.tex"
-Tools\Commands\pdflatex="pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex"
+Tools\Commands\pdflatex="pdflatex.exe -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex"
 Tools\Commands\xelatex="xelatex.exe -synctex=1 -interaction=nonstopmode  --shell-escape %.tex"
 Tools\Commands\lualatex="lualatex.exe -synctex=1 -interaction=nonstopmode  --shell-escape %.tex"
 Tools\Commands\view-dvi=C:\\Windows\\system32\\OpenWith.exe \"?am.dvi\"
@@ -237,12 +237,12 @@ Preview\Mode=4
 Preview\Auto%20Preview=1
 Preview\Auto%20Preview%20Delay=300
 Preview\SegmentPreviewScalePercent=150
-Geometries\PdfViewerLeft=1106
+Geometries\PdfViewerLeft=1053
 Geometries\PdfViewerTop=0
-Geometries\PdfViewerWidth=579
+Geometries\PdfViewerWidth=551
 Geometries\PdfViewerHeight=830
 Geometries\PdfViewerMaximized=false
-Geometries\PdfViewerState=@ByteArray(\0\0\0\xff\0\0\0\0\xfd\0\0\0\x2\0\0\0\0\0\0\0\0\0\0\0\0\xfc\x2\0\0\0\x3\xfb\0\0\0\xe\0o\0u\0t\0l\0i\0n\0\x65\0\0\0\0\0\xff\xff\xff\xff\0\0\0]\0\xff\xff\xff\xfb\0\0\0\xe\0p\0\x64\0\x66\0i\0n\0\x66\0o\0\0\0\0\0\xff\xff\xff\xff\0\0\0_\0\xff\xff\xff\xfb\0\0\0\x10\0o\0v\0\x65\0r\0v\0i\0\x65\0w\0\0\0\0\0\xff\xff\xff\xff\0\0\0_\0\xff\xff\xff\0\0\0\x3\0\0\0\0\0\0\0\0\xfc\x1\0\0\0\x3\xfb\0\0\0\f\0s\0\x65\0\x61\0r\0\x63\0h\0\0\0\0\0\xff\xff\xff\xff\0\0\x1\xd9\0\xff\xff\xff\xfb\0\0\0\n\0\x66\0o\0n\0t\0s\0\0\0\0\0\xff\xff\xff\xff\0\0\0P\0\xff\xff\xff\xfb\0\0\0\n\0\x63\0l\0o\0\x63\0k\0\0\0\0\0\xff\xff\xff\xff\0\0\0P\0\xff\xff\xff\0\0\x2\x43\0\0\x3\t\0\0\0\x4\0\0\0\x4\0\0\0\b\0\0\0\b\xfc\0\0\0\x1\0\0\0\x2\0\0\0\x1\0\0\0\xe\0t\0o\0o\0l\0\x42\0\x61\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0)
+Geometries\PdfViewerState=@ByteArray(\0\0\0\xff\0\0\0\0\xfd\0\0\0\x2\0\0\0\0\0\0\0\0\0\0\0\0\xfc\x2\0\0\0\x3\xfb\0\0\0\xe\0o\0u\0t\0l\0i\0n\0\x65\0\0\0\0\0\xff\xff\xff\xff\0\0\0]\0\xff\xff\xff\xfb\0\0\0\xe\0p\0\x64\0\x66\0i\0n\0\x66\0o\0\0\0\0\0\xff\xff\xff\xff\0\0\0_\0\xff\xff\xff\xfb\0\0\0\x10\0o\0v\0\x65\0r\0v\0i\0\x65\0w\0\0\0\0\0\xff\xff\xff\xff\0\0\0_\0\xff\xff\xff\0\0\0\x3\0\0\0\0\0\0\0\0\xfc\x1\0\0\0\x3\xfb\0\0\0\f\0s\0\x65\0\x61\0r\0\x63\0h\0\0\0\0\0\xff\xff\xff\xff\0\0\x1\xd9\0\xff\xff\xff\xfb\0\0\0\n\0\x66\0o\0n\0t\0s\0\0\0\0\0\xff\xff\xff\xff\0\0\0P\0\xff\xff\xff\xfb\0\0\0\n\0\x63\0l\0o\0\x63\0k\0\0\0\0\0\xff\xff\xff\xff\0\0\0P\0\xff\xff\xff\0\0\x2'\0\0\x3\t\0\0\0\x4\0\0\0\x4\0\0\0\b\0\0\0\b\xfc\0\0\0\x1\0\0\0\x2\0\0\0\x1\0\0\0\xe\0t\0o\0o\0l\0\x42\0\x61\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0)
 Preview\ToolbarVisible=true
 Preview\AnnotationPanelVisible=false
 Preview\CacheSize=512
