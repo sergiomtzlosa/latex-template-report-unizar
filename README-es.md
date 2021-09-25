@@ -36,6 +36,6 @@ En sistemas GNU/Linux:
 sudo apt-get install cm-super
 ```
 
-Finalmente, puedes importar la configuración para compilar el documento en TeXStudio usando el archivo **texstudio_profile.txsprofile**, menú **Options -> Load profile ...**
+Finalmente, puedes importar la configuración para compilar el documento en TeXStudio usando el archivo correspondiente para sistemas UNIX o Windows que se encuentra en la carpera **TeXStudio-profile**, menú **Options -> Load profile ...**
 
 Realizado con TexLive 2019

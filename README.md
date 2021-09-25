@@ -34,6 +34,6 @@ On GNU/Linux systems:
 sudo apt-get install cm-super
 ```
 
-Finally, you can import building setting for TeXStudio using the **texstudio_profile.txsprofile** file, go to menu **Options --> Load profile...** to load them.
+Finally, you can import building setting for TeXStudio importing the **TeXStudio profile** file for UNIX or Windows systems from **TeXStudio-profile folder**, go to menu **Options --> Load profile...** to load them.
 
 Made with TexLive 2019
