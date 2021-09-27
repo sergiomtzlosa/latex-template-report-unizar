@@ -1,4 +1,5 @@
 .PHONY: all clean distclean
+.SILENT: help all all-cover
 
 DOC := report
 PUBS := publications
