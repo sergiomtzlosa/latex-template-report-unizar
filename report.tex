@@ -72,7 +72,13 @@
 \SetHeaderTitle{\MakeUppercase{\contentsname}}
 \protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
 \protect\pagestyle{phdfancyspecialempty}
-\setcounter{tocdepth}{2}
+
+\ifexpandsubsublevel
+	\setcounter{secnumdepth}{4} % numbering depth for section levels
+\else
+	\setcounter{secnumdepth}{2} % numbering depth for section levels
+\fi
+
 \tableofcontents
 \clearpage
 

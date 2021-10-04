@@ -593,6 +593,17 @@
 
 \makeatother
 
+% Make subsubsubsections available
+% https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection
+% https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
+\newif\ifexpandsubsublevel
+
+\expandsubsublevelfalse
+
+\ifexpandsubsublevel
+	\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\fi
+
 %%% Affirmation
 \input{utils/declaration}
 
