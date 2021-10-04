@@ -1,5 +1,5 @@
 .PHONY: all clean distclean
-.SILENT: help all all-cover
+.SILENT: help all all-cover search-tex search-pdf
 
 DOC := report
 PUBS := publications
@@ -294,8 +294,8 @@ help:
 	sh -c 'echo "\033[33;1mmake mm-cover\033[0m --> Compile book cover and merge it with output main pdf"' && \
 	sh -c 'echo "\033[33;1mmake all-cover\033[0m --> Full compilation with all options, reduce size of main pdf and merge cover"' && \
 	sh -c 'echo "\033[33;1mmake all-cover-wc\033[0m --> Full compilation with all options, reduce size of main pdf, merge cover and create word cloud image"' && \
-	sh -c 'echo "\033[33;1mmake search-pdf\033[0m --> Search string in output pdf"' && \
-	sh -c 'echo "\033[33;1mmake search-tex\033[0m --> Search string in TeX files"' && \
+	sh -c 'echo "\033[33;1mmake search-pdf SEARCH_TERM=Kittel\033[0m --> Search string in output pdf"' && \
+	sh -c 'echo "\033[33;1mmake search-tex SEARCH_TERM=Kittel\033[0m --> Search string in TeX files"' && \
 	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce and merge pdf file"' && \
 	echo ""
 
