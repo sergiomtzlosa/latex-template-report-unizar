@@ -576,3 +576,18 @@
 % https://tex.stackexchange.com/questions/378268/makegapedcells-disables-rowcolor#378630
 \setlength\cellspacetoplimit{4pt}
 \setlength\cellspacebottomlimit{4pt}
+
+%\ifx\printabletext\trueValue
+%	\relax
+%\else
+%	% change colour of glossary links
+%	% https://tex.stackexchange.com/questions/38544/glossary-links-color
+%	\def\glossarylinknewcolour{orange}
+%	
+%	\makeatletter
+%	
+%		\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
+%		\let\@glslink\glsplainhyperlink
+%		
+%	\makeatother
+%\fi
