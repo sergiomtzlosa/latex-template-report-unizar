@@ -102,8 +102,8 @@
 	\notwindowstrue
 \fi
 
-\ifx\printabletext\trueValue
-
+\newcommand{\ConfigLinksBlack}{
+	
 	\hypersetup{
 		colorlinks = true,
 		linkcolor=black,
@@ -129,9 +129,10 @@
 		bookmarksnumbered=true,
 		plainpages=false
 	}
+}
 
-\else
-	
+\newcommand{\ConfigLinksColours}{
+
 	% style color setup: https://tex.stackexchange.com/questions/525261/better-default-colors-for-hyperref-links
 	
 	\definecolor{blue-hyperref}{rgb}{0,0.2,0.6}
@@ -161,7 +162,7 @@
 		bookmarksnumbered=true,
 		plainpages=false
 	}
-
+	
 %	\hypersetup{
 %		colorlinks = true
 %		,linkcolor=NavyBlue %BrickRed
@@ -177,6 +178,23 @@
 %		,menubordercolor=BrickRed
 %		,runbordercolor=Mulberry
 %	}
+}
+
+\ifx\printabletext\trueValue
+
+	\ConfigLinksBlack
+
+\else
+	
+	\ifdefined\compileblack
+	
+		\ConfigLinksBlack
+	
+	\else
+	
+		\ConfigLinksColours
+	
+	\fi
 \fi
 
 \ifx\printabletext\trueValue
@@ -583,6 +601,12 @@
 %	% https://tex.stackexchange.com/questions/38544/glossary-links-color
 %	\def\glossarylinknewcolour{orange}
 %	
+%	\ifdefined\compileblack
+%		\def\glossarylinknewcolour{black}
+%	\else
+%		\def\glossarylinknewcolour{orange}
+%	\fi
+%
 %	\makeatletter
 %	
 %		\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}

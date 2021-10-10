@@ -131,6 +131,41 @@ endif
 	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
 	echo ""
 
+# compile black text but colourful images
+compile-black:
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\compileblack{}\input{${DOC}}" $(DOC).tex
+ifeq ($(SHELLGLOSSARIES),false)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary not found !!!\033[0m"' && \
+	echo ""
+else
+	makeglossaries $(DOC)
+	echo "" && \
+	sh -c 'echo "\033[33;1mGlossary found !!!\033[0m"' && \
+	echo ""
+endif
+ifeq ($(CHECKBIBS),true)
+	bibtex $(DOC).aux
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
+	echo ""
+else
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
+	echo ""
+endif
+ifeq ($(CHECKPUBS),true)
+	bibtex $(PUBS).aux
+	echo "" && \
+	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
+	echo ""
+endif
+	pdflatex -draftmode -enable-write18 --shell-escape "\def\compileblack{}\input{${DOC}}" $(DOC).tex
+	pdflatex -enable-write18 --shell-escape "\def\compileblack{}\input{${DOC}}" $(DOC).tex
+	echo "" && \
+	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
+	echo ""
+
 # convert images to black and white
 print-images:
 	chmod +x utils/convert-grayscale.sh && ./utils/convert-grayscale.sh && echo ""
@@ -297,5 +332,6 @@ help:
 	sh -c 'echo "\033[33;1mmake search-pdf SEARCH_TERM=Kittel\033[0m --> Search string in output pdf"' && \
 	sh -c 'echo "\033[33;1mmake search-tex SEARCH_TERM=Kittel\033[0m --> Search string in TeX files"' && \
 	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce and merge pdf file"' && \
+	sh -c 'echo "\033[33;1mmake compile-black\033[0m -->  compile black text but colourful images"' && \
 	echo ""
 

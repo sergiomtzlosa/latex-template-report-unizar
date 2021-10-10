@@ -502,7 +502,14 @@
 % change default color to superscript footnote
 % https://tex.stackexchange.com/questions/26693/change-the-color-of-footnote-marker-in-latex
 \makeatletter
-\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\color{red-clean}\@thefnmark}}}
+
+\ifdefined\compileblack
+	\def\footnotecolour{\color{black}}
+\else
+	\def\footnotecolour{\color{red-clean}}
+\fi
+
+\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\footnotecolour\@thefnmark}}}
 \renewcommand\@makefntext[1]{%
 	\parindent 1em\noindent
 	\hb@xt@1.8em{%
