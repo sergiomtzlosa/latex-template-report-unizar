@@ -100,16 +100,14 @@
 
 \newcommand\footnotewithoutheader[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{#1}}
 
-\newenvironment{startpagenumbering}[2][0] {
+\newenvironment{startpagenumbering}[1][1] {
 
 	%	\pagestyle{plain}
 	
 	\pagestyle{phdfancy}
 	%	\setlength{\footskip}{17pt}
 	\pagenumbering{arabic}
-	\setcounter{page}{#1}{
-		#2
-	}
+	\setcounter{page}{#1}
 
 	% rework plain style to fancy
 	\fancypagestyle{plain}{
