@@ -331,7 +331,7 @@ help:
 	sh -c 'echo "\033[33;1mmake all-cover-wc\033[0m --> Full compilation with all options, reduce size of main pdf, merge cover and create word cloud image"' && \
 	sh -c 'echo "\033[33;1mmake search-pdf SEARCH_TERM=Kittel\033[0m --> Search string in output pdf"' && \
 	sh -c 'echo "\033[33;1mmake search-tex SEARCH_TERM=Kittel\033[0m --> Search string in TeX files"' && \
-	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce and merge pdf file"' && \
 	sh -c 'echo "\033[33;1mmake compile-black\033[0m -->  compile black text but colourful images"' && \
+	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce and merge pdf file"' && \
 	echo ""
 
