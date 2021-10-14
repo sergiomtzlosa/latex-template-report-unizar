@@ -2,6 +2,27 @@
 
 This is a chapter.
 
+\tikzimagefigurelabel{fig:drawing-big-prism}{
+
+	\begin{tikzpicture}[>=latex,scale=1.5]
+
+	\pgfmathsetmacro{\x}{1.5}
+	\pgfmathsetmacro{\y}{1.5}
+	\pgfmathsetmacro{\z}{0.25}
+	\path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0)
+	coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G)
+	(0,\z,0) coordinate (H);
+	\draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+	\draw[dashed] (A)--(D)--(C) (D)--(H);
+
+	\draw[red, thin,|<->|] ($(A)+(0,-4pt)$) -- node[black, below]{25\textmu{m}}($(B)+(0,-4pt)$);
+	\draw[red, thin,|<->|] ($(B)+(-45:4pt)$) -- node[black, below, sloped]{25\textmu{m}}($(C)+(-45:4pt)$);
+	\draw[red, thin,|<->|] ($(C)+(4pt,0)$) -- node[black, below, sloped]{120nm}($(G)+(4pt,0)$);
+
+	\end{tikzpicture}
+
+}{Prism drawing}
+
 \newpage
 
 Second page.
