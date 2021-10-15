@@ -1,4 +1,4 @@
-# Plantilla de LaTeX no oficial para la Universidad de Zaragoza
+# Plantilla de LaTeX no oficial para tésis/informes/libros con logos y estilo de la Universidad de Zaragoza
 
 Platilla de LaTeX para realizar informes/documentos/libros/tésis con el logo de la Universidad de Zaragoza.
 
@@ -14,7 +14,7 @@ Editor LaTeX OpenSource recomendado: [TeXstudio](https://www.texstudio.org/)
 
 ## Configurar TeXStudio
 
-En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la seccion de *PdfLaTex*:
+En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la seccion de *PDFLaTex*:
 
 ```
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
