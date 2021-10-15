@@ -1,4 +1,4 @@
-# Unofficial LaTeX template for Universidad de Zaragoza 
+# Unofficial LaTeX template for thesis/reports/books with logos and style of Universidad de Zaragoza
 
 Output PDF [here](report.pdf).
 
@@ -12,7 +12,7 @@ Recommended OpenSource LaTex editor: [TeXstudio](https://www.texstudio.org/)
 
 ## Configure TeXStudio
 
-Over Options -> Texstudio configuration -> Orders, set the following line in section *PdfLaTex*:
+Over Options -> Texstudio configuration -> Orders, set the following line in section *PDFLaTex*:
 
 ```
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
