@@ -99,6 +99,7 @@ clean:
 	$(DOC).pdf
 
 compile-grayscale:
+	sh -c './latex_chapterbib.sh $(DOC)' && \
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
 ifeq ($(SHELLGLOSSARIES),false)
 	echo "" && \
@@ -134,6 +135,7 @@ endif
 
 # compile black text but colourful images
 compile-black:
+	sh -c './latex_chapterbib.sh $(DOC)' && \
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\compileblack{}\input{${DOC}}" $(DOC).tex
 ifeq ($(SHELLGLOSSARIES),false)
 	echo "" && \
