@@ -1,0 +1,8 @@
+\babel@toc {english}{}
+\formatfalse 
+~\hfill \textbf {Page}\par \thispagestyle {phdfancyempty}\vspace {0.4cm}
+\gdef \the@ipfilectr {@-1}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Sample table\relax }}{3}{table.caption.12}% 
+\contentsline {table}{\numberline {2.2}{\ignorespaces Table with complex cells\relax }}{3}{table.caption.14}% 
+\contentsline {table}{\numberline {2.3}{\ignorespaces Complex table 2\relax }}{4}{table.caption.15}% 
+\gdef \the@ipfilectr {}

@@ -1,0 +1,146 @@
+% https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
+% remove work chapter from header
+
+\fancypagestyle{phdfancy}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\THETITLE}
+	\fancyhead[RE,LO]{\leftmark}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+\newcommand{\SetHeaderTitle}[1]{
+	\global\def\contentHeaderTitle{#1}
+}
+
+\fancypagestyle{phdfancyspecialempty}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[RE,LO]{\contentHeaderTitle}
+	\fancyfoot[C]{}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+\fancypagestyle{phdfancyempty}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
+\fancypagestyle{phdplainfancy}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
+% no gap between page line and footnote
+%\setlength{\footskip}{17pt}
+% https://tex.stackexchange.com/questions/164367/how-to-make-footnotes-appear-at-bottom-of-the-footers-bar
+
+%% START FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+\makeatletter
+\renewcommand\footnoterule{%
+	\kern20\p@
+	\hrule\@width\linewidth
+	\kern2.6\p@}
+\makeatother
+
+\fancypagestyle{phdfancyfootnote}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\THETITLE}
+	\fancyhead[RE,LO]{\leftmark}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+\fancypagestyle{phdfancyfootnotewithoutheader}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter. {\slshape{##1}}}{}} 
+}
+
+%% END FOOTNOTE FOOTNOTE BELOW HORIZONTAL LINE
+
+%% BETTER FOOTNOTE WITH FANCY STYLE
+\newcommand\footnoteurl[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnote}\footnote{\href{#2}{#1}}}
+
+\newcommand\footnoteurlsimple[1]{\footnoteurl{#1}{#1}}
+
+\newcommand{\footnoteplain}[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnote}\footnote{#1}}
+
+%% FOOTNOTE WITHOUT HEADER
+\newcommand\footnoteurlwithoutheader[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{\href{#2}{#1}}}
+
+\newcommand\footnotewithoutheader[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{#1}}
+
+\newenvironment{startpagenumbering}[1][1] {
+
+	%	\pagestyle{plain}
+	
+	\pagestyle{phdfancy}
+	%	\setlength{\footskip}{17pt}
+	\pagenumbering{arabic}
+	\setcounter{page}{#1}
+
+	% rework plain style to fancy
+	\fancypagestyle{plain}{
+		
+		\pagestyle{fancy}
+		\fancypagestyle{phdfancyplain}{%
+			\fancyhead{} % Clean headers
+			\fancyfoot[C]{\thepage}
+			\renewcommand{\footrulewidth}{0.4pt}
+			\renewcommand{\headrulewidth}{0.0pt}
+		}
+		
+		\pagestyle{phdfancyplain}
+	}
+
+	%% REWORK TITLE CHAPTERS
+	\definecolor{gray75}{gray}{0.75}
+	\newcommand{\hsp}{\hspace{0pt}}
+	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright
+		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
+
+%\titleformat{\chapter}[display]{}{}{2ex}{
+%	\begin{center}
+%		\hspace*{\dimexpr0em-10pt\relax}
+%		\advance\hsize4em\advance\hsize10pt\rule[0.5ex]{4em}{1pt}\hspace{10pt}
+%		\begin{varwidth}{\textwidth}\Large\thechapter\end{varwidth}
+%		\hspace*{10pt}\rule[0.5ex]{4em}{1pt}
+%	\end{center}
+%	\vskip 1cm
+%	\begin{center}
+%		\hspace*{\dimexpr5em-10pt\relax}
+%		\Large #1
+%	\end{center}
+%}
+
+}{\protect\clearpage}

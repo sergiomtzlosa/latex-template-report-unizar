@@ -1,0 +1,129 @@
+\newchapter{Another chapter}{ch:another-chapter}
+
+This is a chapter.
+
+\tikzimagefigurelabel{fig:drawing-big-prism}{
+
+	\begin{tikzpicture}[>=latex,scale=1.5]
+
+	\pgfmathsetmacro{\x}{1.5}
+	\pgfmathsetmacro{\y}{1.5}
+	\pgfmathsetmacro{\z}{0.25}
+	\path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0)
+	coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G)
+	(0,\z,0) coordinate (H);
+	\draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+	\draw[dashed] (A)--(D)--(C) (D)--(H);
+
+	\draw[red, thin,|<->|] ($(A)+(0,-4pt)$) -- node[black, below]{25\textmu{m}}($(B)+(0,-4pt)$);
+	\draw[red, thin,|<->|] ($(B)+(-45:4pt)$) -- node[black, below, sloped]{25\textmu{m}}($(C)+(-45:4pt)$);
+	\draw[red, thin,|<->|] ($(C)+(4pt,0)$) -- node[black, below, sloped]{120nm}($(G)+(4pt,0)$);
+
+	\end{tikzpicture}
+
+}{Prism drawing}
+
+\newpage
+
+Second page.
+
+Footnote url here with header\footnoteurl{http://google.com}{http://google.com}.
+
+\KittelEquationExpandedX
+
+\section{Section here}
+\label{sec:section-here}
+
+This is a new section\citep{Nanowire-photondetectors}.
+
+\begin{table}[H]
+	\centering
+	\setcellgapes{2pt}
+	\makegapedcells
+	\begin{tabular}{c|c}
+		\Xhline{1pt}
+		\italic{\celltwolines{Item}{size1}} & \italic{\celltwolines{Item}{size2}} \\
+		(nm) & (nm) \\\Xhline{1pt}%
+		8 & 600 \\\cline{1-2}
+		10 & 400 \\\cline{1-2}
+		12 & 300 \\\Xhline{1pt}
+	\end{tabular}
+	\\[10pt]
+	\centercaption{Sample table}
+	\label{table:sample-data-table}
+\end{table}
+
+\vspace{0.1cm}
+\tikzimagefigure{
+	
+	\begin{tikzpicture}[>=latex,scale=8.5]
+		
+		\node[cylinder,draw=black,thick,aspect=3.7,minimum height=1.0cm,minimum width=2.5cm,shape border rotate=90,cylinder uses custom fill, cylinder body fill=white,cylinder end fill=white] (A) {};
+		\draw[dashed]
+		let \p1 = ($ (A.after bottom) - (A.before bottom) $),
+		\n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
+		\p2 = ($ (A.bottom) - (A.after bottom)!.5!(A.before bottom) $),
+		\n2 = {veclen(\x2,\y2)-\pgflinewidth}
+		in
+		([xshift=-\pgflinewidth] A.before bottom) arc [start angle=0, end angle=180,
+		x radius=\n1, y radius=\n2];
+		\draw[red, right, |<->|] ([xshift=0.5pt]A.after top) -- ([xshift=0.5pt]A.before bottom) node [right, midway, black] {150nm};
+		\draw[red, |<->|] ([yshift=0.1pt]A.before top) -- ([yshift=0.1pt]A.after top) node [midway, above, black] {500nm};
+		
+	\end{tikzpicture}
+	
+}{Disc sample figure}
+
+\begin{table}[H]
+	\centering
+	\setcellgapes{2pt}
+	\makegapedcells
+	\begin{tabular}{c|c|c|c}
+		\Xhline{1pt}
+		\italic{\celltwolines{Item}{one}} & \italic{\celltwolines{Item}{two}} & \italic{\celltwolines{Item}{three}} & \italic{\celltwolines{Item}{four}} \\
+		(m) & (m) & (m) & (m) \\\Xhline{1pt}%
+		8 & 15000 $\times$ 800 $\times$ 60 & 7.5413550 & 0 \\\cline{1-4}
+		10 & 15000 $\times$ 450 $\times$ 60 & 9.4630770 & 0 \\\cline{1-4}
+		12 & 15000 $\times$ 350 $\times$ 60 & 10.368898 & 0 \\\Xhline{1pt}
+	\end{tabular}
+	\\[10pt]
+	\centercaption{Table with complex cells}
+	\label{table:complex-cell-table}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\setcellgapes{2pt}
+	\makegapedcells
+	\begin{tabular}{c|c|c|c|c|c}
+		\Xhline{1pt}
+		\italic{\celltwolines{Item}{size}} & \italic{Object} & \italic{\celltwolines{Object}{width}} & \italic{Current} & \italic{\celltwolines{Gap}{@ 500nm}} & \italic{\celltwolines{Gap}{@ 1\textmu{m}}} \\
+		(\textmu{m}) & (m) & (nm) & (mA) & (nT) & (nT) \\\Xhline{1pt} % \otoprule
+		\multirow{3.7}{*}{15 $\times$ 0.800 $\times$ 0.06} & \multirow{3.5}{*}{259.07} & 300 & \multirow{3.5}{*}{1.61000\tpower{4}} & 51.66902 & 29.08373 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 50.82305 & 28.93193 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 48.54992 & 28.49336 \\\Xhline{1pt}
+		\multirow{3.5}{*}{15 $\times$ 0.450 $\times$ 0.06} & \multirow{3.5}{*}{224.42} & 300 & \multirow{3.5}{*}{2.37000\tpower{4}} & 76.05934 & 42.81274 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 74.81401 & 42.58931 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 71.46784 & 41.94378 \\\Xhline{1pt}
+		\multirow{3.5}{*}{15 $\times$ 0.350 $\times$ 0.06} & \multirow{3.5}{*}{229.52} & 300 & \multirow{3.5}{*}{2.64000\tpower{4}} & 84.72435 & 47.69013 \\\cline{3-3} \cline{5-6}
+		& & 400 & & 83.33715 & 47.44119 \\\cline{3-3} \cline{5-6}
+		& & 600 & & 79.61009 & 46.72226 \\\Xhline{1pt}
+	\end{tabular}
+	\\[10pt]
+	\centercaption{Complex table 2}
+	\label{table:complex-table-cell2}
+\end{table}
+
+\stickerMultiline[red-light!50][false]{\bold{Important note}: This is a nice ToDO note.}
+
+\asideimages{5.0cm}{5.0cm}
+	    {logo-simple}
+	    {Image 1}
+	    {logo-simple}
+	    {Image 2}
+	    {Set of two images}
+	    {fig:set-two-images}
+
+\imagefigurecaption[0.2]{logo-simple}
+			{This is a single image}
+			{fig:image-single}

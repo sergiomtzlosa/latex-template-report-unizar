@@ -1,0 +1,206 @@
+% !TeX encoding = UTF-8
+% !TeX root = report.tex
+% !TeX spellcheck = en-GB
+% MIT License - Copyright (c) 2021 Sergio Martínez-Losa
+%\documentclass[11pt,letterpaper,openright,spanish,english]{extbook}
+\documentclass[11pt,a4paper,spanish,english]{book}
+%\documentclass[11pt,a4paper,openright,spanish,english]{book}
+
+\input{utils/super_macro}
+
+% Set whether twoside enable of not (true or false), by default twoside
+%\twosidelayout[true] % select twoside layout
+%\twosidelayout[false] % select oneside layout
+\twosidelayout % default twoside layout active
+%\onesidelayout % equivalent to \twosidelayout[false]
+
+\checkforceprintable
+
+\input{utils/imports}
+\input{utils/macros}
+\input{utils/mute_warnings}
+
+\showtodos{true}
+
+% Show or hide watermark by calling \showwatermark{true} or \preliminary{true} both are equals
+%\showwatermark{true}
+\preliminary{false}
+
+% NECESSARY TITLE & AUTHOR
+\title{\THETITLE}
+\author{\THEAUTHOR}
+
+\makeindex
+
+\setglossarystyle{betterglossary}
+\makeglossaries
+\input{chapters/glossary}
+
+%\ifmultibib
+%	\newcites{publications}{\listofpublicationsname\protect\thispagestyle{phdfancyempty}} % multibib bibliography section
+%\fi
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagenumbering{alph}
+\setcounter{page}{-1}
+
+% supress page numbering	
+%\pagenumbering{gobble}
+	
+% insert cover
+% other fancy cover: https://tex.stackexchange.com/questions/475597/how-to-create-a-cover-page-like-this
+% https://latexdraw.com/how-to-create-a-beautiful-cover-page-in-latex-using-tikz/
+\begin{titlepage}
+	
+	\pagestyle{empty}
+	\protect\thispagestyle{empty}
+	
+	\ifx\printableimages\trueValue
+		\input{utils/cover_bw}
+	\else
+%		\input{utils/cover_colour}
+                \input{utils/cover_colour_alternative_rainbow}
+%		\input{utils/cover_colour_blue}
+	\fi
+	
+\end{titlepage}
+
+\frontmatter % apply TOC styles frontmatter
+\pagenumbering{Roman}
+
+\renewcommand{\contentsname}{Contents}
+\SetHeaderTitle{\MakeUppercase{\contentsname}}
+\protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+\protect\pagestyle{phdfancyspecialempty}
+
+\ifexpandsubsublevel
+	\setcounter{secnumdepth}{4} % numbering depth for section levels
+\else
+	\setcounter{secnumdepth}{2} % numbering depth for section levels
+\fi
+
+\tableofcontents
+\clearpage
+
+% https://tex.stackexchange.com/questions/48509/insert-list-of-figures-in-the-table-of-contents
+
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\figurename}{Figure}
+\SetHeaderTitle{\MakeUppercase{\listfigurename}}
+\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{0.4cm}}
+\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
+\protect\pagestyle{phdfancyspecialempty}\listoffigures
+\clearpage
+
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\tablename}{Table}
+\SetHeaderTitle{\MakeUppercase{\listtablename}}
+\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{0.4cm}}
+\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
+\protect\pagestyle{phdfancyspecialempty}\listoftables
+\clearpage
+
+% Custom section - list of equations
+\renewcommand{\listequationsname}{List of Equations}
+\renewcommand{\equationname}{Equation}
+\renewcommand{\equationpagetext}{Page}
+\SetHeaderTitle{\MakeUppercase{\listequationsname}}
+\protect\thispagestyle{phdfancyempty}
+\phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
+\protect\pagestyle{phdfancyspecialempty}\listofaddequations
+\clearpage
+
+% show glossary items
+\SetHeaderTitle{\MakeUppercase{\glossaryname}}
+\phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossary[title={\vspace{-1.5cm}\protect\raggedright\glossaryname}]\protect\pagestyle{phdfancyspecialempty}
+\clearpage
+
+% report declaration of authenticity
+% #1 declaration without page numbers and without page number in TOC or declaration with page numers and page number in TOC	
+% #2 show or not to show in TOC
+\inputdeclaration[true][true]
+
+%% start abstract section
+% #1 show page number or not
+% #2 show or hide rule below title
+% #3 show in TOC or not
+% #4 input text file
+\renewcommand{\abstractname}{Abstract}
+\inputabstract[true][showrule]{true}{chapters/abstract}
+%% end abstract section
+
+% Acknowledgements and dedications
+%\input{utils/dedications}
+
+\mainmatter % apply TOC styles mainmatter
+
+\begin{startpagenumbering}[1]
+
+	\begin{bibunit}
+		\input{chapters/00_introduction}
+	\end{bibunit}
+
+	\begin{bibunit}
+		\input{chapters/01_first_chapter}
+	\end{bibunit}
+
+\end{startpagenumbering}
+
+\backmatter % apply TOC styles backmatter
+
+%\ContinuePaginingWithNumbering[Roman]
+
+% Custom section - Epilogue
+\def\epilogueTitle{Epilogue}
+\SetHeaderTitle{\MakeUppercase{\epilogueTitle}}
+\phantomsection\addcontentsline{toc}{chapter}{\epilogueTitle}
+\protect\pagestyle{phdfancyspecialempty}\input{utils/epilogue}
+\clearpage
+
+% Bibliography
+%\SetTitleBibliography{Bibliography}
+%\SetHeaderTitle{\MakeUppercase{\bibname}}
+%%\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+%\protect\bibliographystyle{unsrt}
+%\bibliography{./utils/report-bib}
+%\protect\pagestyle{phdfancyspecialempty}
+%\addcontentsline{toc}{chapter}{\bibname}
+%\clearpage
+
+% List of publications
+\newcommand{\bibnamePublications}{List of Publications}
+
+\protect\chapter*{\flushleft\bibnamePublications\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+
+\renewcommand{\bibsection}{} % https://tex.stackexchange.com/questions/132646/how-to-remove-the-references-title
+\SetHeaderTitle{\MakeUppercase{\bibnamePublications}}
+\addcontentsline{toc}{chapter}{\bibnamePublications}
+\protect\thispagestyle{phdfancyempty}
+%\protect\thispagestyle{phdfancyspecialempty}
+%\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+\protect\nocite{*}
+\protect\bibliographystyle{unsrt}
+\protect\bibliography{./utils/publications}
+\protect\pagestyle{phdfancyspecialempty}
+\clearpage
+
+% List of publications
+%\ifmultibib
+%	\renewcommand{\listofpublicationsname}{List of Publications}
+%	\SetHeaderTitle{\MakeUppercase{\listofpublicationsname}}
+%	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
+%	\protect\pagestyle{phdfancyspecialempty}
+%	\nocitepublications{*}
+%%	\protect\bibliographystylepublications{./packages/ieeetr-redux}
+%	\protect\bibliographystylepublications{unsrt}
+%	\bibliographypublications{./utils/publications.bib}
+%	\clearpage
+%\fi
+
+\end{document}
+
+% Bibunits compilation script --> https://tex.stackexchange.com/questions/227879/problem-using-bibunits
+% Run custom script in TexStudio --> https://tex.stackexchange.com/questions/286712/run-custom-commands-after-texstudio-finishes-building-pdf
