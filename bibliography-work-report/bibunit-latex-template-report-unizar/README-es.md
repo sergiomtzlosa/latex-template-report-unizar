@@ -20,6 +20,10 @@ En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la 
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+## Paquete bibunits
+
+El paquete bibunits necesita unos pasos de compilación especiales, puedes seguir usando el comando **make all** como de costumbre, pero si quieres usar TexStudio y bibuntis, debes incluir el script **latex_bibunits.sh** en el proceso de compilación, para hacer esto, mira la imagen [config-texstusio-bibunits-compile-script.png](https://raw.githubusercontent.com/sergiomtzlosa/latex-template-report-unizar/master/bibliography-work-report/bibunit-latex-template-report-unizar/config-texstusio-bibunits-compile-script.png) para establecer el script en la configuración.
+
 ## Instalar pygments
 
 Instalar pygments en windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).
