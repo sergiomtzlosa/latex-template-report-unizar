@@ -20,7 +20,7 @@ pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.te
 
 ## Package bibunits
 
-Package bibunits needs a special compilation steps, you can keep on using the **make all** command as usual, but if you what to use TexStudio and bibuntis, you should set the **latex_bibunits.sh** in the compilation process, to do this see image [config-texstusio-bibunits-compile-script.png](https://raw.githubusercontent.com/sergiomtzlosa/latex-template-report-unizar/master/bibliography-work-report/bibunit-latex-template-report-unizar/config-texstusio-bibunits-compile-script.png) to set the script in the configuration (this is only necessary for UNIX systems, for Windows systems just compile twice with TexStudio).
+Package bibunits needs a special compilation steps, you can keep on using the **make all** command as usual, but if you what to use TexStudio and bibuntis, you should set the **latex_bibunits.sh** in the compilation process, to do this see image [config-texstusio-bibunits-compile-script.png](config-texstudio-bibunits-compile-script-unix.png) to set the script in the configuration (this is only necessary for UNIX systems, for Windows systems just compile twice with TexStudio).
 
 ## Install pygments
 
