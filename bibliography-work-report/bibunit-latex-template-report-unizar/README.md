@@ -18,7 +18,7 @@ Over Options -> Texstudio configuration -> Orders, set the following line in sec
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
-Package bibunits needs a special compilation steps, you can use the **make all** instruction as normal, but if you what to use TexStudio and bibuntis, you should set the **latex_bibunits.sh** in the compilation process, to do this see image [config-texstusio-bibunits-compile-script.png](https://raw.githubusercontent.com/sergiomtzlosa/latex-template-report-unizar/master/bibliography-work-report/bibunit-latex-template-report-unizar/config-texstusio-bibunits-compile-script.png) to set the script in the configuration.
+Package bibunits needs a special compilation steps, you can keep on using the **make all** command as usual, but if you what to use TexStudio and bibuntis, you should set the **latex_bibunits.sh** in the compilation process, to do this see image [config-texstusio-bibunits-compile-script.png](https://raw.githubusercontent.com/sergiomtzlosa/latex-template-report-unizar/master/bibliography-work-report/bibunit-latex-template-report-unizar/config-texstusio-bibunits-compile-script.png) to set the script in the configuration.
 
 ## Install pygments
 
