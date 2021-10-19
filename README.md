@@ -36,4 +36,10 @@ sudo apt-get install cm-super
 
 Finally, you can import building settings for TeXStudio using the **TeXStudio profile** file for UNIX or Windows systems from **TeXStudio-profile folder**, go to menu **Options --> Load profile...** to load them.
 
-Made with TexLive 2019
+## BIBLIOGRAPHY FLAVOURS
+
+Besides the default bibliography, there are two projects with one implements bibunits and chapterbib for bibliography, feel free to e¡use them if you need bibliography at the end of each chapter.
+
+Check out the bibliography flavours [here](bibliography-work-report)
+
+# Made with TexLive 2019

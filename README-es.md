@@ -38,4 +38,10 @@ sudo apt-get install cm-super
 
 Finalmente, puedes importar la configuración para compilar el documento en TeXStudio usando el archivo correspondiente para sistemas UNIX o Windows que se encuentra en la carpera **TeXStudio-profile**, menú **Options -> Load profile ...**
 
-Realizado con TexLive 2019
+## Bibliografías en diferentes formas
+
+Se ha implementado la posibilidiad de obtener las bibliografía usadas en una nueva sección al final de cada capítulo.
+
+Los proyectos relativos a las bibliografías se encuentran [aquí](bibliography-work-report)
+
+# Realizado con TexLive 2019
