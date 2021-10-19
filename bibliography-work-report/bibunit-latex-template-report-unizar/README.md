@@ -40,4 +40,4 @@ sudo apt-get install cm-super
 
 Finally, you can import building settings for TeXStudio using the **TeXStudio profile** file for UNIX or Windows systems from **TeXStudio-profile folder**, go to menu **Options --> Load profile...** to load them.
 
-# Made with TexLive 2019
+# Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
