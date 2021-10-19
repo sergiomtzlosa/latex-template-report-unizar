@@ -4,16 +4,16 @@
 DOC := report
 PUBS := publications
 
-EXISTSBIBS := $(shell grep -rnw --include \*.tex '.' -e '\\bibliography{' --color=always > /dev/null && echo "true")
-OUTBIBS := $(shell grep -rnw --include \*.tex '.' -e '%\\bibliography{' --color=always > /dev/null && echo "false")
+EXISTSBIBS := $(shell grep -rnw --include \*.tex '.' -e '\\bibliography{' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "true")
+OUTBIBS := $(shell grep -rnw --include \*.tex '.' -e '%\\bibliography{' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "false")
 SHELLBIBS := $(shell if [ "$(OUTBIBS)" = "false" ]; then echo "false"; else echo "true"; fi)
 CHECKBIBS := $(shell if [ "$(EXISTSBIBS)" = "true" ]; then echo "$(SHELLBIBS)"; else echo "false"; fi)
 
 CHECKPUBS := $(shell test -f $(PUBS).aux && echo "true")
 CHECKREPORT := $(shell test -f $(DOC).pdf && echo "true")
 
-EXISTSGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e 'makeglossaries' --color=always > /dev/null && echo "true")
-OUTGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always > /dev/null && echo "false")
+EXISTSGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e 'makeglossaries' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "true")
+OUTGLOSSARIES := $(shell grep -rnw --include \*.tex '.' -e '%\\makeglossaries' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "false")
 CHECKGLOSSARIES := $(shell if [ "$(OUTGLOSSARIES)" = "false" ]; then echo "false"; else echo "true"; fi)
 SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(CHECKGLOSSARIES)"; else echo "false"; fi)
 
