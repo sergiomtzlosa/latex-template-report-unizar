@@ -26,6 +26,8 @@ El paquete bibunits necesita unos pasos de compilación especiales, puedes segui
 
 Si deseas usar el paquete bibunits en sistemas Windows, debes poner el script **latex_bibunits.bat** en el proceso de compilación, ver imagen [config-texstudio-bibunits-compile-script-windows.png](config-texstudio-bibunits-compile-script-windows.png).
 
+En ambos casos se debe poner la ruta del script de compilación en la configuración de TexStudio para usar bibunits.
+
 ## Instalar pygments
 
 Instalar pygments en windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).

@@ -26,6 +26,8 @@ If you want to use TexStudio and bibunits in UNIX systems, you should set the **
 
 If you want to use TexStudio and bibunits in Windows systems, set the path of the script **latex_bibunits.bat** in the compilation process, see image [config-texstudio-bibunits-compile-script-windows.png](config-texstudio-bibunits-compile-script-windows.png) to set the script in the configuration.
 
+In both cases you must set the custom building script path on the building configuration in TexStudio to use bibunits.
+
 ## Install pygments
 
 Install pygments on windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).
