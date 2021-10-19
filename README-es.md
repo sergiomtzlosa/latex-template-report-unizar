@@ -44,4 +44,4 @@ Se ha implementado la posibilidiad de obtener las bibliografía usadas en una nu
 
 Los proyectos relativos a las bibliografías se encuentran [aquí](bibliography-work-report)
 
-# Realizado con TexLive 2019
+# Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
