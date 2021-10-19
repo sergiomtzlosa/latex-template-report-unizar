@@ -22,9 +22,9 @@ pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.te
 
 Package bibunits needs a special compilation steps, you can keep on using the **make all** command as usual.
 
-If you want to use TexStudio and bibunits, you should set the **latex_bibunits.sh** in the compilation process, see image [config-texstudio-bibunits-compile-script-unix.png](config-texstudio-bibunits-compile-script-unix.png?raw=true) to set the script in the configuration.
+If you want to use TexStudio and bibunits in UNIX systems, you should set the **latex_bibunits.sh** in the compilation process, see image [config-texstudio-bibunits-compile-script-unix.png](config-texstudio-bibunits-compile-script-unix.png?raw=true) to set the script in the configuration.
 
-If you want to use TexStudio and bibunits in Windows systems set the path of the script **latex_bibunits.bat** in the compilation process, see image [config-texstudio-bibunits-compile-script-windows.png](config-texstudio-bibunits-compile-script-windows.png) to set the script in the configuration.
+If you want to use TexStudio and bibunits in Windows systems, set the path of the script **latex_bibunits.bat** in the compilation process, see image [config-texstudio-bibunits-compile-script-windows.png](config-texstudio-bibunits-compile-script-windows.png) to set the script in the configuration.
 
 ## Install pygments
 
