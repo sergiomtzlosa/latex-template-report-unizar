@@ -611,18 +611,6 @@
 	\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
 \fi
 
-% avoid citation in LOF 
-% https://tex.stackexchange.com/questions/44554/get-bibtex-to-ignore-citation-numbering-in-a-figure-caption
-% https://tex.stackexchange.com/questions/61869/latex-bibtex-not-arranging-citations-by-order-of-appearance
-\makeatletter
-\def\ignorecitefornumbering#1{%
-	\begingroup
-	\@fileswfalse
-	#1
-	\endgroup
-}
-\makeatother
-
 %%% Affirmation
 \input{utils/declaration}
 
@@ -631,4 +619,3 @@
 
 %%% Formulas
 \input{utils/formulas}
-
