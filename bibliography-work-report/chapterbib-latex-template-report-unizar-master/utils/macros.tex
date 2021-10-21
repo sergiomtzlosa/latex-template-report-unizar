@@ -95,58 +95,43 @@
 }
 
 % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
-\newcommand{\asideimages}[8]{
-	
-	\begin{figure}[H]
-
-		% if captions from subfire are empty, remove the marker below the image
-		\ifthenelse{\equal{#4}{}}{
-			\ifthenelse{\equal{#6}{}}{
-%				\captionsetup[subfigure]{labelformat=empty}
-				\captionsetup[subfigure]{labelformat=empty, justification=raggedright, singlelinecheck=true}
-			}{}
-		}{}
-	
-		\centering
-		\subfloat[#4]{
-			{\includegraphics[width=#1]{#3}}
-		}
-		\qquad
-		\subfloat[#6]{
-			{\includegraphics[width=#2]{#5}}
-		}
-		\caption{#7}
-		\label{#8}
-		
-	\end{figure}
-
-}
-
-% used to avoid caption cite in LOF
-\newcommand{\asideimagescite}[8]{
+\newcommand{\asideimages}[9][false]{
 	
 	\begin{figure}[H]
 		
 		% if captions from subfire are empty, remove the marker below the image
-		\ifthenelse{\equal{#4}{}}{
-			\ifthenelse{\equal{#6}{}}{
+		\ifthenelse{\equal{#5}{}}{
+			\ifthenelse{\equal{#7}{}}{
 				%				\captionsetup[subfigure]{labelformat=empty}
 				\captionsetup[subfigure]{labelformat=empty, justification=raggedright, singlelinecheck=true}
 			}{}
 		}{}
 		
 		\centering
-		\subfloat[#4]{
-			{\includegraphics[width=#1]{#3}}
+		\subfloat[#5]{
+			{\includegraphics[width=#2]{#4}}
 		}
 		\qquad
-		\subfloat[#6]{
-			{\includegraphics[width=#2]{#5}}
+		\subfloat[#7]{
+			{\includegraphics[width=#3]{#6}}
 		}
-		\nocitecentercaption{#7}
-		\label{#8}
+		
+		\ignorespaces\lowercase{\def\tmpVal{#1}}
+		
+		\ifthenelse{\equal{\tmpVal}{false}}{
+			\centercaption{#8}
+		}{	
+			\nocitecentercaption{#8}
+		}
+		
+		\label{#9}
 		
 	\end{figure}
+}
+
+% used to avoid caption cite in LOF
+\newcommand{\asideimagesnocite}[8]{
+	\asideimages{true}{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}
 }
 
 \newenvironment{changemargin}[2]{%
