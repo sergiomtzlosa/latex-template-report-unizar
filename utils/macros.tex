@@ -122,6 +122,33 @@
 
 }
 
+% used to avoid caption cite in LOF
+\newcommand{\asideimagescite}[8]{
+	
+	\begin{figure}[H]
+		
+		% if captions from subfire are empty, remove the marker below the image
+		\ifthenelse{\equal{#4}{}}{
+			\ifthenelse{\equal{#6}{}}{
+				%				\captionsetup[subfigure]{labelformat=empty}
+				\captionsetup[subfigure]{labelformat=empty, justification=raggedright, singlelinecheck=true}
+			}{}
+		}{}
+		
+		\centering
+		\subfloat[#4]{
+			{\includegraphics[width=#1]{#3}}
+		}
+		\qquad
+		\subfloat[#6]{
+			{\includegraphics[width=#2]{#5}}
+		}
+		\nocitecaption{#7}
+		\label{#8}
+		
+	\end{figure}
+}
+
 \newenvironment{changemargin}[2]{%
 	
 	\begin{list}{}{%
@@ -610,6 +637,11 @@
 \ifexpandsubsublevel
 	\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
 \fi
+
+%% Avoid cite in captions for LOF/LOT
+%% https://tex.stackexchange.com/questions/147936/list-of-figures-citation-issue
+\DeclareRobustCommand\nocitecaptionlink[1]{{\def\cite##1{}#1}}
+\newcommand\nocitecaption[1]{\caption[\nocitecaptionlink{#1}]{#1}}
 
 %%% Affirmation
 \input{utils/declaration}
