@@ -143,7 +143,7 @@
 		\subfloat[#6]{
 			{\includegraphics[width=#2]{#5}}
 		}
-		\nocitecaption{#7}
+		\nocitecentercaption{#7}
 		\label{#8}
 		
 	\end{figure}
@@ -166,6 +166,12 @@
 %	\captionsetup{justification=centering}
 	\captionsetup{justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
+}
+
+\newcommand{\nocitecentercaption}[1]{	
+	%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
+	\protect\nocitecaption{#1}
 }
 
 \newcommand{\centercaptionlisting}[1]{
