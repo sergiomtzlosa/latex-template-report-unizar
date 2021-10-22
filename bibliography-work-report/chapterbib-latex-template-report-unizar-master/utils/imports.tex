@@ -57,7 +57,7 @@
 \usepackage{anyfontsize}
 \usepackage{minted}
 \usepackage{array}
-\usepackage[column=O]{cellspace}
+\usepackage[column=O, math]{cellspace}
 \usepackage{makecell} % https://tex.stackexchange.com/questions/558937/how-to-avoid-broken-horizontal-and-vertical-lines-when-using-multirow-and-multic
 \usepackage{multirow}
 \usepackage[bottom]{footmisc}
@@ -67,6 +67,9 @@
 \usepackage{glossaries} % always load glossaries AFTER hyperref
 \usepackage{ifplatform}
 \usepackage{catoptions}
+
+% https://tex.stackexchange.com/questions/64761/add-just-a-little-more-padding-to-my-table/381439
+\cellspacetoplimit 4pt
 
 %\patchcmd{\thebibliography}{\chapter*}{\section}{}{}
 
