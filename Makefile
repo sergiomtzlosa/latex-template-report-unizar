@@ -332,6 +332,5 @@ help:
 	sh -c 'echo "\033[33;1mmake search-pdf SEARCH_TERM=Kittel\033[0m --> Search string in output pdf"' && \
 	sh -c 'echo "\033[33;1mmake search-tex SEARCH_TERM=Kittel\033[0m --> Search string in TeX files"' && \
 	sh -c 'echo "\033[33;1mmake compile-black\033[0m -->  compile black text but colourful images"' && \
-	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce and merge pdf file"' && \
+	sh -c 'echo "\033[33;1mmake reduce-merge-pdf\033[0m --> Reduce pdf file and merge cover in a new pdf file"' && \
 	echo ""
-
