@@ -1,0 +1,31 @@
+\global\definecolor{BlueUnizar}{HTML}{436491}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[overlay,remember picture]
+
+%% Background color
+%%\fill[black!2](current page.south west) rectangle (current page.north east);
+%\fill[white!2](current page.south west) rectangle (current page.north east);
+%
+%	\node[opacity=0.1,left color=white] (image) at (-2,-20) {\includegraphics[scale=1.5, angle=-15,origin=c]{logo-simple}};
+%
+\node[opacity=0.1,left color=white] (image) at ($(current page.south east)+(-3.3, 2.0)$) {\includegraphics[scale=2.0, angle=4,origin=c]{logo-simple}};
+
+\node[rotate=90] at ($(current page.south east)+(-14.8, 15.0)$) {\fontsize{45}{50} \selectfont \textcolor{black}{\textsf \THETITLE}};
+
+\node (rect) at ($(current page.south east)+(-16.0, 4.0)$) [BlueUnizar, fill,draw,thick,minimum width=0.5cm, minimum height=38cm] {};
+
+\node at ($(current page.south east)+(-12.4, 24.8)$) {\fontsize{15}{20} \selectfont \textcolor{black}{\bf \THEFACULTY\ | \THEPHDPROGRAMME}};
+
+\node (rect) at ($(current page.south east)+(-1.0, 18.0)$) [black, fill,draw,thick,minimum width=0.5cm, minimum height=6cm] {};
+
+\node (image) at ($(current page.south east)+(-6.5, 19.6)$) {\includegraphics[scale=1.5]{images/unizar.png}};
+
+\node at ($(current page.south east)+(-6.5, 17.2)$) {\fontsize{15}{20} \selectfont \textcolor{black}{\textsf January 2020 - \coverdate\today}};
+
+\node at ($(current page.south east)+(-6.5, 16.2)$) {\fontsize{15}{20} \selectfont \textcolor{black}{\bf \THEAUTHOR}};
+
+\node (rect) at ($(current page.north west)+(1.0, -4.0)$) [BlueUnizar, fill,draw,thick,minimum width=30cm, minimum height=0.5cm] {};
+
+\end{tikzpicture}
