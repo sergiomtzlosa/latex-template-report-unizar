@@ -631,7 +631,7 @@
 
 %% Avoid cite in captions for LOF/LOT
 %% https://tex.stackexchange.com/questions/147936/list-of-figures-citation-issue
-\DeclareRobustCommand\nocitecaptionlink[1]{{\def\cite##1{}#1}}
+\DeclareRobustCommand\nocitecaptionlink[1]{{\def\citep##1{}#1}}
 \newcommand\nocitecaption[1]{\caption[\nocitecaptionlink{#1}]{#1}}
 
 %%% Affirmation
