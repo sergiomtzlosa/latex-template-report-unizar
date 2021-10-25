@@ -45,3 +45,19 @@ Se ha implementado la posibilidiad de obtener las bibliografía usadas en una nu
 Los proyectos relativos a las bibliografías se encuentran [aquí](bibliography-work-report)
 
 # Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
+
+# Citación BibTeX
+
+Si vas a usar este software, por favor incluye una entrada de BibTeX en tu documento para hacer referencia a este proyecto:
+
+```
+@misc{SergioTemplateLatex2021,
+  author = {Martínez-Losa Del Rincón, Sergio},
+  title = {Unofficial LaTeX template for reports/books/thesis with corporate logos of Universidad de Zaragoza with a beautiful look & feel},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/sergiomtzlosa/latex-template-report-unizar}},
+  commit = {ef0242edd8260c39179310fe1b3bc55c9f69d230}
+}
+```

@@ -47,3 +47,19 @@ sudo apt-get install cm-super
 Finalmente, puedes importar la configuración para compilar el documento en TeXStudio usando el archivo correspondiente para sistemas UNIX o Windows que se encuentra en la carpera **TeXStudio-profile**, menú **Options -> Load profile ...**
 
 # Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
+
+# Citación BibTeX
+
+Si vas a usar este software, por favor incluye una entrada de BibTeX en tu documento para hacer referencia a este proyecto:
+
+```
+@misc{SergioTemplateLatex2021,
+  author = {Martínez-Losa Del Rincón, Sergio},
+  title = {Unofficial LaTeX template for reports/books/thesis with corporate logos of Universidad de Zaragoza with a beautiful look & feel},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/sergiomtzlosa/latex-template-report-unizar}},
+  commit = {ef0242edd8260c39179310fe1b3bc55c9f69d230}
+}
+```

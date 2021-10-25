@@ -43,3 +43,19 @@ Besides the default bibliography style, there are two projects which implement b
 Check out the bibliography flavours [here](bibliography-work-report)
 
 # Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
+
+# BibTeX citation
+
+If you use this software, please add a BibTex entry in your document to refer this project:
+
+```
+@misc{SergioTemplateLatex2021,
+  author = {Martínez-Losa Del Rincón, Sergio},
+  title = {Unofficial LaTeX template for reports/books/thesis with corporate logos of Universidad de Zaragoza with a beautiful look & feel},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/sergiomtzlosa/latex-template-report-unizar}},
+  commit = {ef0242edd8260c39179310fe1b3bc55c9f69d230}
+}
+```
