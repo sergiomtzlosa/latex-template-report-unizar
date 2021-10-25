@@ -53,7 +53,7 @@ Si vas a usar este software, por favor incluye una entrada de BibTeX en tu docum
 ```
 @misc{SergioTemplateLatex2021,
   author = {Martínez-Losa Del Rincón, Sergio},
-  title = {Unofficial LaTeX template for reports/books/thesis with corporate logos of Universidad de Zaragoza with a beautiful look & feel},
+  title = {Unofficial LaTeX template for reports/books/thesis with corporate logos of Universidad de Zaragoza with a beautiful look and feel},
   year = {2021},
   publisher = {GitHub},
   journal = {GitHub repository},
