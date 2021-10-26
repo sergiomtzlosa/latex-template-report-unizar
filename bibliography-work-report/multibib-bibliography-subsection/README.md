@@ -40,6 +40,10 @@ sudo apt-get install cm-super
 
 Finally, you can import building settings for TeXStudio using the **TeXStudio profile** file for UNIX or Windows systems from **TeXStudio-profile folder**, go to menu **Options --> Load profile...** to load them.
 
+## Docker PDF compression
+
+The command **make all-cover** in the Makefile uses Docker to reduce pdf file size, if you want to use it you must install [Docker](https://www.docker.com/products/docker-desktop).
+
 # Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
 
 # BibTeX citation

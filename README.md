@@ -42,6 +42,10 @@ Besides the default bibliography style, there are three projects which implement
 
 Check out the bibliography flavours [here](bibliography-work-report)
 
+## Docker PDF compression
+
+The command **make all-cover** in the Makefile uses Docker to reduce pdf file size, if you want to use it you must install [Docker](https://www.docker.com/products/docker-desktop).
+
 # Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
 
 # BibTeX citation
