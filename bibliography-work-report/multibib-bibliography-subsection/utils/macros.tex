@@ -1,0 +1,644 @@
+% set paragraph spacing
+\setlength{\parskip}{0.7em}
+
+% renew commands
+
+\renewcommand\thepage{\romannumeral\numexpr\value{page}-1\relax}
+
+% rework glossary title
+%\renewcommand{\glossarypreamble}{\vspace*{\baselineskip}\vspace*{\parskip}}
+
+% rework glossary title (better)
+\renewcommand{\glossarypreamble}{\vspace{-1.5cm}{\flushright\rule{\linewidth}{1pt}\vspace*{3ex}}\protect\thispagestyle{phdfancyempty}}
+
+\renewcommand{\arraystretch}{1.2}
+
+% glossary custom style: 
+% https://tex.stackexchange.com/questions/327328/glossaries-style-change-add-units
+\newglossarystyle{betterglossary}{%
+	\setglossarystyle{list}%
+
+	\renewcommand*{\glossentry}[2]{%
+
+		\item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]
+
+		\glossentrydesc{##1} ##2
+	}%
+
+	\renewcommand*{\glsgroupskip}{}%
+}
+
+%\renewcommand because amssymb package has a command called \bold
+\renewcommand{\bold}[1]{\textbf{#1}}
+
+% system modifications
+ 
+\setlength{\heavyrulewidth}{0.07em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+\newcommand{\monthtoday}{\date{\monthyeardate\today}}
+
+% https://tex.stackexchange.com/questions/112932/today-month-as-text
+\newdateformat{coverdate}{\monthname[\THEMONTH] \THEYEAR}
+
+% new commands
+\newcommand{\matrixbraket}[2]{
+	$\begin{pmatrix}
+	#1 \\
+	#2 \\
+	\end{pmatrix}$
+}
+
+\newminted{mumax3}{frame=lines,framerule=2pt}
+
+\newcommand{\newquote}[1]{``#1''}
+
+\newcommand{\italic}[1]{\textit{#1}}
+
+\newcommand{\fixheaderbadness}{
+	\hbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+	\vbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+	\hfuzz=100pt % A parameter that allows hbox's to be overfull by [length] before an overfull error occurs. 
+	\pretolerance=10000
+}
+
+\newcommand{\newchapter}[2]{
+	
+	\protect\chapter{#1}
+	\label{#2}
+	\setlength{\parsep}{\parskip}%
+}
+
+\newcommand{\centerItem}[1]{
+	
+	\begin{center}
+		#1
+	\end{center}
+}
+
+\newcommand{\imagefigurecaption}[4][0.35]{
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#1\textwidth,height=\textheight,keepaspectratio]{#2}
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
+		\caption{#3}
+		\ifthenelse{\equal{#4}{}}{}{\label{#4}}
+	\end{figure}	
+}
+
+\newcommand{\imagefigure}[3][0.35]{
+	
+	\imagefigurecaption[#1]{#2}{#3}{}	
+}
+
+% https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
+\newcommand{\asideimages}[9][false]{
+	
+	\begin{figure}[H]
+		
+		% if captions from subfire are empty, remove the marker below the image
+		\ifthenelse{\equal{#5}{}}{
+			\ifthenelse{\equal{#7}{}}{
+				%				\captionsetup[subfigure]{labelformat=empty}
+				\captionsetup[subfigure]{labelformat=empty, justification=raggedright, singlelinecheck=true}
+			}{}
+		}{}
+		
+		\centering
+		\subfloat[#5]{
+			{\includegraphics[width=#2]{#4}}
+		}
+		\qquad
+		\subfloat[#7]{
+			{\includegraphics[width=#3]{#6}}
+		}
+		
+		\ignorespaces\lowercase{\def\tmpVal{#1}}
+		
+		\ifthenelse{\equal{\tmpVal}{false}}{
+			\centercaption{#8}
+		}{	
+			\nocitecentercaption{#8}
+		}
+		
+		\label{#9}
+		
+	\end{figure}
+}
+
+% used to avoid caption cite in LOF
+\newcommand{\asideimagesnocite}[8]{
+	\asideimages[true]{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}
+}
+
+\newenvironment{changemargin}[2]{%
+	
+	\begin{list}{}{%
+			\setlength{\topsep}{3pt}%
+			\setlength{\leftmargin}{#1}%
+			\setlength{\rightmargin}{#2}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+	\item[]}{\end{list}}
+	
+	
+\newcommand{\centercaption}[1]{	
+%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
+	\protect\caption{#1}
+}
+
+\newcommand{\nocitecentercaption}[1]{	
+	%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
+	\protect\nocitecaption{#1}
+}
+
+\newcommand{\centercaptionlisting}[1]{
+%	\captionsetup{justification=centering}
+	\captionsetup{justification=raggedright, singlelinecheck=true}
+	\protect\caption[#1]{\boldmath{#1}}
+}
+
+\DeclareCaptionType{equ}[][]
+
+% https://tex.stackexchange.com/questions/39315/how-to-change-the-numbering-for-different-figures
+\newcommand{\equationname}{Equation}
+\DeclareFloatingEnvironment[name={\protect\equationname}]{eqfigure}
+
+\newcommand{\setequation}[5] {
+	
+	\begin{equ}[H]
+		
+		% https://tex.stackexchange.com/questions/316646/renaming-the-label-of-figure-just-in-some-cases
+		%		\renewcommand{\figurename}{Equation}
+		\begin{changemargin}{#1}{#2}
+			\begin{eqfigure}[H]
+				#3
+				\vspace{-0.5cm}
+				\centercaption{#5}
+				\label{#4}
+				\addequations{#5} % this is for equations listing
+			\end{eqfigure}
+		\end{changemargin}	
+		\vspace{-1.5cm}
+	\end{equ}
+}
+
+\newcommand{\centerformula}[1]{
+	\vspace{-0.8cm}
+	\begin{align}
+		#1
+	\end{align}
+}
+
+\newcommand{\tpower}[1]{
+	\ensuremath{\times\ 10^{#1}}
+}
+
+\newcommand{\super}[1]{\textsuperscript{#1}}
+
+\newcommand{\sub}[1]{\textsubscript{#1}}
+
+% better diameter symbol
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareRobustCommand{\diameter}{%
+	\text{\usefont{LS1}{stixscr}{m}{n}\symbol{"60}}%
+}
+
+\global\def\enableTODO{true}
+
+\newcommand{\showtodos}[1] {
+	\global\def\enableTODO{#1}
+}
+
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+
+\definecolor{red-clean}{rgb}{1.0, 0.41, 0.38}
+
+\definecolor{red}{rgb}{1,0,0}
+
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+
+\definecolor{red-light}{rgb}{1.0, 0.41, 0.38}
+
+\definecolor{blue-light}{rgb}{0.58, 0.86, 1}
+
+\newcommand{\TODO}[1]{
+	\def\trueOption{true}
+	\ifx\enableTODO\trueOption
+		\ifx\printableimages\trueValue
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad\bold{TODO}: #1}
+		\else
+			\todo[inline, shadow=0.8, bordercolor=black, color=red!50]{\qquad\bold{TODO}: #1}
+		\fi
+	\fi
+}
+
+\makeatletter
+\newcommandtwoopt{\sticker}[3][][true]{%
+	
+	\ignorespaces\lowercase{\def\valueTmp{#1}}
+	\ignorespaces\lowercase{\def\indentStatusParagraph{#2}}
+
+	\def\itemWidth{long}
+	
+	\ifx\printableimages\trueValue
+	
+		\ifx\valueTmp\itemWidth
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad#3}
+		\else
+			\todo[inline, shadow=0.8, bordercolor=black, color=white]{\qquad\centerline{#3}}
+		\fi
+		
+	\else
+	
+		\ifx\valueTmp\itemWidth
+			\todo[inline, shadow=0.8, bordercolor=black, color=amber!50]{\qquad#3}
+		\else
+			\todo[inline, shadow=0.8,bordercolor=black, color=amber!50]{\qquad\centerline{#3}}
+		\fi
+		
+	\fi
+	
+	\ifx\indentStatusParagraph\trueValue
+		\par\@afterindentfalse\@afterheading % avoid indent on first paragraph after TODO note
+	\fi
+	% https://tex.stackexchange.com/questions/229001/do-not-indent-second-paragraph-after-macro-was-used
+}
+\makeatother
+
+
+\makeatletter
+
+\newcommandtwoopt{\stickerMultiline}[3][amber!50][true] {
+
+		% Set true if TODO note is right below the title else set false on #2
+		\ignorespaces\lowercase{\def\valueTmp{#2}}
+		\ignorespaces\lowercase{\def\valueBackColourTmp{#1}}
+		
+		\ifx\printableimages\trueValue
+			\ignorespaces\lowercase{\def\valueBackColourTmp{white}}
+		\fi 
+
+		\if\valueTmp\trueValue
+		
+			\todo[inline, shadow=0.8, bordercolor=black, color=\valueBackColourTmp]{#3}
+			% check if user sets the TODO right below title or not
+			\par\@afterindentfalse\@afterheading % avoid indent on first paragraph after TODO note
+			
+		\else
+		
+			\@nobreaktrue
+			\todo[inline, shadow=0.8, bordercolor=black, color=\valueBackColourTmp]{#3}
+			\@nobreakfalse
+			
+		\fi
+}
+
+\makeatother
+
+% https://tex.stackexchange.com/questions/40561/table-with-multiple-lines-in-some-cells
+\newcommand{\celltwolines}[2]{%
+
+	\begin{tabular}{@{}c@{}}
+		#1 \\ #2
+	\end{tabular}
+}
+
+%% WATERMARK STUFF
+%Customize watermark
+\global\def\optionWatermark{true}
+
+\newcommand{\docwatermark}[1]{
+	
+	\global\def\optionWatermark{#1}
+	\newsavebox\mybox
+	\savebox\mybox{\tikz[color=gray,opacity=0.3,font=\sffamily]\node{#1};}
+	\newwatermark*[allpages,angle=45,scale=10,xpos=-30,ypos=15]{\usebox\mybox}
+}
+
+\newcommand{\showwatermark}[2]{
+	
+	\def\constPreliminary{PRELIMINARY}
+	\def\truestr{true}
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	\def\valueNull{\par}
+	
+	\ifx\tmp\valueNull
+		\docwatermark{\constPreliminary}
+		\global\def\optionWatermark{true}
+	\else
+		\ifx\tmp\truestr
+			\ignorespaces\def\optValue{#2}\unskip
+	
+			\ifx\optValue\valueNull
+				\docwatermark{\constPreliminary}
+			\else
+				\def\voidValue{}
+				\ifx\optValue\voidValue
+					\docwatermark{\constPreliminary}
+				\else 
+					\docwatermark{\uppercase{#2}}
+				\fi
+			\fi
+	
+			\global\def\optionWatermark{true}
+		\else
+			\global\def\optionWatermark{false}
+		\fi
+	\fi
+}
+
+\newcommand{\preliminary}[2]{
+	
+	\showwatermark{#1}{#2}
+}
+
+\newcommand{\showpreliminary}[2]{
+	
+	\showwatermark{#1}{#2}
+}
+
+\newcommand{\gothicletter}[2][black]{
+	
+	\yinipar{\color{#1}#2}\hspace{-0.5em}
+}
+
+\newcommand{\changeTitleDocument}[1]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	
+	\ifx\tmp\empty
+		% value empty, nothing to do
+	\else
+		\global\def\THETITLE{#1}
+	\end
+}
+
+% rework toc, lot and lof title, add line below
+\renewcommand{\cftaftertoctitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
+\renewcommand{\cftafterlottitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
+\renewcommand{\cftafterloftitle}{\\\rule{\linewidth}{1pt}\vspace*{3ex}}
+
+% rework bibliography title
+% https://tex.stackexchange.com/questions/70025/titlesec-and-bibliography
+% https://latex.org/forum/viewtopic.php?t=28709
+\newcommand{\SetTitleBibliography}[1]{
+	\renewcommand{\bibname}{#1}
+}
+
+\newcommand{\titlebibliography}[1]{
+	\addto{\captionsenglish}{\bibname}
+}
+
+\def\customquad{\hskip\baselineskip\relax}
+
+%\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\flushleft\bibname\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+
+% redefine plain style to empty style
+% https://tex.stackexchange.com/questions/65089/im-trying-to-redefine-the-plain-pagestyle-as-empty
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+
+% create new chapter without page reference in TOC, optional, to set an horizontal line below the title
+% create new chapter without page reference in TOC, optional, to set an horizontal line below the title
+\newcommandtwoopt{\chaptercustompageintoc}[4][showrule][true]{
+	
+	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
+	\ifthenelse{\equal{#1}{showrule}}{
+		
+		\chapter*{\flushleft#3\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+		
+	}{
+		
+		\chapter*{\flushleft{#3}\vspace{-0.5m}\customquad}
+	}
+	
+	\ifthenelse{\equal{#2}{true}}{
+		\cftaddtitleline{toc}{chapter}{#3}{#4}
+	}
+}
+
+% plain pagestyle
+\newcommandtwoopt{\chapterpagenumberintoc}[3][showrule][true] {
+	
+	\ifthenelse{\equal{#1}{showrule}}{
+		
+		\chapter*{\flushleft#3\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+	}{
+		
+		\chapter*{\flushleft{#3}\vspace{-0.6cm}\customquad}
+	}
+	
+	\ifthenelse{\equal{#2}{true}}{
+		\addcontentsline{toc}{chapter}{#3}
+	}
+}
+%% input file for abstract
+
+\global\def\showpageabstract{false}
+\global\def\showrule{showrule}
+\global\def\showintoc{true}
+
+\newcommandtwoopt{\inputabstract}[4][false][showrule]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}
+	\global\def\showpageabstract{\tmp}
+	
+	\ignorespaces\lowercase{\def\tmprule{#2}}
+	\global\def\showrule{\tmprule}
+	
+	% whether or not to show in TOC
+	\ignorespaces\lowercase{\def\tmptoc{#3}}
+	\global\def\showintoc{\tmptoc}
+	
+	\ifthenelse{\equal{\tmp}{false}}{
+		
+		% abstract without page numbers and without page number in TOC
+		\protect\pagestyle{empty}\input{#4}
+		\protect\thispagestyle{empty}
+	}{
+		
+		% abstract with page numers and page number in TOC
+		\protect\pagestyle{phdfancyempty}\input{#4}
+		\protect\thispagestyle{phdfancyempty}
+	}
+	
+	\clearpage
+}
+
+\newcommand{\abstractname}{Abstract}
+
+\newcommand{\inputabstracttitle}{
+	
+	\ifthenelse{\equal{\showpageabstract}{false}}{
+
+		\chaptercustompageintoc[\showrule][\showintoc]{\abstractname}{}		
+	}{
+	
+		\chapterpagenumberintoc[\showrule][\showintoc]{\abstractname}
+	}
+}
+
+%% end input file for abstract
+
+% environment for justified text
+\newenvironment{justified}[1] {
+	\setlength\parindent{0pt}
+	\setlength{\parsep}{\parskip}%
+	#1
+}{}
+
+% environment italic text
+\newenvironment{shapeitalic} {
+	\itshape
+}{}
+
+%% START Create a list of equations
+
+% https://tex.stackexchange.com/questions/270611/creating-list-of-equations
+\newcommand{\equationpagetext}{Page}
+\newcommand{\listequationsname}{List of Equations}
+\newcommand{\listequationtitle}{\vspace{-0.4cm}\listequationsname\vskip0cm\vspace{-0.59cm}\rule{\linewidth}{1pt}\vspace{1.8cm}\\\protect{\hspace*{0pt}\hfill\fontsize{11}{12}\textbf{\equationpagetext}\par\protect\thispagestyle{phdfancyempty}\vspace{-1.0cm}}}
+\newlistof{addequations}{equ}{\listequationtitle}
+\newcommand{\addequations}[1]{%
+	\addcontentsline{equ}{addequations}{\protect\numberline{\theeqfigure}#1}\par}
+\addtolength{\cftaddequationsnumwidth}{13pt}
+\setlength{\cftaddequationsindent}{1.5em}
+\setlength{\cftaddequationsnumwidth}{2.3em}
+
+%% END Create a list of equations
+
+% change default color to superscript footnote
+% https://tex.stackexchange.com/questions/26693/change-the-color-of-footnote-marker-in-latex
+\makeatletter
+
+\ifdefined\compileblack
+	\def\footnotecolour{\color{black}}
+\else
+	\def\footnotecolour{\color{red-clean}}
+\fi
+
+\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\footnotecolour\@thefnmark}}}
+\renewcommand\@makefntext[1]{%
+	\parindent 1em\noindent
+	\hb@xt@1.8em{%
+		\hss\@textsuperscript{\normalfont\@thefnmark}}#1}
+\makeatother
+
+%% START List of Publications 
+
+% USE multibib package: https://www.overleaf.com/learn/latex/Multibib
+% https://tex.stackexchange.com/questions/170316/nocite-for-single-bibdatasources-with-biblatex-biber
+% https://www.privacypies.org/blog/2017/01/25/bib-management.html
+\newcommand{\listofpublicationsname}{List of Publications}
+
+%% END List of Publications
+
+\newcommand{\tikzimagefigure}[2]{
+
+	\begin{figure}[H]
+		\centering
+		#1
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
+		\caption{#2}
+	\end{figure}
+}
+
+\newcommand{\tikzimagefigurelabel}[3]{
+
+	\begin{figure}[H]
+		\centering
+		#2
+%		\captionsetup{justification=centering}
+		\captionsetup{justification=raggedright, singlelinecheck=true}
+		\caption{#3}
+		\ifthenelse{\equal{#1}{}}{}{\label{#1}}
+	\end{figure}
+}
+
+% Change the page numbering style and continue with the page counter
+% https://tex.stackexchange.com/questions/453254/continue-previous-page-numbering-roman-arabic-with-two-independent-counters
+% #1 -> Choose the numbering style: Arabic, Roman, etc.
+% #2 -> Choose variable holding the page number, default buit-in variable named "page"
+\newcommandtwoopt{\ContinuePaginingWithNumbering}[2][arabic][page] {
+
+	\newcounter{savepagetoken}
+	\setcounter{savepagetoken}{\value{#2}}
+	\pagenumbering{#1}
+	\setcounter{#2}{\value{savepagetoken}}
+}
+
+% change colour of glossary links
+% https://tex.stackexchange.com/questions/38544/glossary-links-color
+\def\glossarylinknewcolour{orange}
+
+\makeatletter
+\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
+\let\@glslink\glsplainhyperlink
+\makeatother
+
+% Fix space TOC/LOT/LOF
+% https://tex.stackexchange.com/questions/69321/spacing-between-chapters-in-list-of-tables
+\makeatletter
+
+\def\@chapter[#1]#2 {
+	
+	\ifnum\c@secnumdepth > \m@ne
+		\if@mainmatter
+			\refstepcounter{chapter}%
+			\typeout{\@chapapp\space\thechapter.}%
+			\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+		\else
+			\addcontentsline{toc}{chapter}{#1}%
+		\fi
+	\else
+		\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	
+	\chaptermark{#1}%
+	%                    \addtocontents{lof}{\protect\addvspace{10\p@}}% NEW
+	%                    \addtocontents{lot}{\protect\addvspace{10\p@}}% NEW
+	\if@twocolumn
+		\@topnewpage[\@makechapterhead{#2}]%
+	\else
+		\@makechapterhead{#2}%
+		\@afterheading
+	\fi
+}
+
+\makeatother
+
+% Make subsubsubsections available
+% https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection
+% https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
+\newif\ifexpandsubsublevel
+
+\expandsubsublevelfalse
+
+\ifexpandsubsublevel
+	\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\fi
+
+%% Avoid cite in captions for LOF/LOT
+%% https://tex.stackexchange.com/questions/147936/list-of-figures-citation-issue
+\DeclareRobustCommand\nocitecaptionlink[1]{{\def\cite##1{}#1}}
+\newcommand\nocitecaption[1]{\caption[\nocitecaptionlink{#1}]{#1}}
+
+%%% Affirmation
+\input{utils/declaration}
+
+%%% FancyHDR page style
+\input{utils/fancy_styles}
+
+%%% Formulas
+\input{utils/formulas}

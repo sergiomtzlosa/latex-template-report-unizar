@@ -38,7 +38,7 @@ Finally, you can import building settings for TeXStudio using the **TeXStudio pr
 
 ## Bibliography flavors
 
-Besides the default bibliography style, there are two projects which implement bibunits and chapterbib for bibliography, feel free to e¡use them if you need bibliography at the end of each chapter.
+Besides the default bibliography style, there are three projects which implement bibunits, chapterbib or default style with subsections for bibliography, feel free to e¡use them if you need bibliography at the end of each chapter.
 
 Check out the bibliography flavours [here](bibliography-work-report)
 

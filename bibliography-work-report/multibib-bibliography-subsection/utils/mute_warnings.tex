@@ -1,0 +1,49 @@
+% Supress warnings
+\usepackage[immediate]{silence} % Silence warnings package
+
+\WarningFilter{latex}{Marginpar on page}
+\WarningFilter{facyhdr}{\headheight is too small}
+\WarningFilter[pdftoc]{hyperref}{Token not allowed in a PDF string}
+\WarningFilter{latex}{Underfull}
+\WarningFilter{latex}{Overfull}
+\WarningFilter{latex}{Citation}
+\WarningFilter{hyperref}{name}
+\WarningFilter{pdftex}{destination with the same} % Filter duplicated ref locations
+\WarningFilter{hyperref}{Token not allowed in a PDF string} % Filter warning to silence
+\WarningFilter{hyperref}{destination with the same identifier}
+% Filter to avoid bad numbering on refs
+\WarningFilter{latexfont}{Size substitutions with differences}
+% Filter font load for text
+\WarningFilter{latex}{`h' float specifier changed to `ht'}  % Filter unwanted positions
+\WarningFilter{latexfont}{Font shape} % Filter font double-load
+\WarningFilter{cmap}{fontenc already loaded - some fonts may be unprocessed.} % Filter
+\WarningFilter{LaTeX}{You have requested package*}
+\WarningFilter{TeX}{destination with the same identifier*}
+\WarningFilter{LaTeX}{You have requested package*}
+\WarningsOff[hyperref]
+\WarningFilter{pdftex}{destination with the same identifier}
+\WarningsOff* % Filter other warnings
+
+% Supress warnings
+\hbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+\vbadness=10000 % A parameter that tells TeX at what point to report badness errors (i.e. underfull and overfull error). [number] ranges from 0 to 10000. 
+\hfuzz=3000pt % A parameter that allows hbox's to be overfull by [length] before an overfull error occurs. 
+\pretolerance=10000
+\tolerance=10000
+%\overfullrule=1000mm
+
+\tolerance=10000
+\hbadness=10000
+
+\pdfstringdefDisableCommands{
+	\def\\{}
+	\def\texttt#1{<#1>}
+	\def\medskip{}
+	\def\smallskip{}
+	\def\vspace{}
+}
+
+\newcount\hbadness
+\newdimen\hfuzz
+
+%\setlength{\emergencystretch}{3em}

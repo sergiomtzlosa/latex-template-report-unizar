@@ -1,0 +1,73 @@
+\global\def\trueValue{true}
+\global\def\falseValue{false}
+\global\def\printabletext{true}
+\global\def\printableimages{true}
+
+\newcommand{\setprintabletext}[1]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	
+	\ifx\tmp\trueValue
+		\global\def\printabletext{true}
+	\else
+		\global\def\printabletext{false}
+	\fi
+}
+
+\newcommand{\setprintableimages}[1]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+	
+	\ifx\tmp\trueValue
+		\global\def\printableimages{true}
+	\else
+		\global\def\printableimages{false}
+	\fi
+}
+
+\newcommand{\checkforceprintable}{
+	
+	\ifdefined\forceprint
+		\setprintabletext{true}
+		\setprintableimages{true} 
+	\else
+		\setprintabletext{false}
+		\setprintableimages{false} 
+	\fi
+}
+
+\newif\iftwoside
+\twosidetrue
+
+\newcommand{\twosidelayout}[1][]{
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+
+	\ifx\tmp\empty
+		\twosidetrue
+	\else
+	
+		\ifx\tmp\falseValue
+			\twosidefalse
+		\else
+			\twosidetrue
+		\fi
+	\fi
+}
+
+\newcommand{\onesidelayout}{\twosidelayout[false]}
+
+% set document title
+\global\def\THETITLE{Report workbook}
+
+% set document author
+\global\def\THEAUTHOR{John Doe}
+
+% set document university
+\global\def\THEUNIVERSITY{John Doe University}
+
+% set faculty name
+\global\def\THEFACULTY{Science Faculty}
+
+% ser PhD programme
+\global\def\THEPHDPROGRAMME{Physics PhD Program}

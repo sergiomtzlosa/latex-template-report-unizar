@@ -1,0 +1,29 @@
+\global\definecolor{BlueUnizar}{HTML}{436491}
+
+\pagestyle{empty}
+
+\pagecolor{BlueUnizar}
+
+\afterpage{\nopagecolor}
+
+\begin{tikzpicture}[overlay,remember picture]
+
+\node[align=center,opacity=0.25] (image) at ($(current page.south east)+(-3.3, 2.0)$) {\includegraphics[scale=2.0, angle=4,origin=c]{logo-simple-white}};
+
+\node[rotate=90] at ($(current page.south east)+(-14.8, 15.0)$) {\fontsize{45}{50} \selectfont \textcolor{white}{\textsf \THETITLE}};
+
+\node (rect) at ($(current page.south east)+(-16.0, 4.0)$) [white, fill,draw,thick,minimum width=0.5cm, minimum height=38cm] {};
+
+\node at ($(current page.south east)+(-12.4, 24.8)$) {\fontsize{15}{20} \selectfont \textcolor{white}{\bf \THEFACULTY\ | \THEPHDPROGRAMME}};
+
+\node (rect) at ($(current page.south east)+(-1.0, 18.0)$) [white, fill,draw,thick,minimum width=0.5cm, minimum height=6cm] {};
+
+\node (image) at ($(current page.south east)+(-6.5, 19.6)$) {\includegraphics[scale=1.5]{images/unizar-white}};
+
+\node at ($(current page.south east)+(-6.5, 17.2)$) {\fontsize{15}{20} \selectfont \textcolor{white}{\textsf January 2020 - \coverdate\today}};
+
+\node at ($(current page.south east)+(-6.5, 16.2)$) {\fontsize{15}{20} \selectfont \textcolor{white}{\bf \THEAUTHOR}};
+
+\node (rect) at ($(current page.north west)+(1.0, -4.0)$) [white, fill,draw,thick,minimum width=30cm, minimum height=0.5cm] {};
+
+\end{tikzpicture}

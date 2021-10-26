@@ -1,0 +1,210 @@
+% !TeX encoding = UTF-8
+% !TeX root = report.tex
+% !TeX spellcheck = en-GB
+% MIT License - Copyright (c) 2021 Sergio Martínez-Losa
+%\documentclass[11pt,letterpaper,openright,spanish,english]{extbook}
+\documentclass[11pt,a4paper,spanish,english]{book}
+%\documentclass[11pt,a4paper,openright,spanish,english]{book}
+
+\input{utils/super_macro}
+
+% Set whether twoside enable of not (true or false), by default twoside
+%\twosidelayout[true] % select twoside layout
+%\twosidelayout[false] % select oneside layout
+\twosidelayout % default twoside layout active
+%\onesidelayout % equivalent to \twosidelayout[false]
+
+\checkforceprintable
+
+\input{utils/imports}
+\input{utils/macros}
+\input{utils/mute_warnings}
+
+\showtodos{true}
+
+% Show or hide watermark by calling \showwatermark{true} or \preliminary{true} both are equals
+%\showwatermark{true}
+\preliminary{false}
+
+% NECESSARY TITLE & AUTHOR
+\title{\THETITLE}
+\author{\THEAUTHOR}
+
+\makeindex
+
+\setglossarystyle{betterglossary}
+\makeglossaries
+\input{chapters/glossary}
+
+\iffilepublications
+	\newcites{publications}{\listofpublicationsname\protect\thispagestyle{phdfancyempty}} % multibib bibliography section
+\fi
+
+\newcites{links}{\protect\thispagestyle{phdfancyempty}\null}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagenumbering{alph}
+\setcounter{page}{-1}
+
+% supress page numbering	
+%\pagenumbering{gobble}
+	
+% insert cover
+% other fancy cover: https://tex.stackexchange.com/questions/475597/how-to-create-a-cover-page-like-this
+% https://latexdraw.com/how-to-create-a-beautiful-cover-page-in-latex-using-tikz/
+\begin{titlepage}
+	
+	\pagestyle{empty}
+	\protect\thispagestyle{empty}
+	
+	\ifx\printableimages\trueValue
+		\input{utils/cover_bw}
+	\else
+%		\input{utils/cover_colour}
+                \input{utils/cover_colour_alternative_rainbow}
+%		\input{utils/cover_colour_blue}
+%		\input{utils/cover_colour_blue_hexa}
+%		\input{utils/cover_colour_tschichold}
+%		\input{utils/cover_colour_tschichold_blue}
+	\fi
+	
+\end{titlepage}
+
+\frontmatter % apply TOC styles frontmatter
+\pagenumbering{Roman}
+
+\renewcommand{\contentsname}{Contents}
+\SetHeaderTitle{\MakeUppercase{\contentsname}}
+\protect\addtocontents{toc}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}}
+\protect\pagestyle{phdfancyspecialempty}
+
+\ifexpandsubsublevel
+	\setcounter{secnumdepth}{4} % numbering depth for section levels
+\else
+	\setcounter{secnumdepth}{2} % numbering depth for section levels
+\fi
+
+\tableofcontents
+\clearpage
+
+% https://tex.stackexchange.com/questions/48509/insert-list-of-figures-in-the-table-of-contents
+
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\figurename}{Figure}
+\SetHeaderTitle{\MakeUppercase{\listfigurename}}
+\protect\addtocontents{lof}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{0.4cm}}
+\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
+\protect\pagestyle{phdfancyspecialempty}\listoffigures
+\clearpage
+
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\tablename}{Table}
+\SetHeaderTitle{\MakeUppercase{\listtablename}}
+\protect\addtocontents{lot}{~\hfill\textbf{Page}\par\protect\thispagestyle{phdfancyempty}\vspace{0.4cm}}
+\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
+\protect\pagestyle{phdfancyspecialempty}\listoftables
+\clearpage
+
+% Custom section - list of equations
+\renewcommand{\listequationsname}{List of Equations}
+\renewcommand{\equationname}{Equation}
+\renewcommand{\equationpagetext}{Page}
+\SetHeaderTitle{\MakeUppercase{\listequationsname}}
+\protect\thispagestyle{phdfancyempty}
+\phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
+\protect\pagestyle{phdfancyspecialempty}\listofaddequations
+\clearpage
+
+% show glossary items
+\SetHeaderTitle{\MakeUppercase{\glossaryname}}
+\phantomsection\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossary[title={\vspace{-1.5cm}\protect\raggedright\glossaryname}]\protect\pagestyle{phdfancyspecialempty}
+\clearpage
+
+% report declaration of authenticity
+% #1 declaration without page numbers and without page number in TOC or declaration with page numers and page number in TOC	
+% #2 show or not to show in TOC
+\inputdeclaration[true][true]
+
+%% start abstract section
+% #1 show page number or not
+% #2 show or hide rule below title
+% #3 show in TOC or not
+% #4 input text file
+\renewcommand{\abstractname}{Abstract}
+\inputabstract[true][showrule]{true}{chapters/abstract}
+%% end abstract section
+
+% Acknowledgements and dedications
+%\input{utils/dedications}
+
+\mainmatter % apply TOC styles mainmatter
+
+\begin{startpagenumbering}[1]
+
+	\input{chapters/00_introduction}
+	\input{chapters/01_first_chapter}
+	
+\end{startpagenumbering}
+
+\backmatter % apply TOC styles backmatter
+
+%\ContinuePaginingWithNumbering[Roman]
+
+% Custom section - Epilogue
+\def\epilogueTitle{Epilogue}
+\SetHeaderTitle{\MakeUppercase{\epilogueTitle}}
+\phantomsection\addcontentsline{toc}{chapter}{\epilogueTitle}
+\protect\pagestyle{phdfancyspecialempty}\input{utils/epilogue}
+\clearpage
+
+% Bibliography
+\SetTitleBibliography{Bibliography}
+\SetHeaderTitle{\MakeUppercase{\bibname}}
+%\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+\renewcommand{\bibsection}{\chapter*{\flushleft\bibname\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+\phantomsection\addcontentsline{toc}{chapter}{\bibname}
+\protect\bibliographystyle{unsrt}
+\bibliography{./utils/report-bib}
+\protect\pagestyle{phdfancyspecialempty}
+
+% section in bibliography
+\makeatletter
+\def\@biblabel#1{}
+\makeatother
+
+\def\titlesectionbibliography{Other links}
+\renewcommand{\bibsection}{\subsection*{\titlesectionbibliography}\protect\thispagestyle{phdfancyempty}}
+%\addcontentsline{toc}{section}{\titlesectionbibliography}
+\nocitelinks{*}
+\bibliographylinks{./utils/links}
+\protect\bibliographystylelinks{unsrt}
+\protect\pagestyle{phdfancyspecialempty}
+\clearpage
+
+% List of publications
+\iffilepublications
+
+	\makeatletter
+	\def\@biblabel#1{\textsuperscript{[#1]\hskip -0.1cm}}
+	\makeatother
+	
+	\renewcommand{\listofpublicationsname}{List of Publications}
+	
+	\renewcommand{\bibsection}{\chapter*{\flushleft\listofpublicationsname\vspace{-0.6cm}\customquad\rule{\linewidth}{1pt}\vspace{-0.5cm}}\protect{\thispagestyle{phdfancyempty}}}{}{}
+	
+	\SetHeaderTitle{\MakeUppercase{\listofpublicationsname}}
+	\phantomsection\addcontentsline{toc}{chapter}{\listofpublicationsname}
+	\protect\thispagestyle{phdfancyempty}
+	\protect\pagestyle{phdfancyspecialempty}
+	\nocitepublications{*}
+	%	\protect\bibliographystylepublications{./packages/ieeetr-redux}
+	\protect\bibliographystylepublications{unsrt}
+	\bibliographypublications{./utils/publications.bib}
+	\clearpage
+
+\fi
+
+\end{document}

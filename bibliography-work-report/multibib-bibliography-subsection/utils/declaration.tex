@@ -1,0 +1,61 @@
+\def\labelDeclaration{Declaration}%
+
+\def\declarationText{I hereby declare that the work presented in this thesis is entirely my own and that I did not use any other sources and references than the listed ones. I have marked all direct or indirect statements from other sources contained therein as quotations. Neither this work nor significant parts of it were part of another examination procedure. I have not published this work in whole or in part before. The electronic copy is consistent with all submitted copies.
+}
+
+\def\labelSignature{\ Zaragoza (Aragón), \coverdate\today}
+
+\newcommand{\declaration} {
+	\cleardoublepage
+	\null
+	\vskip 5cm\relax
+	\begin{center}
+		\begin{minipage}[t]{10cm}
+			\hbox{\textbf{\labelDeclaration}}%
+			\vskip 1cm\relax
+			\declarationText
+			\vskip 4cm\relax
+			\hrulefill
+			\vskip .4\baselineskip
+			\hbox{\labelSignature}
+		\end{minipage}
+	\end{center}
+}
+
+\newcommandtwoopt{\inputdeclaration}[2][false][true] {
+	
+	\ignorespaces\lowercase{\def\tmp{#1}}
+	
+	% whether or not to show in TOC
+	\ignorespaces\lowercase{\def\tmpshowindex{#2}}
+	
+	\ifthenelse{\equal{\tmp}{false}}{
+		
+		\ifthenelse{\equal{\tmpshowindex}{true}}{
+			
+			% declaration without page numbers and without page number in TOC
+			\protect\pagestyle{empty}\phantomsection\declaration
+			\cftaddtitleline{toc}{chapter}{\labelDeclaration}{}
+			\protect\thispagestyle{empty}
+		}{
+			
+			\protect\pagestyle{empty}\declaration
+			\protect\thispagestyle{empty}
+		}
+	}{
+		
+		\ifthenelse{\equal{\tmpshowindex}{true}}{
+			
+			% declaration with page numers and page number in TOC	
+			\protect\pagestyle{phdfancyempty}\phantomsection\declaration
+			\addcontentsline{toc}{chapter}{\labelDeclaration}
+			\protect\thispagestyle{phdfancyempty}
+		}{
+			
+			\protect\pagestyle{phdfancyempty}\declaration
+			\protect\thispagestyle{phdfancyempty}
+		}
+	}
+	
+	\clearpage
+}

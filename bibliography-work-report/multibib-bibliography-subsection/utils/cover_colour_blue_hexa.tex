@@ -1,0 +1,109 @@
+\global\definecolor{BlueUnizar}{HTML}{436491}
+
+\pagestyle{empty}
+
+\newgeometry{left=8.0cm} % defines the geometry for the titlepage
+
+% import afterpage package
+\afterpage{\restoregeometry\globalsetgeometry}
+\afterpage{\nopagecolor} % Use this to restore the color pages to white
+
+\begin{tikzpicture}[remember picture,overlay]
+%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%
+\fill[BlueUnizar] (current page.south west) rectangle (current page.north east);
+
+%%%%%%%%%%%%%%%%%%%% Background Polygon %%%%%%%%%%%%%%%%%%%%
+
+%\foreach \i in {2.5,...,10}
+%{
+%    \node[rounded corners,BlueUnizar!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.west)+(2.5,-5)$) {} ;
+%}
+
+\foreach \i in {0.5,...,22}
+{
+\node[rounded corners,BlueUnizar!90,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north west)+(2.5,0)$) {} ;
+}
+
+\foreach \i in {0.5,...,14}
+{
+\node[rounded corners,BlueUnizar!90,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north east)+(0,-9.5)$) {} ;
+}
+
+%\foreach \i in {21,...,6}
+%{
+%\node[BlueUnizar!85,rounded corners,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.south east)+(-0.2,-0.45)$) {} ;
+%}
+
+\end{tikzpicture}
+
+\vspace{-2cm}
+\includegraphics[width=10cm]{unizar-white}\\[-1em]
+\color{white}
+\makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+\par
+\noindent
+\textbf{\textsf{Science Faculty} | \textsf{\bold{Physics PhD}}}
+
+\begin{tikzpicture}[remember picture,overlay]
+%%%%%%%%%%%%%%%%%%%% Title of the Report %%%%%%%%%%%%%%%%%%%% 
+\node[left,white,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.north east)+(-0.8,-8.5)$)
+{
+{\fontsize{25}{30} \selectfont \bfseries \THETITLE}
+};
+
+%%%%%%%%%%%%%%%%%%%% Subtitle %%%%%%%%%%%%%%%%%%%% 
+\node[left,white,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.north east)+(-0.7,-10)$)
+{
+{\huge \textit{\bold{January 2020 - \coverdate\today}}
+};
+
+%%%%%%%%%%%%%%%%%%%% Author Name %%%%%%%%%%%%%%%%%%%% 
+\node[left,white,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.north east)+(-0.9,-11.5)$)
+{
+{\Large \textsf{\THEAUTHOR}}
+};
+
+%%%%%%%%%%%%%%%%%%%% Year %%%%%%%%%%%%%%%%%%%% 
+%\node[rounded corners,fill=BlueUnizar!70,text=white,regular polygon,regular polygon sides=6, minimum size=2.5 cm,inner sep=0,ultra thick] at ($(current page.west)+(2.5,-5)$) {\LARGE \bfseries 2020};
+
+\node[align=center,opacity=0.25] at ($(current page.south)+(6.5,1.38)$) {
+	% LOGOS: https://unizar.es/identidad-corporativa/logos
+	{\includegraphics[scale=2.2]{logo-simple-white}}%\\[1cm]
+	%	{\fontsize{40}{72} \selectfont {\THETITLE}} \\[1cm]
+	%	%		{\fontsize{40}{72} \selectfont \THETITLEA}\\[1cm] 
+	%	%		{\fontsize{40}{72} \selectfont \THETITLEB}\\[1cm] 
+	%	{\fontsize{16}{19.2} \selectfont \textcolor{orange}{ \bf \THEAUTHOR}}\\[3pt]
+	%	\THEUNIVERSITY\\[3pt]
+	%	\bold{Viena, Agosto 2021 - Octubre 2021}
+	%		\coverdate\today
+};
+
+\end{tikzpicture}
+
+% https://tex.stackexchange.com/questions/580299/afterpage-not-working-for-newgeometry-and-restoregeometry
+\makeatletter
+
+\newcommand{\globalsetgeometry}{ %
+	
+	\global\textheight\textheight
+	\global\@colht\textheight
+	\global\@colroom\textheight
+	\global\vsize\textheight
+	\global\headheight\headheight
+	\global\topskip\topskip
+	\global\headsep\headsep
+	\global\topmargin\topmargin
+	\global\footskip\footskip
+	%% The following are not used in most cases
+	\global\textwidth\textwidth
+	\global\evensidemargin\evensidemargin
+	\global\oddsidemargin\oddsidemargin
+	\global\baselineskip\baselineskip
+	\global\marginparwidth\marginparwidth
+	\global\marginparsep\marginparsep
+	\global\columnsep\columnsep
+	\global\hoffset\hoffset
+	\global\voffset\voffset
+}
+
+\makeatother

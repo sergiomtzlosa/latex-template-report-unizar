@@ -40,7 +40,7 @@ Finalmente, puedes importar la configuración para compilar el documento en TeXS
 
 ## Bibliografías en diferentes formas
 
-Se ha implementado la posibilidiad de obtener las bibliografía usadas en una nueva sección al final de cada capítulo.
+Se ha implementado la posibilidad de obtener las bibliografías usadas en una nueva sección al final de cada capítulo o en usando el estilo por defecto añadiendo subsecciones.
 
 Los proyectos relativos a las bibliografías se encuentran [aquí](bibliography-work-report)
 

@@ -1,0 +1,31 @@
+\def\textDedication{
+	\vspace*{.3in}~\\
+	\begin{flushright}
+		\begin{shapeitalic}
+			To everybody who likes physics. \\
+			Also all people that dislikes physics.
+		\end{shapeitalic}
+	\end{flushright}
+}
+
+\newcommand{\showDedication}[1][false]{
+
+	\ignorespaces\lowercase{\def\showtoc{#1}}
+	
+	\ifthenelse{\equal{\showtoc}{false}}{
+		
+		% dedication without page number and without page number in TOC
+		\protect\pagestyle{empty}\phantomsection\textDedication\clearpage
+		\protect\thispagestyle{empty}
+	}{
+	
+		% dedication with page number and with page number in TOC
+		\def\labelDedication{Dedication}
+		
+		\protect\pagestyle{phdfancyempty}\phantomsection\textDedication
+		\addcontentsline{toc}{chapter}{\labelDedication}
+		\protect\thispagestyle{phdfancyempty}
+	}
+}
+
+\showDedication
