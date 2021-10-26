@@ -40,7 +40,7 @@ Finalmente, puedes importar la configuración para compilar el documento en TeXS
 
 ## Compresión de PDF con Docker
 
-El comando **make all-cover*** usa Docker para comprimir el archivo pdf, si desea usar este comando debes instalar Docker](https://www.docker.com/products/docker-desktop).
+El comando **make all-cover** del archivo Makefile usa Docker para comprimir el archivo pdf, si desea usar este comando debes instalar Docker](https://www.docker.com/products/docker-desktop).
 
 ## Bibliografías en diferentes formas
 
