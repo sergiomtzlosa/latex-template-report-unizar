@@ -40,6 +40,7 @@
 	\usepackage{xpatch} % mainmatter style book
 \fi
 
+\usepackage{morewrites} % https://www.ctan.org/pkg/morewrites
 \usepackage[none]{hyphenat} % do not split words at the en of line
 \usepackage{afterpage}
 \usepackage{nicefrac} % diagonal fractions --> https://tex.stackexchange.com/questions/3372/how-do-i-typeset-arbitrary-fractions-like-the-standard-symbol-for-5-%C2%BD
@@ -95,12 +96,12 @@
 	\makeatother
 \fi
 
-%\newif\ifmultibib
+%\newif\iffilepublications
 
-% set true or false to view the list of publications 
-%\multibibfalse
+%% set true or false to view the list of publications 
+%\filepublicationstrue
 %
-%\ifmultibib
+%\iffilepublications
 %	\usepackage[resetlabels]{multibib} % multiple biblipography
 %\fi
 
