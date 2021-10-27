@@ -302,12 +302,12 @@ reduce-merge-pdf: cover-latex reduce-pdf merge-cover
 # search in pdf file
 # USAGE: make search-pdf SEARCH_TERM=Kittel
 search-pdf:
-	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf | cat
+	pdfgrep -n -R "$(SEARCH_TERM)" $(DOC).pdf --exclude=bibliography-work-report | cat
 
 # search in tex files
 # USAGE: make search-tex SEARCH_TERM=Kittel
 search-tex:
-	grep -rnw --include \*.tex '.' -e '$(SEARCH_TERM)' --color=always | cat
+	grep -rnw --include \*.tex '.' -e '$(SEARCH_TERM)' --color=always --exclude-dir=bibliography-work-report | cat
 
 # Help command
 help:
