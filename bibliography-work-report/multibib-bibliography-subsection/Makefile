@@ -87,7 +87,8 @@ distclean:
         $(DOC).blg \
         $(DOC).bbl \
         $(DOC).out \
-        $(DOC).dvi
+        $(DOC).dvi \
+	*.mw
 
 # clean compilation
 clean:
@@ -97,7 +98,8 @@ clean:
 	$(DOC).bbl \
 	$(DOC).out \
 	$(DOC).dvi \
-	$(DOC).pdf
+	$(DOC).pdf \
+	*.mw
 
 compile-grayscale:
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex

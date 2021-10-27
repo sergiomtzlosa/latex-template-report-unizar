@@ -86,7 +86,8 @@ distclean:
         $(DOC).blg \
         $(DOC).bbl \
         $(DOC).out \
-        $(DOC).dvi
+        $(DOC).dvi \
+	*.mw
 
 # clean compilation
 clean:
@@ -96,7 +97,8 @@ clean:
 	$(DOC).bbl \
 	$(DOC).out \
 	$(DOC).dvi \
-	$(DOC).pdf
+	$(DOC).pdf \
+	*.mw
 
 compile-grayscale:
 	sh -c './latex_bibunits.sh $(DOC)' && \
