@@ -173,21 +173,25 @@
 %\clearpage
 
 % List of publications
-\newcommand{\bibnamePublications}{List of Publications}
+\iffilepublications
 
-\protect\chapter*{\flushleft\bibnamePublications\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+	\newcommand{\bibnamePublications}{List of Publications}
 
-\renewcommand{\bibsection}{} % https://tex.stackexchange.com/questions/132646/how-to-remove-the-references-title
-\SetHeaderTitle{\MakeUppercase{\bibnamePublications}}
-\addcontentsline{toc}{chapter}{\bibnamePublications}
-\protect\thispagestyle{phdfancyempty}
-%\protect\thispagestyle{phdfancyspecialempty}
-%\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
-\protect\nocite{*}
-\protect\bibliographystyle{unsrt}
-\protect\bibliography{./utils/publications}
-\protect\pagestyle{phdfancyspecialempty}
-\clearpage
+	\protect\chapter*{\flushleft\bibnamePublications\vspace{-0.5cm}\customquad\rule{\linewidth}{1pt}\vspace{-1.2cm}}
+
+	\renewcommand{\bibsection}{} % https://tex.stackexchange.com/questions/132646/how-to-remove-the-references-title
+	\SetHeaderTitle{\MakeUppercase{\bibnamePublications}}
+	\addcontentsline{toc}{chapter}{\bibnamePublications}
+	\protect\thispagestyle{phdfancyempty}
+%	\protect\thispagestyle{phdfancyspecialempty}
+%	\protect\bibliographystyle{./packages/ieeetr-redux} % default bibliography style
+	\protect\nocite{*}
+	\protect\bibliographystyle{unsrt}
+	\protect\bibliography{./utils/publications}
+	\protect\pagestyle{phdfancyspecialempty}
+	\clearpage
+
+\fi
 
 % List of publications
 %\iffilepublications
