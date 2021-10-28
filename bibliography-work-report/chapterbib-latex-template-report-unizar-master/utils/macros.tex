@@ -588,12 +588,12 @@
 
 % change colour of glossary links
 % https://tex.stackexchange.com/questions/38544/glossary-links-color
-\def\glossarylinknewcolour{orange}
+%\def\glossarylinknewcolour{orange}
 
-\makeatletter
-\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
-\let\@glslink\glsplainhyperlink
-\makeatother
+%\makeatletter
+%\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
+%\let\@glslink\glsplainhyperlink
+%\makeatother
 
 % Fix space TOC/LOT/LOF
 % https://tex.stackexchange.com/questions/69321/spacing-between-chapters-in-list-of-tables

@@ -609,23 +609,23 @@
 \setlength\cellspacetoplimit{4pt}
 \setlength\cellspacebottomlimit{4pt}
 
-%\ifx\printabletext\trueValue
-%	\relax
-%\else
-%	% change colour of glossary links
-%	% https://tex.stackexchange.com/questions/38544/glossary-links-color
-%	\def\glossarylinknewcolour{orange}
-%	
-%	\ifdefined\compileblack
-%		\def\glossarylinknewcolour{black}
-%	\else
-%		\def\glossarylinknewcolour{orange}
-%	\fi
-%
-%	\makeatletter
-%	
-%		\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
-%		\let\@glslink\glsplainhyperlink
-%		
-%	\makeatother
-%\fi
+\ifx\printabletext\trueValue
+	\relax
+\else
+	% change colour of glossary links
+	% https://tex.stackexchange.com/questions/38544/glossary-links-color
+	\def\glossarylinknewcolour{orange}
+	
+	\ifdefined\compileblack
+		\def\glossarylinknewcolour{black}
+	\else
+		\def\glossarylinknewcolour{orange}
+	\fi
+
+	\makeatletter
+	
+		\newcommand{\glsplainhyperlink}[2]{\colorlet{currenttext}{\glossarylinknewcolour}\colorlet{currentlink}{\@linkcolor}\hypersetup{linkcolor=currenttext}\hyperlink{#1}{#2}\hypersetup{linkcolor=currentlink}}
+		\let\@glslink\glsplainhyperlink
+		
+	\makeatother
+\fi
