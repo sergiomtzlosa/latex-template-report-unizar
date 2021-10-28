@@ -83,7 +83,7 @@
 		\centering
 		\includegraphics[width=#1\textwidth,height=\textheight,keepaspectratio]{#2}
 %		\captionsetup{justification=centering}
-		\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 		\caption{#3}
 		\ifthenelse{\equal{#4}{}}{}{\label{#4}}
 	\end{figure}	
@@ -103,7 +103,7 @@
 		\ifthenelse{\equal{#5}{}}{
 			\ifthenelse{\equal{#7}{}}{
 				%				\captionsetup[subfigure]{labelformat=empty}
-				\captionsetup[subfigure]{belowskip=-10pt, labelformat=empty, justification=raggedright, singlelinecheck=true}
+				\captionsetup[subfigure]{belowskip=\spaceBelowCaptionFigures, labelformat=empty, justification=raggedright, singlelinecheck=true}
 			}{}
 		}{}
 		
@@ -146,28 +146,30 @@
 		}%
 	\item[]}{\end{list}}
 	
+\def\spaceBelowCaptionFigures{-10pt}
+\def\spaceBelowCaptionEquations{-4pt}
 
 \newcommand{\centercaptionequation}[1]{	
 	%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=-5pt, justification=raggedright, singlelinecheck=true}
+	\captionsetup{belowskip=\spaceBelowCaptionEquations, justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
 }
 
 \newcommand{\centercaption}[1]{	
 %	\captionsetup{justification=centering}
-	\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
 }
 
 \newcommand{\nocitecentercaption}[1]{	
 	%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 	\protect\nocitecaption{#1}
 }
 
 \newcommand{\centercaptionlisting}[1]{
 %	\captionsetup{justification=centering}
-	\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 	\protect\caption[#1]{\boldmath{#1}}
 }
 
@@ -555,7 +557,7 @@
 		\centering
 		#1
 %		\captionsetup{justification=centering}
-		\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 		\caption{#2}
 	\end{figure}
 }
@@ -566,7 +568,7 @@
 		\centering
 		#2
 %		\captionsetup{justification=centering}
-		\captionsetup{belowskip=-10pt, justification=raggedright, singlelinecheck=true}
+		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 		\caption{#3}
 		\ifthenelse{\equal{#1}{}}{}{\label{#1}}
 	\end{figure}
