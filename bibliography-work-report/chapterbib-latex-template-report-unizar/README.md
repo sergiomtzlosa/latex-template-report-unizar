@@ -40,6 +40,16 @@ Finally, you can import building settings for TeXStudio using the **TeXStudio pr
 
 The command **make all-cover** in the Makefile uses Docker to reduce pdf file size, if you want to use it you must install [Docker](https://www.docker.com/products/docker-desktop).
 
+## Magic comments
+
+If you put this command in Unix systems at the beginning of the file **report.tex**:
+
+```
+% !TeX TS-program = make all
+````
+
+TexStudio will invoke **make all** command from the Makefile, this is not supported on Windows systems.
+
 # Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
 
 # BibTeX citation

@@ -46,6 +46,16 @@ Finalmente, puedes importar la configuración para compilar el documento en TeXS
 
 El comando **make all-cover** del archivo Makefile usa Docker para comprimir el archivo pdf, si desea usar este comando debes instalar Docker](https://www.docker.com/products/docker-desktop).
 
+## Magic comments
+
+Si pones este comando en sistemas Unix al principio del archivo **report.tex**:
+
+```
+% !TeX TS-program = make all
+````
+
+TexStudio llamara al comando **make all** del archivo Makefile, esto no esta disponible en sistemas Windows.
+
 # Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
 
 # Citación BibTeX

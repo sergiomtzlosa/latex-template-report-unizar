@@ -48,6 +48,16 @@ Se ha implementado la posibilidad de obtener las bibliografías usadas en una nu
 
 Los proyectos relativos a las bibliografías se encuentran [aquí](bibliography-work-report)
 
+## Magic comments
+
+Si pones este comando en sistemas Unix al principio del archivo **report.tex**:
+
+```
+% !TeX TS-program = make all
+````
+
+TexStudio llamara al comando **make all** del archivo Makefile, esto no esta disponible en sistemas Windows.
+
 # Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
 
 # Citación BibTeX
