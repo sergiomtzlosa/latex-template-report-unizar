@@ -20,6 +20,12 @@ En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la 
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+Configura BiBTex con el siguiente comando:
+
+```
+bibtex ?a*.aux 
+```
+
 ## Paquete multibib
 
 Este proyecto implementa la bibliografía por defecto pero añadiendo subsecciones usando el paquete multibib.

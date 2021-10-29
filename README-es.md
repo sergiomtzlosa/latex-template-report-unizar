@@ -20,6 +20,12 @@ En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la 
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+Configura BiBTex con el siguiente comando:
+
+```
+bibtex ?a*.aux
+```
+
 ## Instalar pygments
 
 Instalar pygments en windows: [pygments](https://tex.stackexchange.com/questions/369600/how-to-install-pygments-on-windows-7).

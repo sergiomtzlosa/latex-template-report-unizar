@@ -20,6 +20,12 @@ En Options -> Texstudio configuration -> Orders, poner la siguiente linea en la 
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+Configura BiBTex con el siguiente comando:
+
+```
+bibtex ?a*.aux 
+```
+
 ## Paquete bibunits
 
 El paquete bibunits necesita unos pasos de compilación especiales, puedes seguir usando el comando **make all** como de costumbre, pero si quieres usar TexStudio y bibunits, debes incluir el script **latex_bibunits.sh** en el proceso de compilación, ver imagen [config-texstudio-bibunits-compile-script-unix.png](config-texstudio-bibunits-compile-script-unix.png?raw=true) para establecer el script en la configuración.

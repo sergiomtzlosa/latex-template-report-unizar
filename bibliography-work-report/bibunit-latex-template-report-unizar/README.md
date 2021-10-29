@@ -18,6 +18,12 @@ Over Options -> Texstudio configuration -> Orders, set the following line in sec
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+Configure BiBTex with the following command:
+
+```
+bibtex ?a*.aux 
+```
+
 ## Package bibunits
 
 Package bibunits needs a special compilation steps, you can keep on using the **make all** command as usual.

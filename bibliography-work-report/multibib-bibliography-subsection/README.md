@@ -18,6 +18,12 @@ Over Options -> Texstudio configuration -> Orders, set the following line in sec
 pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.tex
 ```
 
+Configure BiBTex with the following command:
+
+```
+bibtex ?a*.aux 
+```
+
 ## Package multibib
 
 This project implements bibliography using the default style but adding extra subsection using multibib.
