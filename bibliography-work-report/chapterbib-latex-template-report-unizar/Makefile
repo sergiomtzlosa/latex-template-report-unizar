@@ -4,6 +4,7 @@
 DOC := report
 PUBS := publications
 
+ifneq ($(OS),Windows_NT)
 EXISTSBIBS := $(shell grep -rnw --include \*.tex '.' -e '\\begin{cbunit}' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "true")
 OUTBIBS := $(shell grep -rnw --include \*.tex '.' -e '%\\begin{cbunit}' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "false")
 SHELLBIBS := $(shell if [ "$(OUTBIBS)" = "false" ]; then echo "false"; else echo "true"; fi)
@@ -19,6 +20,7 @@ SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(C
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 CHECK_DOCKER := $(shell which docker)
+endif
 
 # base compilation
 base:
@@ -91,6 +93,9 @@ distclean:
 
 # clean compilation
 clean:
+ifeq ($(OS),Windows_NT)
+        del /q *.aux $(DOC).log $(DOC).blg $(DOC).bbl $(DOC).out $(DOC).dvi $(DOC).pdf *.mw
+else
 	rm -f *.aux \
 	$(DOC).log \
 	$(DOC).blg \
@@ -99,6 +104,7 @@ clean:
 	$(DOC).dvi \
 	$(DOC).pdf \
 	*.mw
+endif
 
 compile-grayscale:
 	sh -c './latex_chapterbib.sh $(DOC)' && \
