@@ -95,7 +95,11 @@ distclean:
 
 # clean compilation
 clean:
+ifeq ($(OS),Windows_NT)
+	del *.aux \
+else
 	rm -f *.aux \
+endif
 	$(DOC).log \
 	$(DOC).blg \
 	$(DOC).bbl \
