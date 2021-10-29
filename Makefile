@@ -47,33 +47,43 @@ endif
 all:
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 ifeq ($(SHELLGLOSSARIES),false)
+ifneq ($(OS),Windows_NT)
 	echo "" && \
 	sh -c 'echo "\033[33;1mGlossary not found !!!\033[0m"' && \
 	echo ""
+endif
 else
 	makeglossaries $(DOC)
+ifneq ($(OS),Windows_NT)
 	echo "" && \
 	sh -c 'echo "\033[33;1mGlossary found !!!\033[0m"' && \
 	echo ""
 endif
+endif
 ifeq ($(CHECKBIBS),true)
 	bibtex $(DOC).aux
+ifneq ($(OS),Windows_NT)
 	echo "" && \
 	sh -c 'echo "\033[33;1mBibliography found !!!\033[0m"' && \
 	echo ""
+endif
 else
+ifneq ($(OS),Windows_NT)
 	echo "" && \
 	sh -c 'echo "\033[33;1mBibliography not found !!!\033[0m"' && \
 	echo ""
+endif
 endif
 ifeq ($(CHECKPUBS),true)
 	bibtex $(PUBS).aux
 endif
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 	pdflatex -enable-write18 --shell-escape $(DOC).tex
+ifneq ($(OS),Windows_NT)
 	echo "" && \
 	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
 	echo ""
+endif
 
 # compile with index and without bibliography
 simple: nobib
