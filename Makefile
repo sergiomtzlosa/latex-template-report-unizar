@@ -4,6 +4,7 @@
 DOC := report
 PUBS := publications
 
+ifneq ($(OS),Windows_NT)
 EXISTSBIBS := $(shell grep -rnw --include \*.tex '.' -e '\\bibliography{' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "true")
 OUTBIBS := $(shell grep -rnw --include \*.tex '.' -e '%\\bibliography{' --color=always --exclude-dir=bibliography-work-report > /dev/null && echo "false")
 SHELLBIBS := $(shell if [ "$(OUTBIBS)" = "false" ]; then echo "false"; else echo "true"; fi)
@@ -19,6 +20,7 @@ SHELLGLOSSARIES := $(shell if [ "$(EXISTSGLOSSARIES)" = "true" ]; then echo "$(C
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 CHECK_DOCKER := $(shell which docker)
+endif
 
 # base compilation
 base:
