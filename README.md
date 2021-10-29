@@ -21,7 +21,7 @@ pdflatex -synctex=1 --shell-escape -interaction=nonstopmode -enable-write18 %.te
 Configure BiBTex with the following command:
 
 ```
-bibtex ?a*.aux 
+bibtex ?a*.aux
 ```
 
 ## Install pygments
@@ -60,7 +60,7 @@ If you put this command in Unix systems at the beginning of the file **report.te
 % !TeX TS-program = make all
 ````
 
-TexStudio will invoke **make all** command from the Makefile, this is not supported on Windows systems.
+TexStudio will invoke **make all** command from the Makefile.
 
 # Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
 

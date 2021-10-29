@@ -56,7 +56,7 @@ Si pones este comando en sistemas Unix al principio del archivo **report.tex**:
 % !TeX TS-program = make all
 ````
 
-TexStudio llamara al comando **make all** del archivo Makefile, esto no esta disponible en sistemas Windows.
+TexStudio llamara al comando **make all** del archivo Makefile.
 
 # Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
 
