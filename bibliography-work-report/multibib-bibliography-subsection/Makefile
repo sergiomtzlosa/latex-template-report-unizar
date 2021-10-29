@@ -99,7 +99,7 @@ distclean:
 # clean compilation
 clean:
 ifeq ($(OS),Windows_NT)
-        del /q *.aux $(DOC).log $(DOC).blg $(DOC).bbl $(DOC).out $(DOC).dvi $(DOC).pdf *.mw
+        del /q *.aux $(DOC).log $(DOC).blg $(DOC).bbl $(DOC).out $(DOC).dvi $(DOC).pdf *.mw >nul 2>&1
 else
 	rm -f *.aux \
 	$(DOC).log \
