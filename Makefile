@@ -96,10 +96,9 @@ distclean:
 # clean compilation
 clean:
 ifeq ($(OS),Windows_NT)
-	del *.aux \
+	del *.aux $(DOC).log $(DOC).blg $(DOC).bbl $(DOC).out $(DOC).dvi $(DOC).pdf *.mw
 else
 	rm -f *.aux \
-endif
 	$(DOC).log \
 	$(DOC).blg \
 	$(DOC).bbl \
@@ -107,6 +106,7 @@ endif
 	$(DOC).dvi \
 	$(DOC).pdf \
 	*.mw
+endif
 
 compile-grayscale:
 	pdflatex -draftmode -enable-write18 --shell-escape "\def\forceprint{}\input{${DOC}}" $(DOC).tex
