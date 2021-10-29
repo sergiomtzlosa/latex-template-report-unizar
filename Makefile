@@ -45,6 +45,9 @@ endif
 
 # compile with index and bibliography
 all:
+ifeq ($(OS),Windows_NT)
+	compilelkatex.bat $(DOC).
+else
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 ifeq ($(SHELLGLOSSARIES),false)
 	echo "" && \
@@ -74,6 +77,7 @@ endif
 	echo "" && \
 	sh -c 'echo "\033[33;1mPDFLaTex compilation finished !!!\033[0m"' && \
 	echo ""
+endif
 
 # compile with index and without bibliography
 simple: nobib
