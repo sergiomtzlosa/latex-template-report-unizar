@@ -46,7 +46,7 @@ endif
 # compile with index and bibliography
 all:
 ifeq ($(OS),Windows_NT)
-	compilelkatex.bat $(DOC).
+	compile-latex.bat $(DOC).
 else
 	pdflatex -draftmode -enable-write18 --shell-escape $(DOC).tex
 ifeq ($(SHELLGLOSSARIES),false)
