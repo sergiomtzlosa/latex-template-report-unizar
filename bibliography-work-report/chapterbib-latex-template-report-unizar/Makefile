@@ -233,8 +233,8 @@ endif
 ifeq ($(OS_NAME),darwin)
 	pdf2htmlEX --zoom 1.5 $(DOC).pdf html/$(DOC).html
 endif
-	zip html/report.zip html/report.html
-	rm html/report.html
+	zip html/$(DOC).zip html/$(DOC).html
+	rm html/$(DOC).html
 
 # create word cloud
 word-cloud:
@@ -242,7 +242,7 @@ ifeq ($(CHECKREPORT),true)
 	echo "" && \
 	sh -c 'echo "\033[33;1mCreating word cloud, please wait ... \033[0m"' && \
 	echo "" && \
-	pdftotext report.pdf - | wordcloud_cli --height 3000 --width 2000 --background white --imagefile images/wordcloud.png
+	pdftotext $(DOC).pdf - | wordcloud_cli --height 3000 --width 2000 --background white --imagefile images/wordcloud.png
 endif
 
 # compile, convert images to black and white and convert pdf to html
@@ -270,7 +270,7 @@ cover-latex:
 # merge main PDF file and cover
 merge-cover:
 ifneq ($(CHECK_DOCKER),'')
-	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf report.pdf && \
+	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-combine.pdf book_cover.pdf $(DOC).pdf && \
 	echo "" && \
 	sh -c 'echo "\033[33;1mPDF file + cover merged !!!\033[0m"' && \
 	echo ""
@@ -283,7 +283,7 @@ endif
 # reduce size main PDF
 reduce-pdf:
 ifneq ($(CHECK_DOCKER),'')
-	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-reduced.pdf report.pdf && \
+	docker run --rm -v `pwd`:/pdf sergiomtzlosa/gsexiftool gs -dPrinted=false -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dEmbedAllFonts=true -dDetectDuplicateImages -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOUTPUTFILE=report-reduced.pdf $(DOC).pdf && \
 	echo "" && \
 	sh -c 'echo "\033[33;1mPDF file reduced !!!\033[0m"' && \
 	echo ""
