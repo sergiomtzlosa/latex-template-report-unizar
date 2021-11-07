@@ -1,3 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%										     %
+% Custom class for UNIZAR reports/thesis/books					     %
+% This class was done to check backward compatibility for			     %
+% TeX Live distribution greater than or equal to 2019				     %
+%										     %
+%										     %
+% The original template was made using TeX Live 2019 but by using this class you     %
+% can compile this template in most recent  TeX Live further distributions           % 
+%										     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{book-unizar}[2021/11/07 Custom class for UNIZAR reports/thesis]
 
@@ -25,8 +37,9 @@
 		\stop
 	\else
 		\typeout{!!!!!!!! RUNING TeX Live greater than 2019}
-		\RequirePackage[2020/02/08]{latexrelease} % if you use other version bigger than TeX Live2019 uses this line, this is for backward compatibility purposes
+		\RequirePackage[2020/02/08]{latexrelease} % if you use other version bigger than TeX Live2019 you must use this line, this is for backward compatibility purposes
 	\fi
 \fi
 
+%\LoadClass{extbook}
 \LoadClass{book}
