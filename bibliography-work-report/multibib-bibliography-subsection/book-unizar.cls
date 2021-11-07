@@ -41,5 +41,9 @@
 	\fi
 \fi
 
+%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extbook}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptions\relax
+
 %\LoadClass{extbook}
 \LoadClass{book}
