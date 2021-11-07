@@ -6,7 +6,7 @@
 %										     %
 %										     %
 % The original template was made using TeX Live 2019 but by using this class you     %
-% can compile this template in most recent  TeX Live further distributions           % 
+% can compile this template in most recent TeX Live distributions                    % 
 %										     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
