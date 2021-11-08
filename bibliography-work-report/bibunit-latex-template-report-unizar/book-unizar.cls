@@ -7,6 +7,8 @@
 %										     %
 % The original template was made using TeX Live 2019 but by using this class you     %
 % can compile this template in most recent TeX Live distributions                    % 
+% 										     %
+%         MIT License - Copyright (c) 2021 Sergio Martínez-Losa	                     %
 %										     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
