@@ -1,0 +1,62 @@
+\ProvidesPackage{ifdistro}[2012/05/05 v1.0 Provides if-switches for MiKTeX and TeX Live]
+
+\newif\ifmiktex
+\newif\iftexlive
+
+\begingroup
+\makeatletter
+\def\MiKTeX{MiKTeX}
+\@onelevel@sanitize\MiKTeX
+\def\TeXLive{TeX Live}
+\@onelevel@sanitize\TeXLive
+\def\WebIIC{Web2C}
+\@onelevel@sanitize\WebIIC
+
+% Test if \pdftexbanner exists, which is the case for latex, pdflatex and lualatex
+% but not xelatex.
+\expandafter\ifx\csname pdftexbanner\endcsname\relax
+    \PackageWarning{ifdistro}
+        {Primitive \string\pdftexbanner\space not found!\MessageBreak
+         Switches \expandafter\string\csname ifmiktex\endcsname\space 
+         and \expandafter\string\csname iftexlive\endcsname\space 
+         will not be set\@gobble}% gobbles the "on line X" part
+\else
+
+% Scans for 'MiKTeX' string with catcode 12 (other)
+\expandafter\def\expandafter\testmiktex\expandafter#\expandafter1\MiKTeX#2\relax{%
+        \ifx\empty#2\empty
+             \global\miktexfalse
+        \else
+             \global\miktextrue
+        \fi
+}
+\expandafter\expandafter
+\expandafter\testmiktex\expandafter\pdftexbanner\MiKTeX\relax\relax
+\ifmiktex\else
+% Scans for 'TeX Live' string with catcode 12 (other)
+\expandafter\def\expandafter\testtexlive\expandafter#\expandafter1\TeXLive#2\relax{%
+        \ifx\empty#2\empty
+             \global\texlivefalse
+        \else
+             \global\texlivetrue
+        \fi
+}
+\expandafter\expandafter
+\expandafter\testtexlive\expandafter\pdftexbanner\TeXLive\relax\relax
+\iftexlive\else
+% Scans for 'Web2C' string with catcode 12 (other)
+% This string is used by TeX Live under MS Windows
+\expandafter\def\expandafter\testtexlive\expandafter#\expandafter1\WebIIC#2\relax{%
+        \ifx\empty#2\empty
+             \global\texlivefalse
+        \else
+             \global\texlivetrue
+        \fi
+}
+\expandafter\expandafter
+\expandafter\testtexlive\expandafter\pdftexbanner\TeXLive\relax\relax
+\fi\fi
+
+\fi
+
+\endgroup
