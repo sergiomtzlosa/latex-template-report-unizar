@@ -1,15 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%										     %
-% Custom class for UNIZAR reports/thesis/books					     %
-% This class was done to check backward compatibility for			     %
-% TeX Live distribution greater than or equal to 2019				     %
-%										     %
-%										     %
+%                                                                                    %
+% Custom class for UNIZAR reports/thesis/books                                       %
+% This class was done to check backward compatibility for                            %
+% TeX Live distribution greater than or equal to 2019                                %
+%                                                                                    %
+%                                                                                    %
 % The original template was made using TeX Live 2019 but by using this class you     %
 % can compile this template in most recent TeX Live distributions                    % 
-%										     %
+%                                                                                    %
 %         MIT License - Copyright (c) 2021 Sergio Martínez-Losa	                     %
-%										     %
+%                                                                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
