@@ -47,6 +47,7 @@
 			\RequirePackage[2020/02/08]{latexrelease} % if you use other version bigger than TeX Live2019 you must use this line, this is for backward compatibility purposes
 		\fi
 	\fi
+
 \else
 
 	\typeout{!!!!!!!!!!!!!}
