@@ -1,0 +1,14 @@
+1.- Go to https://pi.kwarc.info/historic/systems/texlive/2019/
+
+2.- Download [texlive.iso](https://pi.kwarc.info/historic/systems/texlive/2019/texlive.iso)
+
+3.- Mount the iso file
+
+4.- Open a terminal window
+
+5.- Go to the mounted drive
+
+6.- Run sudo ./install-tl -scheme=full
+
+
+https://medium.com/@ptantiku/texlive-offline-installation-for-windows-38aab4e3500b
