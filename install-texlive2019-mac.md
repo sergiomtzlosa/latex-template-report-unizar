@@ -12,3 +12,6 @@
 
 
 https://medium.com/@ptantiku/texlive-offline-installation-for-windows-38aab4e3500b
+
+
+YOu can also install [MacTeX 2019](http://ftp.math.utah.edu/pub/tex/historic/systems/mactex/2019/) as alternative.
