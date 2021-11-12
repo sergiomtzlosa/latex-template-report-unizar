@@ -102,13 +102,9 @@
 
 \iffilepublications
 	
-	\makeatletter	
-		\AtBeginDocument{
-			\@ifpackageloaded{multibib}{%
-				\relax
-			}{
-				\usepackage[resetlabels]{multibib} % multiple bibliography
-			}
+	\makeatletter
+		\@ifpackageloaded{multibib}{\relax}{
+			\usepackage[resetlabels]{multibib} % multiple bibliography
 		}
 	\makeatother
 
