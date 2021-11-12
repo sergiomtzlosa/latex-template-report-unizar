@@ -8,10 +8,10 @@
 
 5.- Go to the mounted drive
 
-6.- Run sudo ./install-tl -scheme=full
+6.- Run sudo ./install-tl -scheme=full --location "MOUNTED_DRIVE_PATH"
 
 
 https://medium.com/@ptantiku/texlive-offline-installation-for-windows-38aab4e3500b
 
 
-YOu can also install [MacTeX 2019](http://ftp.math.utah.edu/pub/tex/historic/systems/mactex/2019/) as alternative.
+You can also install [MacTeX 2019](http://ftp.math.utah.edu/pub/tex/historic/systems/mactex/2019/) as alternative.
