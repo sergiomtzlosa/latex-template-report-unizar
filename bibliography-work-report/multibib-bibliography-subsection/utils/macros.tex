@@ -643,6 +643,22 @@
 \DeclareRobustCommand\nocitecaptionlink[1]{{\def\cite##1{}#1}}
 \newcommand\nocitecaption[1]{\caption[\nocitecaptionlink{#1}]{#1}}
 
+% Bibliography space patching separation between number and text 
+% https://stackoverflow.com/questions/26203769/right-aligned-reference-labels-with-multibib
+\makeatletter
+\patchcmd{\thebibliography}{%
+	\section*{\refname}\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+}{}{}{}
+\begingroup\catcode`#=12
+\AtBeginDocument{
+	\patchcmd\thebibliography
+	{\advance\@tempcnta#1}
+	{\advance\@tempcnta#1\else\@tempcnta#1}
+	{}{}
+}
+\endgroup
+\makeatother
+
 %%% Affirmation
 \input{utils/declaration}
 
