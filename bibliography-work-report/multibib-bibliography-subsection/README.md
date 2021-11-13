@@ -56,11 +56,13 @@ If you put this command in Unix systems at the beginning of the file **report.te
 
 ```
 % !TeX TS-program = make all
-````
+```
 
 TexStudio will invoke **make all** command from the Makefile.
 
-# Made with [TexLive 2019](mirror-install-latex-2019-dist.md)
+## Made with TeXLive 2019
+
+If you want to use this template, you must install TeXLive 2019. You can get here how to install it for [windows](install-texlive2019-windows.md), [GNU/Linux](install-texlive2019-linux.md) and [Mac](install-texlive2019-mac.md).
 
 # BibTeX citation
 

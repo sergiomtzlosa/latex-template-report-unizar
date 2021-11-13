@@ -58,11 +58,13 @@ Si pones este comando en sistemas Unix al principio del archivo **report.tex**:
 
 ```
 % !TeX TS-program = make all
-````
+```
 
 TexStudio llamara al comando **make all** del archivo Makefile.
 
-# Realizado con [TexLive 2019](mirror-install-latex-2019-dist.md)
+## Realizado con TeXLive 2019
+
+Si deseas usar esta plantilla debes tener instalado en tu oredenador TeXLive 2019. Puedes obtener usando los siguientes enlaces para [windows](install-texlive2019-windows.md), [GNU/Linux](install-texlive2019-linux.md) y [Mac](install-texlive2019-mac.md).
 
 # Citación BibTeX
 
