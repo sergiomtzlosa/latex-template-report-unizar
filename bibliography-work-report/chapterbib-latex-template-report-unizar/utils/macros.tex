@@ -198,6 +198,25 @@
 	\end{equ}
 }
 
+\newcommand{\setequationboxed}[6] {
+	
+	\begin{equ}[H]
+		% https://tex.stackexchange.com/questions/316646/renaming-the-label-of-figure-just-in-some-cases
+		%		\renewcommand{\figurename}{Equation}
+		\begin{changemargin}{#1}{#2}
+			\begin{eqfigure}[H]
+				#3
+				\vspace{#6}
+				\centercaptionequation{#5}
+				%				\centercaptionformula{#5}
+				\label{#4}
+				\addequations{#5} % this is for equations listing
+			\end{eqfigure}
+		\end{changemargin}
+		\vspace{-1.5cm}
+	\end{equ}
+}
+
 \newcommand{\centerformula}[1]{
 	\vspace{-0.8cm}
 	\begin{align}
@@ -641,6 +660,39 @@
 %% https://tex.stackexchange.com/questions/147936/list-of-figures-citation-issue
 \DeclareRobustCommand\nocitecaptionlink[1]{{\def\citep##1{}#1}}
 \newcommand\nocitecaption[1]{\caption[\nocitecaptionlink{#1}]{#1}}
+
+%% Colour boxing equations
+
+\makeatletter
+\renewcommand{\boxed}[2][\fboxsep]{{%
+		\setlength{\fboxsep}{#1}\fbox{\m@th$\displaystyle#2$}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/326375/boxed-border-color
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+	\colorboxedAux{#1}%
+}
+
+\newcommand{\colorboxedAux}[4]{%
+	% #1: optional argument for color model
+	% #3: color specification
+	% #4: formula
+	\begingroup
+	\colorlet{cb@saved}{.}%
+	\color#1{#2}%
+	\begin{center}
+		\boxed[#3]{%
+			\color{cb@saved}%
+			#4%
+		}%
+	\end{center}
+	\endgroup
+}
+
+%% END Colour boxing equations
 
 %%% Affirmation
 \input{utils/declaration}
