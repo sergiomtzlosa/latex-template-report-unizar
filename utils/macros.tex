@@ -710,6 +710,15 @@
 
 %% END Colour boxing equations
 
+% FIX SPACE TOC FOR LONG TITLE
+% https://tex.stackexchange.com/questions/283730/left-align-toc-items-when-using-tableofcontents
+\makeatletter
+\bgroup
+\advance\@flushglue by \@tocrmarg
+\xdef\@tocrmarg{\the\@flushglue}%
+\egroup
+\makeatother
+
 %%% Affirmation
 \input{utils/declaration}
 
