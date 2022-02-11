@@ -20,13 +20,27 @@
 
 	\renewcommand*{\glossentry}[2]{%
 
-		\item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]
+		\item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}\textnormal{:}}]
 
-		\glossentrydesc{##1} ##2
+		\glossentrydesc{##1}. ##2
 	}%
 
 	\renewcommand*{\glsgroupskip}{}%
 }
+
+% Renew the glossary entry command to be always uppercase
+% mfirstuc – Uppercase the first letter of a word
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
+
+% REMOVE INDENTATION DESCRIPTION ENVIRONMENT GLOSSARY
+% https://stackoverflow.com/questions/49843733/change-hanging-indentation-for-latex-description-environment
+\makeatletter
+\renewenvironment{description}%
+{\list{}{\leftmargin=0pt % <------- Adjust this length
+		\labelwidth\z@ \itemindent-\leftmargin
+		\let\makelabel\descriptionlabel}}%
+{\endlist}
+\makeatother
 
 %\renewcommand because amssymb package has a command called \bold
 \renewcommand{\bold}[1]{\textbf{#1}}
