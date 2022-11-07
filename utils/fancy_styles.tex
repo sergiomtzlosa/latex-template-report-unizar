@@ -98,7 +98,29 @@
 %% FOOTNOTE WITHOUT HEADER
 \newcommand\footnoteurlwithoutheader[2]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{\href{#2}{#1}}}
 
+\newcommand\footnoteurlwithoutheadersimple[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{\href{#1}{#1}}}
+
 \newcommand\footnotewithoutheader[1]{\thispagestyle{empty}\thispagestyle{phdfancyfootnotewithoutheader}\footnote{#1}}
+
+\gdef\FPLAIN{0}
+\gdef\FPLAINWH{1}
+\gdef\FURL{2}
+\gdef\FURLS{3}
+\gdef\FURLWH{4}
+\gdef\FURLWHS{5}
+
+%% Footnote type selector
+% #1 --> URL footnote or text
+% #2 --> Text for footnote
+% #3 --> Footnote type
+\newcommandtwoopt{\footnoteoptions}[3][][]{%
+	\ifthenelse{\equal{#3}{\FPLAIN}}{\footnoteplain{#1}}{}%
+	\ifthenelse{\equal{#3}{\FPLAINWH}}{\footnotewithoutheader{#1}}{}%
+	\ifthenelse{\equal{#3}{\FURL}}{\footnoteurl{#1}{#2}}{}%
+	\ifthenelse{\equal{#3}{\FURLS}}{\footnoteurlsimple{#1}}{}%
+	\ifthenelse{\equal{#3}{\FURLWH}}{\footnoteurlwithoutheader{#1}{#2}}{}%
+	\ifthenelse{\equal{#3}{\FURLWHS}}{\footnoteurlwithoutheadersimple{#1}}{}%
+}
 
 \newenvironment{startpagenumbering}[1][1] {
 
