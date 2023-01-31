@@ -13,7 +13,10 @@ _minted-report
 *.blg
 *.gls
 *.glg
-
+*.lot
+*.lof
+*.equ
+*.mw
 book-cover/*.aux
 book-cover/*.glo
 book-cover/*.ist
@@ -27,3 +30,14 @@ book-cover/*.bbl
 book-cover/*.blg
 book-cover/*.gls
 book-cover/*.glg
+bibliography-work-report/bibunit-latex-template-report-unizar/*.lof
+bibliography-work-report/chapterbib-latex-template-report-unizar/*.lof
+bibliography-work-report/multibib-bibliography-subsection/*.lof
+bibliography-work-report/bibunit-latex-template-report-unizar/*.lot
+bibliography-work-report/chapterbib-latex-template-report-unizar/*.lot
+bibliography-work-report/multibib-bibliography-subsection/*.lot
+bibliography-work-report/bibunit-latex-template-report-unizar/*.mw
+bibliography-work-report/multibib-bibliography-subsection/*.mw
+bibliography-work-report/bibunit-latex-template-report-unizar/*.equ
+bibliography-work-report/chapterbib-latex-template-report-unizar/*.equ
+bibliography-work-report/multibib-bibliography-subsection/*.equ
