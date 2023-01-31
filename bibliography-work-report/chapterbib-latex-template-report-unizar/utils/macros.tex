@@ -354,58 +354,60 @@
 }
 
 %% WATERMARK STUFF
-%Customize watermark
-\global\def\optionWatermark{true}
-
-\newcommand{\docwatermark}[1]{
-	
-	\global\def\optionWatermark{#1}
-	\newsavebox\mybox
-	\savebox\mybox{\tikz[color=gray,opacity=0.3,font=\sffamily]\node{#1};}
-	\newwatermark*[allpages,angle=45,scale=10,xpos=-30,ypos=15]{\usebox\mybox}
-}
-
-\newcommand{\showwatermark}[2]{
-	
-	\def\constPreliminary{PRELIMINARY}
-	\def\truestr{true}
-	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
-	\def\valueNull{\par}
-	
-	\ifx\tmp\valueNull
-		\docwatermark{\constPreliminary}
-		\global\def\optionWatermark{true}
-	\else
-		\ifx\tmp\truestr
-			\ignorespaces\def\optValue{#2}\unskip
-	
-			\ifx\optValue\valueNull
-				\docwatermark{\constPreliminary}
-			\else
-				\def\voidValue{}
-				\ifx\optValue\voidValue
-					\docwatermark{\constPreliminary}
-				\else 
-					\docwatermark{\uppercase{#2}}
-				\fi
-			\fi
-	
-			\global\def\optionWatermark{true}
-		\else
-			\global\def\optionWatermark{false}
-		\fi
-	\fi
-}
-
-\newcommand{\preliminary}[2]{
-	
-	\showwatermark{#1}{#2}
-}
-
-\newcommand{\showpreliminary}[2]{
-	
-	\showwatermark{#1}{#2}
-}
+% Customize watermark
+%\global\def\optionWatermark{true}
+%
+%\newcommand{\docwatermark}[1]{
+%	
+%	\global\def\optionWatermark{#1}
+%	\newsavebox\mybox
+%	\savebox\mybox{\tikz[color=gray,opacity=0.3,font=\sffamily]\node{#1};}
+%	\newwatermark*[allpages,angle=45,scale=10,xpos=-30,ypos=15]{\usebox\mybox}
+%}
+%
+%\newcommand{\showwatermark}[2]{
+%	
+%	\def\constPreliminary{PRELIMINARY}
+%	\def\truestr{true}
+%	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
+%	\def\valueNull{\par}
+%	
+%	\ifx\tmp\valueNull
+%		\docwatermark{\constPreliminary}
+%		\global\def\optionWatermark{true}
+%	\else
+%		\ifx\tmp\truestr
+%			\ignorespaces\def\optValue{#2}\unskip
+%	
+%			\ifx\optValue\valueNull
+%				\docwatermark{\constPreliminary}
+%			\else
+%				\def\voidValue{}
+%				\ifx\optValue\voidValue
+%					\docwatermark{\constPreliminary}
+%				\else 
+%					\docwatermark{\uppercase{#2}}
+%				\fi
+%			\fi
+%	
+%			\global\def\optionWatermark{true}
+%		\else
+%			\global\def\optionWatermark{false}
+%		\fi
+%	\fi
+%}
+%
+%\newcommand{\preliminary}[2]{
+%	
+%	\showwatermark{#1}{#2}
+%}
+%
+%\newcommand{\showpreliminary}[2]{
+%	
+%	\showwatermark{#1}{#2}
+%}
+%
+%% END WATERMARK STUFF
 
 \newcommand{\gothicletter}[2][black]{
 	
