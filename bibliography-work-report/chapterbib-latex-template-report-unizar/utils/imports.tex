@@ -80,18 +80,18 @@
 
 \iftwoside
 
-	\typeout{!!!}
-	\typeout{!!!!! SELECTED TWO-SIDE}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@!! SELECTED TWO-SIDE}
+	\typeout{@@@@@@@@@@@@@}
 	
 	\makeatletter
 		\@twosidetrue
 	\makeatother
 \else
 
-	\typeout{!!!}
-	\typeout{!!!!! SELECTED ONE-SIDE}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@!! SELECTED ONE-SIDE}
+	\typeout{@@@@@@@@@@@@@}
 	
 	\makeatletter
 		\@twosidefalse
@@ -224,23 +224,23 @@
 \fi
 
 \ifx\printabletext\trueValue
-	\typeout{!!!}
-	\typeout{!!! PRINTING BLACK AND WHITE TEXT}{}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ PRINTING BLACK AND WHITE TEXT}{}
+	\typeout{@@@@@@@@@@@@@}
 \else
-	\typeout{!!!}
-	\typeout{!!! PRINTING RGB TEXT}{}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ PRINTING RGB TEXT}{}
+	\typeout{@@@@@@@@@@@@@}
 \fi
 
 \ifx\printableimages\trueValue
-	\typeout{!!!}
-	\typeout{!!! PRINTING BLACK AND WHITE IMAGES}{}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ PRINTING BLACK AND WHITE IMAGES}{}
+	\typeout{@@@@@@@@@@@@@}
 \else 
-	\typeout{!!!}
-	\typeout{!!! PRINTING RGB IMAGES}{}
-	\typeout{!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ PRINTING RGB IMAGES}{}
+	\typeout{@@@@@@@@@@@@@}
 \fi
 
 % https://tex.stackexchange.com/questions/525261/better-default-colors-for-hyperref-links
@@ -293,12 +293,12 @@
 \pdfobjcompresslevel=2
 \pdfinclusioncopyfonts=1
 
-\typeout{!!! pdfcompresslevel=\the\pdfcompresslevel}
-\typeout{!!!}
-\typeout{!!! pdfobjcompresslevel=\the\pdfobjcompresslevel}
-\typeout{!!!}
-\typeout{!!! pdfminorversion=\the\pdfminorversion}
-\typeout{!!!}
+\typeout{@@@@@@@@@@@@@ pdfcompresslevel=\the\pdfcompresslevel}
+\typeout{@@@@@@@@@@@@@}
+\typeout{@@@@@@@@@@@@@ pdfobjcompresslevel=\the\pdfobjcompresslevel}
+\typeout{@@@@@@@@@@@@@}
+\typeout{@@@@@@@@@@@@@ pdfminorversion=\the\pdfminorversion}
+\typeout{@@@@@@@@@@@@@}
 
 \DeclareGraphicsExtensions{.png,.pdf}
 
@@ -490,9 +490,9 @@
 
 	% https://tex.stackexchange.com/questions/439926/different-style-for-backmatter-chapters-in-toc
 	% \mainmatter defined
-	\typeout{!!!!!!!!!!!!!}
-	\typeout{!!!!!!!!!!!!! mainmatter defined}
-	\typeout{!!!!!!!!!!!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ mainmatter defined}
+	\typeout{@@@@@@@@@@@@@}
 	
 	\DeclareTOCStyleEntry[entryformat=\chapterentryformat,pagenumberformat=\chapterentryformat]{tocline}{chapter}
 	
@@ -506,10 +506,10 @@
 \else
 
 	% \mainmatter not defined
-	\typeout{!!!!!!!!!!!!!}
-	\typeout{!!!!!!!!!!!!! mainmatter NOT defined}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ mainmatter NOT defined}
 	\makeatletter
-	\typeout{!!!!!!!!!!!!!}
+	\typeout{@@@@@@@@@@@@@}
 	
 	\newcommand*{\enableboldchapterintoc}{%
 		
@@ -585,9 +585,9 @@
 % https://tex.stackexchange.com/questions/360785/how-do-i-check-if-a-document-is-oneside-or-twoside#360791
 \if@twoside%
 
-	\typeout{!!!!!!!!!!!!!}
-	\typeout{!!!!!!!!!!!!! TWO-SIDE DOCUMENT}
-	\typeout{!!!!!!!!!!!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ TWO-SIDE DOCUMENT}
+	\typeout{@@@@@@@@@@@@@}
 	
 	% CLEAN DOUBLE PAGES ON TWOSIDE MODE
 	% https://tex.stackexchange.com/questions/62572/twoside-introduces-incorrect-linespacing-at-end-of-section
@@ -598,9 +598,9 @@
 	
 \else%
 
-	\typeout{!!!!!!!!!!!!!}
-	\typeout{!!!!!!!!!!!!! ONE-SIDE DOCUMENT}
-	\typeout{!!!!!!!!!!!!!}
+	\typeout{@@@@@@@@@@@@@}
+	\typeout{@@@@@@@@@@@@@ ONE-SIDE DOCUMENT}
+	\typeout{@@@@@@@@@@@@@}
 	
 \fi%  
 
