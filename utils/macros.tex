@@ -109,10 +109,8 @@
 }
 
 % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
-\newcommand{\asideimages}[9][false]{
-	
+\newcommand{\asideimages}[9][false]{%
 	\begin{figure}[H]
-		
 		% if captions from subfire are empty, remove the marker below the image
 		\ifthenelse{\equal{#5}{}}{
 			\ifthenelse{\equal{#7}{}}{
@@ -120,28 +118,26 @@
 				\captionsetup[subfigure]{belowskip=\spaceBelowCaptionFigures, labelformat=empty, justification=raggedright, singlelinecheck=true}
 			}{}
 		}{}
-		
-		\centering
-		\subfloat[#5]{
-			{\includegraphics[width=#2]{#4}}
-		}
-		\qquad
-		\subfloat[#7]{
-			{\includegraphics[width=#3]{#6}}
-		}
-		
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=#2]{#4}
+			\caption{#5}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=#3]{#6}
+			\caption{#7}
+		\end{subfigure}%
 		\ignorespaces\lowercase{\def\tmpVal{#1}}
-		
+		%
 		\ifthenelse{\equal{\tmpVal}{false}}{
 			\centercaption{#8}
 		}{	
 			\nocitecentercaption{#8}
 		}
-		
 		\label{#9}
-		
 	\end{figure}
-}
+}%
 
 % used to avoid caption cite in LOF
 \newcommand{\asideimagesnocite}[8]{
@@ -734,6 +730,55 @@
 \xdef\@tocrmarg{\the\@flushglue}%
 \egroup
 \makeatother
+
+% figure with four images
+\newcommand{\squarefigure}[9][0.35]{%
+	\edef\tempa{\unexpanded{#1}}%
+	\edef\tempb{\unexpanded{#2}}%
+	\edef\tempc{\unexpanded{#3}}%
+	\edef\tempd{\unexpanded{#4}}%
+	\edef\tempe{\unexpanded{#5}}%
+	\edef\tempf{\unexpanded{#6}}%
+	\edef\tempg{\unexpanded{#7}}%
+	\edef\temph{\unexpanded{#8}}%
+	\squarefigurecontinue{\unexpanded{#9}}%
+}
+
+\newcommand{\squarefigurecontinue}[7]{
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[c]{.475\linewidth}
+			\centering
+			\includegraphics[width=\tempa\textwidth,height=\textheight,keepaspectratio]{\tempb}
+			\ifthenelse{\equal{\tempf}{}}{}{\caption{\tempf}}%
+			\ifthenelse{\equal{#4}{}}{}{\label{#4}}%
+		\end{subfigure}\hspace*{0.02cm}%\hfill % <-- "\hfill"
+		\begin{subfigure}[c]{.475\linewidth}
+			\centering
+			\includegraphics[width=\tempa\textwidth,height=\textheight,keepaspectratio]{\tempc}
+			\ifthenelse{\equal{\tempg}{}}{}{\caption{\tempg}}%
+			\ifthenelse{\equal{#5}{}}{}{\label{#5}}%
+		\end{subfigure}
+		
+		\medskip\medskip% create some *vertical* separation between the graphs
+		\begin{subfigure}[c]{.475\linewidth}
+			\centering
+			\includegraphics[width=\tempa\textwidth,height=\textheight,keepaspectratio]{\tempd}
+			\ifthenelse{\equal{\temph}{}}{}{\caption{\temph}}%
+			\ifthenelse{\equal{#6}{}}{}{\label{#6}}%
+		\end{subfigure}\hspace*{0.02cm}%\hfill % <-- "\hfill"
+		\begin{subfigure}[c]{.475\linewidth}
+			\centering
+			\includegraphics[width=\tempa\textwidth,height=\textheight,keepaspectratio]{\tempe}
+			\ifthenelse{\equal{#1}{}}{}{\caption{#1}}%
+			\ifthenelse{\equal{#7}{}}{}{\label{#7}}%
+		\end{subfigure}
+		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=justified, singlelinecheck=true}%
+		\ifthenelse{\equal{#2}{}}{}{\caption{#2}}%
+		\label{#3}
+	\end{figure}
+}%
+
 
 %%% Affirmation
 \input{utils/declaration}
