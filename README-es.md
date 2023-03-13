@@ -66,7 +66,13 @@ TexStudio llamara al comando **make all** del archivo Makefile.
 
 ## Realizado con TeXLive 2019
 
-Si deseas usar esta plantilla debes tener instalado en tu oredenador TeXLive 2019. Puedes obtener usando los siguientes enlaces para [windows](install-texlive2019-windows.md), [GNU/Linux](install-texlive2019-linux.md) y [Mac](install-texlive2019-mac.md).
+Compatible con las últimas versiones de TexLive.
+
+~~Si deseas usar esta plantilla debes tener instalado en tu oredenador TeXLive 2019. Puedes obtener usando los siguientes enlaces para [windows](install-texlive2019-windows.md), [GNU/Linux](install-texlive2019-linux.md) y [Mac](install-texlive2019-mac.md).~~
+
+## Disponible en Overleaf
+
+Plantilla disponible en [Overleaf](https://cs.overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
 
 # Citación BibTeX
 

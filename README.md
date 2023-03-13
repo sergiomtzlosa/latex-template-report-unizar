@@ -64,13 +64,13 @@ TexStudio will invoke **make all** command from the Makefile.
 
 ## Made with TeXLive 2019
 
-Ready for latest TexLive releases
+Ready for latest TexLive releases.
 
 ~~If you want to use this template, you must install TeXLive 2019. You can get here how to install it for [windows](install-texlive2019-windows.md), [GNU/Linux](install-texlive2019-linux.md) and [Mac](install-texlive2019-mac.md).~~
 
 ## Overleaf template
 
-This template is ready to use in [overleaf](https://cs.overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx): 
+This template is ready to use in [overleaf](https://cs.overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
 
 # BibTeX citation
 
