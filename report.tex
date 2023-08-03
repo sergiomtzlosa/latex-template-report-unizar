@@ -119,7 +119,7 @@
 \SetHeaderTitle{\MakeUppercase{\listequationsname}}
 \protect\thispagestyle{phdfancyempty}
 \phantomsection\addcontentsline{toc}{chapter}{\listequationsname}
-\protect\pagestyle{phdfancyspecialempty}\listofaddequations
+\protect\pagestyle{phdfancyspecialempty}\listofequations
 \clearpage
 
 % show glossary items
@@ -151,10 +151,13 @@
 
 	\input{chapters/00_introduction}
 	\input{chapters/01_first_chapter}
+%	\tocclearpage
 	
 \end{startpagenumbering}
 
 \backmatter % apply TOC styles backmatter
+
+%\forcestylebackmatter
 
 %\ContinuePaginingWithNumbering[Roman]
 

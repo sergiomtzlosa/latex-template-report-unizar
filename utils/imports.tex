@@ -489,14 +489,52 @@
 	\typeout{@@@@@@@@@@@@@ mainmatter defined}
 	\typeout{@@@@@@@@@@@@@}
 	
-	\DeclareTOCStyleEntry[entryformat=\chapterentryformat,pagenumberformat=\chapterentryformat]{tocline}{chapter}
+		% https://tex.stackexchange.com/a/511461
+	% https://tex.stackexchange.com/questions/544569/koma-toc-constant-distance-between-section-title-and-pagenumber
+	
+	\DeclareTOCStyleEntry[%
+		entryformat=\chapterentryformat,%
+		pagenumberformat=\chapterentryformat,%
+		pagenumberbox=\pagenumberboxsimple,%
+%		linefill=\dotfillcustomentryformat,%
+%		indent=0pt
+	]{tocline}{chapter}%
+	
+	\DeclareTOCStyleEntries[%
+		entryformat=\sectionentryformat,%
+		pagenumberformat=\sectionentryformat,%
+		pagenumberbox=\pagenumberboxsimple,%
+%		linefill=\dotfillcustomentryformat,%
+%		indent=0pt
+	]{tocline}{section}%
+	
+%	\DeclareTOCStyleEntry[%
+%		entryformat=\subsectionentryformat,%
+%		pagenumberformat=\subsectionentryformat,%
+%		pagenumberbox=\pagenumberboxsimple,%
+%		%linefill=\dotfill,%
+%		%indent=0pt
+%	]{tocline}{subsection}%
+	
+	\DeclareTOCStyleEntry[%
+		pagenumberbox={\mbox}%
+	]{tocline}{figure}%
 	
 	\newif\ifmainmatterintoc
 	
-	\newcommand*\chapterentryformat[1]{{\ifmainmatterintoc\normalfont\bfseries\else\normalfont\slshape\fi#1}}
+	%	\newcommand*\pagenumberbox[1]{\mbox{\hspace{1em}#1}}
+	\newcommand*\pagenumberboxsimple[1]{\mbox{#1}\relax}%
 	
-	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{}{\mmPatchFailed}
-	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{}{\appPatchFailed}
+	%	\newcommand*\dotfillcustomentryformat[1]{{\ifmainmatterintoc\dotfill\else\relax\fi#1}}%
+	
+	\newcommand*\subsectionentryformat[1]{{\ifmainmatterintoc\relax\else\normalfont\itshape\fi#1}}%
+	
+	\newcommand*\sectionentryformat[1]{{\ifmainmatterintoc\normalfont\else\normalfont\itshape\fi#1}}%
+	
+	\newcommand*\chapterentryformat[1]{{\ifmainmatterintoc\normalfont\bfseries\else\normalfont\itshape\fi#1}}%
+	
+	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{}{}%
+	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{}{}%
 
 \else
 

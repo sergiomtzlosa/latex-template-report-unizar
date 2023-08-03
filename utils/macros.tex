@@ -544,15 +544,16 @@
 %% START Create a list of equations
 
 % https://tex.stackexchange.com/questions/270611/creating-list-of-equations
-\newcommand{\equationpagetext}{Page}
-\newcommand{\listequationsname}{List of Equations}
-\newcommand{\listequationtitle}{\vspace{-0.4cm}\listequationsname\vskip0cm\vspace{-0.59cm}\rule{\linewidth}{1pt}\vspace{1.8cm}\\\protect{\hspace*{0pt}\hfill\fontsize{11}{12}\textbf{\equationpagetext}\par\protect\thispagestyle{phdfancyempty}\vspace{-1.0cm}}}
-\newlistof{addequations}{equ}{\listequationtitle}
+\newcommand{\equationpagetext}{Page}%
+\newcommand{\listequationsname}{List of Equations}%
+\newcommand{\listequationtitle}{\vspace{-0.4cm}\listequationsname\vskip0cm\vspace{-0.59cm}\rule{\linewidth}{1pt}\vspace{1.8cm}\\\protect{\hspace*{0pt}\hfill\fontsize{11}{12}\textbf{\equationpagetext}\par\protect\thispagestyle{phdfancyempty}\vspace{-1.0cm}}}%
+\newlistof[figure]{equations}{equ}{\listequationtitle}%
 \newcommand{\addequations}[1]{%
-	\addcontentsline{equ}{addequations}{\protect\numberline{\theeqfigure}#1}\par}
-\addtolength{\cftaddequationsnumwidth}{13pt}
-\setlength{\cftaddequationsindent}{1.5em}
-\setlength{\cftaddequationsnumwidth}{2.3em}
+	%	\setlength{\cftequationsindent}{0.5em}%
+	%	\setlength{\cftequationsnumwidth}{1.3em}%
+	%	\setlength\cftequationsnumwidth{10em}%
+	\addcontentsline{equ}{figure}{\protect\normalfont\numberline{\theeqfigure}\protect\normalfont#1}\par%
+}%
 
 %% END Create a list of equations
 
@@ -778,6 +779,34 @@
 		\label{#3}
 	\end{figure}
 }%
+
+% https://tex.stackexchange.com/questions/11668/adding-unnumbered-sections-to-toc
+\newcommand*{\unnumberedsection}[2]{%
+	\section*{#1}\addcontentsline{toc}{subsection}{#1}%
+	\label[subsection]{#2}%
+}%
+
+% https://tex.stackexchange.com/questions/102529/reference-to-section-where-is-label
+\newcommand*{\customnameref}[2]{\protect\hyperref[#1]{#2}}%
+
+% https://tex.stackexchange.com/questions/313279/set-counter-chapter-with-float
+\newcommand{\setcounterappendix}[2]{%
+	\setcounter{chapter}{#1}%
+	\ifthenelse{\equal{#2}{true}}{%
+		\renewcommand{\thechapter}{\Roman{chapter}}%
+		\renewcommand{\thesection}{\thechapter.\Alph{section}}%
+		%		\renewcommand*{\thesubsection}{\thesection.\Alph{subsection}}
+	}{}%
+}%
+
+\newcommand{\forcestylebackmatter}{%
+	%https://tex.stackexchange.com/questions/336399/page-number-font-doesnt-change-on-toc-lof-and-lot-pages
+	\addtocontents{toc}{\protect\renewcommand{\protect\cftsecfont}{\normalfont\itshape}}%
+	\addtocontents{toc}{\protect\renewcommand{\protect\cftsecpagefont}{\normalfont\itshape}}%
+}%
+
+% https://tex.stackexchange.com/questions/117474/splitting-toc-into-two-parts-each-in-one-page
+\newcommand{\tocclearpage}{\addtocontents{toc}{\protect\clearpage}}
 
 % only for overleaf in local installation, solve glossary extra space on the left
 %\let\oldgls\gls
