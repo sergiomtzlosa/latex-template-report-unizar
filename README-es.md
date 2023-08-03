@@ -72,7 +72,7 @@ Compatible con las últimas versiones de TexLive.
 
 ## Disponible en Overleaf
 
-Plantilla disponible en [Overleaf](https://cs.overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
+Plantilla disponible en [Overleaf](https://overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
 
 # Citación BibTeX
 

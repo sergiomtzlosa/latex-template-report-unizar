@@ -70,7 +70,7 @@ Ready for latest TexLive releases.
 
 ## Overleaf template
 
-This template is ready to use in [overleaf](https://cs.overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
+This template is ready to use in [overleaf](https://overleaf.com/latex/templates/latex-phd-template-unizar/cfgtthjfynrx).
 
 # BibTeX citation
 
