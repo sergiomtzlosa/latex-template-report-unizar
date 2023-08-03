@@ -77,13 +77,13 @@ This template is ready to use in [overleaf](https://cs.overleaf.com/latex/templa
 If you use this software, please add a BibTex entry in your document to refer this project:
 
 ```
-@Misc{SergioTemplateLatex2021,
-	author       = {Martínez-Losa Del Rincón, Sergio},
-	howpublished = {\url{https://github.com/sergiomtzlosa/latex-template-report-unizar}},
+@misc{SergioTemplateLatex2021,
 	title        = {{U}nofficial {L}a{T}e{X} template for reports/books/thesis with corporate logos of {U}niversidad de {Z}aragoza with a beautiful look and feel},
-	year         = {2021},
-	commit       = {ef0242edd8260c39179310fe1b3bc55c9f69d230},
+	author       = {Martínez-Losa Del Rincón, Sergio},
+	year         = 2021,
 	journal      = {GitHub repository},
 	publisher    = {GitHub},
+	howpublished = {\url{https://github.com/sergiomtzlosa/latex-template-report-unizar}},
+	commit       = {ef0242edd8260c39179310fe1b3bc55c9f69d230}
 }
 ```
