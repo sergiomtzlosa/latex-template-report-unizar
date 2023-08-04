@@ -91,6 +91,39 @@
 	\end{center}
 }
 
+% https://tex.stackexchange.com/questions/95273/tikz-overlay-png-or-pdf-image-over-another-pdf-figure
+% https://tex.stackexchange.com/questions/368908/tikz-only-fill-75-of-the-node-background-with-color
+% https://tex.stackexchange.com/questions/153334/change-the-baselinestretch-line-spacing-only-for-figure-captions
+% Parameters:
+% #1 --> name of main image
+% #2 --> name of inset image
+% #3 --> scale factor for main image
+% #4 --> scale factor for inset image
+% #5 --> placement coordinates for inset image
+% #6 --> background colour in inset image
+% #7 --> opacity for background colour in inset image
+% #8 --> caption for figure
+% #9 --> label for figure
+\newcommand{\imageinsets}[9]{%
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt}, x=1mm, y=1mm]
+			\node (image1) at (0,0) {\includegraphics[width=#3\textwidth,height=\textheight,keepaspectratio]{#1}};
+			\node[path picture={
+				\fill[#6, opacity=#7](path picture bounding box.north west)rectangle
+				($(path picture bounding box.north east)!1.0!(path picture bounding box.south east)$);
+			}] (image2) at #5 {\includegraphics[width=#4\textwidth,height=\textheight,keepaspectratio]{#2}};
+		\end{tikzpicture}%
+		%			\captionsetup{justification=centering}
+		%			\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, font={stretch=1.5}}
+		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+		\ifthenelse{\equal{#8}{}}{}{\caption{#8}}
+		\ifthenelse{\equal{#9}{}}{}{\label{#9}}
+	\end{figure}%
+}%
+
+\newcommand{\imageoverlay}[9]{\imageinsets{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}%
+
 \newcommand{\imagefigurecaption}[4][0.35]{
 	
 	\begin{figure}[H]
