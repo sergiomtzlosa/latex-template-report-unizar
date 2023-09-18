@@ -1,5 +1,5 @@
 % set paragraph spacing
-\setlength{\parskip}{0.7em}
+\setlength{\parskip}{0.2em}
 
 % renew commands
 
@@ -499,6 +499,7 @@
 	}
 }
 
+
 % plain pagestyle
 \newcommandtwoopt{\chapterpagenumberintoc}[3][showrule][true] {
 	
@@ -822,16 +823,6 @@
 % https://tex.stackexchange.com/questions/102529/reference-to-section-where-is-label
 \newcommand*{\customnameref}[2]{\protect\hyperref[#1]{#2}}%
 
-% https://tex.stackexchange.com/questions/313279/set-counter-chapter-with-float
-\newcommand{\setcounterappendix}[2]{%
-	\setcounter{chapter}{#1}%
-	\ifthenelse{\equal{#2}{true}}{%
-		\renewcommand{\thechapter}{\Roman{chapter}}%
-		\renewcommand{\thesection}{\thechapter.\Alph{section}}%
-		%		\renewcommand*{\thesubsection}{\thesection.\Alph{subsection}}
-	}{}%
-}%
-
 \newcommand{\forcestylebackmatter}{%
 	%https://tex.stackexchange.com/questions/336399/page-number-font-doesnt-change-on-toc-lof-and-lot-pages
 	\addtocontents{toc}{\protect\renewcommand{\protect\cftsecfont}{\normalfont\itshape}}%
@@ -840,6 +831,20 @@
 
 % https://tex.stackexchange.com/questions/117474/splitting-toc-into-two-parts-each-in-one-page
 \newcommand{\tocclearpage}{\addtocontents{toc}{\protect\clearpage}}
+
+% https://tex.stackexchange.com/questions/313279/set-counter-chapter-with-float
+\newcommand{\setcounterappendix}[3]{%
+	\setcounter{chapter}{#1}%
+	\ifthenelse{\equal{#2}{true}}{%
+		\ifthenelse{\equal{#3}{roman}}{%
+			\renewcommand{\thechapter}{\Roman{chapter}}%
+		}{%
+			\renewcommand{\thechapter}{\arabic{chapter}}%
+		}%
+		\renewcommand{\thesection}{\thechapter.\Alph{section}}%
+		%		\renewcommand*{\thesubsection}{\thesection.\Alph{subsection}}
+	}{}%
+}%
 
 % only for overleaf in local installation, solve glossary extra space on the left
 %\let\oldgls\gls

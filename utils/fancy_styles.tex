@@ -28,6 +28,50 @@
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 
+\fancypagestyle{phdfancyspecialappendixmainsimple}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
+\fancypagestyle{phdfancyspecialappendixmain}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
+\fancypagestyle{phdfancyspecialappendix}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\contentHeaderTitle}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+\fancypagestyle{phdfancyspecialappendixnobottomline}{%
+	
+	\pagestyle{fancy}
+	\fancyhead{} % Clean headers
+	\fancyhead[LE,RO]{\contentHeaderTitle}
+	\fancyhead[RE,LO]{\THETITLE}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0.0pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
 \fancypagestyle{phdfancyempty}{%
 	
 	\pagestyle{fancy}

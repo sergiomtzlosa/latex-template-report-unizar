@@ -1,8 +1,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{float}
+%\usepackage{courier}
 \usepackage{booktabs}
-\usepackage[a4paper,margin=2.2cm]{geometry}
+%\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage[a4paper, tmargin=2.2cm, lmargin=2.2cm, rmargin=2.2cm, bmargin=1.0in]{geometry}
 %\usepackage[letterpaper,margin=2.2cm]{geometry}
 %\usepackage[pdftex]{graphicx} %% loaded twice
 \usepackage[nodayofweek]{datetime}
@@ -12,6 +14,7 @@
 \usepackage{acronym}
 \usepackage[normalem]{ulem}
 \usepackage{enumitem}
+\usepackage{empheq}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{extarrows}
@@ -21,6 +24,10 @@
 \usepackage{wasysym}
 \usepackage{fancyhdr}
 \usepackage{siunitx}
+\usepackage{ifplatform}
+%\usepackage[nottoc]{tocbibind}
+%\usepackage{patchcmd}
+%\usepackage{parskip}
 \usepackage{fix-cm} % mandatory for Package cover 
 \usepackage{titlesec} % mandatory for Package cover 
 \usepackage[T1]{fontenc} % mandatory for Package cover 
@@ -43,8 +50,10 @@
 \fi
 
 \usepackage{morewrites} % https://www.ctan.org/pkg/morewrites
+\usepackage[most]{tcolorbox}
 \usepackage[none]{hyphenat} % do not split words at the en of line
 \usepackage{afterpage}
+\usepackage{xfrac}
 \usepackage{nicefrac} % diagonal fractions --> https://tex.stackexchange.com/questions/3372/how-do-i-typeset-arbitrary-fractions-like-the-standard-symbol-for-5-%C2%BD
 \usepackage{newfloat} % float environment for equation listing
 %\usepackage[subfigure]{tocloft}
@@ -57,6 +66,7 @@
 \usepackage{todonotes}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, calc}
+%\usetikzlibrary{calc}
 \usepackage[siunitx, RPvoltages]{./packages/circuitikzgit}
 \usepackage{anyfontsize}
 \usepackage{minted}
@@ -64,14 +74,32 @@
 \usepackage[column=O, math]{cellspace}
 \usepackage{makecell} % https://tex.stackexchange.com/questions/558937/how-to-avoid-broken-horizontal-and-vertical-lines-when-using-multirow-and-multic
 \usepackage{multirow}
+%\usepackage{bigints}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{soul}
+%\usepackage[integrals]{wasysym}
 \usepackage[bottom]{footmisc}
+\usepackage{setspace}
+\usepackage[percent]{overpic}
+%\usepackage{everypage}
+%\usepackage{bophook} % important for top footnote space
 %\usepackage[printwatermark]{xwatermark}
 %\usepackage{./packages/bibspacing}
+%\usepackage[tocindentauto]{tocstyle}
+%\usetocstyle{KOMAlike} %the previous line resets it
+\usepackage{fix-cm} % Fixes warnings about missing fonts; see http://tex.stackexchange.com/questions/32378/xfrac-siunitx-gives-me-a-font-warning
+%\usepackage{bookmark} % faster updated bookmarks
 \usepackage{hyperref}
-\usepackage{glossaries} % always load glossaries AFTER hyperref
-\usepackage{ifplatform}
+%\usepackage{appendix}
+%\usepackage[toc,page]{appendix}
+%\usepackage{cleveref}
+\usepackage[sort=use]{glossaries}[=v4.46] % always load glossaries AFTER hyperref % https://tex.stackexchange.com/questions/290114/how-to-sort-glossaries-entries-by-alphabetical-order-then-by-order-of-appereance
+%\usepackage[sort=use]{glossaries-extra}
 %\usepackage{catoptions}
+\usepackage{./packages/catoptions}
 \usepackage{csquotes} % https://tex.stackexchange.com/questions/120722/how-to-modify-a-bibliography-style-to-surround-titles-in-quotes-in-a-bibliograph
+% https://tex.stackexchange.com/questions/64761/add-just-a-little-more-padding-to-my-table/381439
 
 % https://tex.stackexchange.com/questions/64761/add-just-a-little-more-padding-to-my-table/381439
 \cellspacetoplimit 4pt
@@ -673,3 +701,9 @@
 		
 	\makeatother
 \fi
+
+% new spacing between cahpters, sections and subsections
+% https://tex.stackexchange.com/questions/53338/reducing-spacing-after-headings
+\titlespacing\section{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}%
+\titlespacing\subsection{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}%
+\titlespacing\subsubsection{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}%

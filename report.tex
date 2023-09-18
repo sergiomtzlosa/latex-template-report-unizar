@@ -161,6 +161,18 @@
 
 %\ContinuePaginingWithNumbering[Roman]
 
+%% Custom section - Appendix I
+\def\FirstAppendixTitle{Appendix I}
+%\SetHeaderTitle{\MakeUppercase{\FirstAppendixTitle}}
+\SetHeaderTitle{\FirstAppendixTitle}
+\phantomsection\addcontentsline{toc}{chapter}{\FirstAppendixTitle\itshape}
+\protect\pagestyle{phdfancyspecialappendix}
+%\protect\thispagestyle{phdfancyspecialappendixmain}
+%\protect\thispagestyle{phdfancyplain}
+\input{chapters/appendix_i}
+%\protect\thispagestyle{phdfancyspecialappendixmain}
+\clearpage
+
 % Custom section - Epilogue
 \def\epilogueTitle{Epilogue}
 \SetHeaderTitle{\MakeUppercase{\epilogueTitle}}
