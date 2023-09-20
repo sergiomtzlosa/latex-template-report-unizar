@@ -116,7 +116,7 @@
 		\end{tikzpicture}%
 		%			\captionsetup{justification=centering}
 		%			\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, font={stretch=1.5}}
-		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+		\captionsetup{aboveskip=\spaceAboveCaptionSpace, belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 		\ifthenelse{\equal{#8}{}}{}{\caption{#8}}
 		\ifthenelse{\equal{#9}{}}{}{\label{#9}}
 	\end{figure}%
@@ -124,18 +124,16 @@
 
 \newcommand{\imageoverlay}[9]{\imageinsets{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}%
 
-\newcommand{\imagefigurecaption}[4][0.35]{
-	
+\newcommand{\imagefigurecaption}[4][0.35]{%
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=#1\textwidth,height=\textheight,keepaspectratio]{#2}
-%		\captionsetup{justification=centering}
-		\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+		%		\captionsetup{justification=centering}
+		\captionsetup{aboveskip=\spaceAboveCaptionSpace, belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 		\caption{#3}
 		\ifthenelse{\equal{#4}{}}{}{\label{#4}}
 	\end{figure}	
 }
-
 \newcommand{\imagefigure}[3][0.35]{
 	
 	\imagefigurecaption[#1]{#2}{#3}{}	
@@ -145,21 +143,21 @@
 \newcommand{\asideimages}[9][false]{%
 	\begin{figure}[H]
 		% if captions from subfire are empty, remove the marker below the image
-		\ifthenelse{\equal{#5}{}}{
-			\ifthenelse{\equal{#7}{}}{
+		\ifthenelse{\equal{#5}{}}{}{
+			\ifthenelse{\equal{#7}{}}{}{
 				%				\captionsetup[subfigure]{labelformat=empty}
-				\captionsetup[subfigure]{belowskip=\spaceBelowCaptionFigures, labelformat=empty, justification=raggedright, singlelinecheck=true}
-			}{}
-		}{}
+				\captionsetup[subfigure]{belowskip=\spaceBelowCaptionSubfigures, labelformat=empty, justification=raggedright, singlelinecheck=true}
+			}
+		}
 		\begin{subfigure}{.5\textwidth}
 			\centering
 			\includegraphics[width=#2]{#4}
-			\caption{#5}
+			\ifthenelse{\equal{#5}{}}{}{\caption{#5}}
 		\end{subfigure}%
-		\begin{subfigure}{.5\textwidth}
+		\begin{subfigure}{.48\textwidth}
 			\centering
 			\includegraphics[width=#3]{#6}
-			\caption{#7}
+			\ifthenelse{\equal{#7}{}}{}{\caption{#7}}
 		\end{subfigure}%
 		\ignorespaces\lowercase{\def\tmpVal{#1}}
 		%
@@ -187,34 +185,36 @@
 			\setlength{\itemindent}{\parindent}%
 			\setlength{\parsep}{\parskip}%
 		}%
-	\item[]}{\end{list}}
-	
-\def\spaceBelowCaptionFigures{-10pt}
+		\item[]}{\end{list}}
+
+\def\spaceBelowCaptionSubfigures{13pt}
+\def\spaceBelowCaptionFigures{-13pt}
 \def\spaceBelowCaptionEquations{-2pt}
+\def\spaceAboveCaptionSpace{13pt}
 
 \newcommand{\centercaptionequation}[1]{	
 	%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=\spaceBelowCaptionEquations, justification=raggedright, singlelinecheck=true}
+	\captionsetup{aboveskip=\spaceAboveCaptionSpace, belowskip=\spaceBelowCaptionEquations, justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
 }
-	
+
 \newcommand{\centercaption}[1]{	
-%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+	%	\captionsetup{justification=centering}
+	\captionsetup{aboveskip=\spaceAboveCaptionSpace, belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 	\protect\caption{#1}
 }
 
 \newcommand{\nocitecentercaption}[1]{	
 	%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+	\captionsetup{aboveskip=\spaceAboveCaptionSpace, belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
 	\protect\nocitecaption{#1}
 }
 
-\newcommand{\centercaptionlisting}[1]{
-%	\captionsetup{justification=centering}
-	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
-	\protect\caption[#1]{\boldmath{#1}}
-}
+%\newcommand{\centercaptionlisting}[1]{
+%%	\captionsetup{justification=centering}
+%	\captionsetup{belowskip=\spaceBelowCaptionFigures, justification=raggedright, singlelinecheck=true}
+%	\protect\caption[#1]{\boldmath{#1}}
+%}
 
 \DeclareCaptionType{equ}[][]
 
