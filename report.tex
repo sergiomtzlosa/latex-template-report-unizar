@@ -166,11 +166,19 @@
 
 %\ContinuePaginingWithNumbering[Roman]
 
-%% Custom section - Appendix I
-\def\FirstAppendixTitle{Appendix I}
-%\SetHeaderTitle{\MakeUppercase{\FirstAppendixTitle}}
-\SetHeaderTitle{\FirstAppendixTitle}
-\phantomsection\addcontentsline{toc}{chapter}{\FirstAppendixTitle\itshape}
+%% APPENDIX
+% https://tex.stackexchange.com/questions/183185/roman-numeral-of-defined-counter
+\newcounter{appendixcounter} % initialized to 0 by default
+\newcommand{\Romanappendixcounter}{\Roman{appendixcounter}}
+\newcommand{\stepappendixcounter}{\stepcounter{appendixcounter}}
+%
+%% Custom section - Appendix I - Script sample file
+\stepappendixcounter
+\def\FirstAppendixTitleTopLine{Appendix~\Romanappendixcounter}
+\def\FirstAppendixTitleBottomLine{Title Appendix}
+\def\FullAppendixFirstOneTitle{\FirstAppendixTitleTopLine~-~\FirstAppendixTitleBottomLine}
+\SetHeaderTitle{\FullAppendixFirstOneTitle}
+\phantomsection\addcontentsline{toc}{chapter}{\FullAppendixFirstOneTitle\itshape}
 \protect\pagestyle{phdfancyspecialappendix}
 %\protect\thispagestyle{phdfancyspecialappendixmain}
 %\protect\thispagestyle{phdfancyplain}

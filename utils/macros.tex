@@ -515,6 +515,30 @@
 		\addcontentsline{toc}{chapter}{#3}
 	}
 }
+
+\newcommand{\chaptercustompageintoctikz}[4][true]{
+	
+	\DeclareRobustCommand{\chapnumfontcustomappendix}{\fontseries{bx}\fontsize{30}{35}\selectfont}%
+	\DeclareRobustCommand{\chaptitlefontcustomappendix}{\bfseries\fontsize{20}{25}\selectfont}%
+	
+	% https://tex.stackexchange.com/questions/50038/suppress-page-numbers-when-using-addcontentsline
+	%	\ifthenelse{\equal{#1}{showrule}}{%
+	%
+	\chapter*{\filright\chapnumfontcustomappendix\flushleft{\MakeUppercase{#2}}\\%
+		\vspace{1ex}\titlerule%
+		\flushright\chaptitlefontcustomappendix#3\\%
+		\vspace{1.5ex}\titlerule\vspace{1ex}\vspace{-1.2cm}}%
+	%
+	%	}{%
+	%		\chapter*{\flushleft{#3\ -\ #4}\vspace{-0.5m}\customquad}%
+	%		\relax
+	%	}%
+	
+	\ifthenelse{\equal{#1}{true}}{
+		\cftaddtitleline{toc}{chapter}{#2~-~#3}{\protect{#4}}
+	}
+}
+
 %% input file for abstract
 
 \global\def\showpageabstract{false}
