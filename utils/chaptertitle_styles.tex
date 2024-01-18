@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%            REWORK TITLE CHAPTERS              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hsp}{\hspace{0pt}}
+\newcommand{\chapnumfont}{\bfseries\fontsize{30}{35}\selectfont}%
+\newcommand{\chaptitlefont}{\fontseries{b}\fontsize{30}{35}\selectfont}%
+\newcommand{\chapnumfontcustom}{\fontseries{b}\scshape\fontsize{30}{35}\selectfont}%
+\newcommand{\chaptitlefontcustom}{\bfseries\scshape\fontsize{35}{40}\selectfont}%
+
+\definecolor{gray75}{gray}{0.75}%
+
+\DeclareRobustCommand{\ChapterTitleStyleOne}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	%% https://tex.stackexchange.com/questions/310413/optimize-chapter-styling 
+	%	\definecolor{gray75}{gray}{0.75}	
+	%	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright%
+	%		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]%
+	%	
+	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright%
+		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1.2cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\DeclareRobustCommand{\ChapterTitleStyleTwo}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% https://tex.stackexchange.com/questions/68745/possible-values-for-fontseries-and-fontshape
+	\titleformat{\chapter}[display]{%
+		\Large\filcenter%
+	}{%
+		\titlerule[0.6ex]\vspace{0.1cm}\titlerule[0.6pt]\vspace{0.5ex}\bfseries%
+		\chapnumfontcustom\filcenter\chaptername~\thechapter\\%
+		\titlerule[0.6pt]%
+	}{-0.1ex}{
+		\vspace{-1.0cm}\chaptitlefontcustom\hsp\vspace{-1.3cm}
+	}%
+	\titlespacing*{\chapter}{0pt}{-32pt}{48pt}%
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\DeclareRobustCommand{\ChapterTitleStyleThree}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% https://tex.stackexchange.com/questions/403898/recreating-the-fancy-chapter-style-of-a-textbook
+	\newcommand{\chapnumfontSpecial}{%
+		\fontsize{100}{0}%
+		\selectfont%
+	}%
+	
+	\colorlet{chapnumcol}{black!55}%
+	
+	\titleformat{\chapter}[display]%
+	{\bfseries}%
+	{\begin{tikzpicture}%
+			\node[minimum width=\textwidth, text=black!25, fill=black!25, inner sep=1, outer sep=0, anchor=south] (rectinit) {\huge CHAPTER};
+			\node[minimum width=.8\textwidth, text=white, inner sep=1, outer sep=0, anchor=south west, text width=.8\textwidth, align=right] at (rectinit.south west) (chapname) {\huge CHAPTER~~};
+			\node[minimum width=.2\textwidth, inner sep=0, outer sep=0, anchor=south west, text width=.2\textwidth, align=left] at (chapname.south east) {\chapnumfontSpecial\textcolor{chapnumcol}{\thechapter}};
+	\end{tikzpicture}}%
+	{0pt}%
+	{\vspace{-0.4cm}\chaptitlefontcustom\hsp\vspace{-1.5cm}}%
+	\titlespacing*{\chapter}{0pt}{-32pt}{48pt}%
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\DeclareRobustCommand{\ChapterTitleStyleFour}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% https://tex.stackexchange.com/questions/530234/how-to-customize-chapter-heading-in-a-fancy-way
+	\colorlet{rulecolor}{black}
+	\titleformat{\chapter}[display]
+	{\filcenter}{\mbox{}\xrfill[0.4ex]{3pt}[rulecolor]\textsc{\large\bfseries\enspace\chaptername \thechapter}\enspace\xrfill[0.4ex]{3pt}[rulecolor]\mbox{}}{0.3ex} {{\color{rulecolor}\titlerule[1pt]}\vskip1.0ex\chaptitlefontcustom}[\medskip{\vskip-0.4ex\color{rulecolor}\titlerule[1pt]\vspace{-1.0cm}}]	
+	\titlespacing*{\chapter}{0pt}{-32pt}{48pt}%
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+
+\DeclareRobustCommand{\ChapterTitleStyleFive}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% https://tex.stackexchange.com/questions/163052/customizing-chapters-title
+	\newcommand{\chaptitlefontcustomOther}{\bfseries\scshape\fontsize{35}{40}\selectfont}%
+	
+	\titleformat{\chapter}[block]
+	{\filright}
+	{\parbox{\widthof{\Huge\sffamily\MakeUppercase{\chaptername}}}{%
+			\filcenter\Large\usefont{T1}{phv}{m}{n}\Huge\MakeUppercase{\chaptername}\vskip -0.6cm%
+			\fontsize{90pt}{90pt}\selectfont\thechapter%
+		}\enspace%
+	}
+	{15pt}
+	{\chaptitlefontcustomOther\usefont{T1}{phv}{b}{n}\vrule width 2pt \enspace%
+		\parbox{\textwidth-\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}\enspace}}{\filright}%
+		\vspace*{-1.0cm}%
+	}
+	\titlespacing*{\chapter}{0pt}{-32pt}{48pt}%
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\SetChapterTitleStyle#1{%
+	\IfEqCase{#1}{%
+		{1}{\protect\ChapterTitleStyleOne\relax}%
+		{2}{\protect\ChapterTitleStyleTwo\relax}%
+		{3}{\protect\ChapterTitleStyleThree\relax}%
+		{4}{\protect\ChapterTitleStyleFour\relax}%
+		{5}{\protect\ChapterTitleStyleFive\relax}%
+	}[\protect\ChapterTitleStyleOne\relax]%
+}%

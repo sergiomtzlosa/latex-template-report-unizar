@@ -190,10 +190,10 @@
 	}
 
 	%% REWORK TITLE CHAPTERS
-	\definecolor{gray75}{gray}{0.75}
-	\newcommand{\hsp}{\hspace{0pt}}
-	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright
-		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
+%	\definecolor{gray75}{gray}{0.75}
+%	\newcommand{\hsp}{\hspace{0pt}}
+%	\titleformat{\chapter}[hang]{\vspace{-4.8cm}\flushright
+%		\fontseries{b}\fontsize{80}{100}\selectfont}{\fontseries{b}\fontsize{100}{130}\selectfont \textcolor{gray75}\thechapter\hsp}{0pt}{\\ \vspace{-1cm}\Huge\bfseries}[\titlerule\vspace{-1cm}]
 
 %\titleformat{\chapter}[display]{}{}{2ex}{
 %	\begin{center}
@@ -208,5 +208,7 @@
 %		\Large #1
 %	\end{center}
 %}
+
+	\SetChapterTitleStyle{1} %% Set the chapter title style from 1 to 5
 
 }{\protect\clearpage}
