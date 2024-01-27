@@ -3,6 +3,33 @@
 \global\def\printabletext{true}
 \global\def\printableimages{true}
 
+% define .tex file paths to load from, also useful for images path
+% https://tex.stackexchange.com/questions/21904/input-and-absolute-paths
+%\makeatletter%
+%\def\input@path{%
+%	{./}%
+%	{./utils/}%
+%	{./utils/covers/}%
+%	{./chapters/}%
+%	{./packages/}%
+%}%
+%\makeatother%
+
+%% https://ctan.math.illinois.edu/macros/latex/required/graphics/graphics.pdf
+%% SEE: \graphicspath pag. 11
+\makeatletter%
+\def\SetInputPaths#1{%
+	\def\MyPaths@input{#1}%
+	\ifx\input@path\@defined%
+		\let\input@path\MyPaths@input%
+		\typeout{@@@@@@@@@@@@@ Input path variable defined, setting paths ...}%
+	\else%
+		\typeout{@@@@@@@@@@@@@ Input path variable not defined, creating and setting paths ...}%
+		\gdef\input@path{\MyPaths@input}%
+	\fi%
+}%
+\makeatother%
+
 \newcommand{\setprintabletext}[1]{
 	
 	\ignorespaces\lowercase{\def\tmp{#1}}\unskip
