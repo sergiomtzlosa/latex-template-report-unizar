@@ -4,7 +4,22 @@
 %\usepackage{courier}
 \usepackage{booktabs}
 %\usepackage[a4paper, margin=2.2cm]{geometry}
-\usepackage[a4paper, tmargin=2.2cm, lmargin=2.2cm, rmargin=2.2cm, bmargin=1.0in]{geometry}
+
+\ifprintunizar
+	\usepackage[a4paper, 
+				tmargin=45mm, 
+				lmargin=40mm, 
+				textwidth=130mm, 
+				textheight=210mm, 
+				headsep=5mm]{geometry}
+\else
+	\usepackage[a4paper,
+				tmargin=2.2cm, 
+				lmargin=2.2cm,
+				rmargin=2.2cm, 
+				bmargin=1.0in]{geometry}
+\fi
+
 %\usepackage[letterpaper,margin=2.2cm]{geometry}
 %\usepackage[pdftex]{graphicx} %% loaded twice
 \usepackage[nodayofweek]{datetime}
