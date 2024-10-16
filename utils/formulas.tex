@@ -1,29 +1,33 @@
 \newcommandtwoopt{\KittelEquationExpandedX}[2][Theoretical Kittel equation expanded for a Permalloy thin-film for X-axe][fig:kittel-x]{
         \vspace{-0.5cm}
-        \setequation{0cm}{0cm}{
+        \begin{addequation}{0cm}{0cm}{#2}{#1}{true}
 		\small{\[\textit{f} = 28\cdot\sqrt{(B_{DC}+(N_y-N_x)\cdot0.86\cdot10^6\cdot4\pi\cdot10^{-7})\cdot(B_{DC}+(N_z-N_x)\cdot0.86\cdot10^6)\cdot4\pi\cdot10^{-7}}\]}
-        }{#2}{#1}
+		\end{addequation}
 }
 
 \newcommandtwoopt{\KittelEquationExpandedXBoxed}[2][Theoretical Kittel equation expanded for a Permalloy thin-film for X-axe][fig:kittel-x-box]{
 	\vspace{-0.5cm}
-	\setequationboxed{0cm}{0cm}{
-		\colorboxed{red}{11pt}{
+	\begin{addequationboxed}{0cm}{0cm}{#2}{#1}{0.11cm}{true}
+		\begin{colorequbox}{red}{11pt}
+%	\setequationboxed{0cm}{0cm}{
+%		\colorboxed{red}{11pt}{
 			\begin{aligned}
 				&f = 28\cdot\sqrt{(B_{DC}+(N_y-N_x)\cdot0.86\cdot10^6\cdot4\pi\cdot10^{-7})\cdot(B_{DC}+(N_z-N_x)\cdot0.86\cdot10^6)\cdot4\pi\cdot10^{-7}} \\ 
 				&\text{This line is a comment in boxed formula}
 			\end{aligned}
-		}
-	}{#2}{#1}{0.11cm}
+%			}
+%		}
+		\end{colorequbox}
+	\end{addequationboxed}
 	\vspace{0.8cm}
 }
 
 \newcommandtwoopt{\KittelEquationExpandedXBoxedSimple}[2][Theoretical Kittel equation expanded for a Permalloy thin-film for X-axe][fig:kittel-x-box-simple]{
 	\vspace{-0.5cm}
-	\setequationboxed{0cm}{0cm}{
-		\colorboxed{red}{11pt}{
+	\begin{addequationboxed}{0cm}{0cm}{#2}{#1}{0.11cm}{true}
+		\begin{colorequbox}{red}{11pt}
 			f = 28\cdot\sqrt{(B_{DC}+(N_y-N_x)\cdot0.86\cdot10^6\cdot4\pi\cdot10^{-7})\cdot(B_{DC}+(N_z-N_x)\cdot0.86\cdot10^6)\cdot4\pi\cdot10^{-7}}
-		}
-	}{#2}{#1}{0.11cm}
+		\end{colorequbox}
+	\end{addequationboxed}
 	\vspace{0.8cm}
 }

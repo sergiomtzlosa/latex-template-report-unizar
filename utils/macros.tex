@@ -222,6 +222,31 @@
 \newcommand{\equationname}{Equation}
 \DeclareFloatingEnvironment[name={\protect\equationname}]{eqfigure}
 
+% https://tex.stackexchange.com/questions/534403/how-to-format-custom-cwl-for-texstudio-completion
+% https://tex.stackexchange.com/questions/596938/texstudio-newenvironment-not-recognized-as-math-mode-fix-with-cwl#596964
+\newenvironment{addequation}[5] {%
+	\edef\EnvParamThree{\unexpanded{#3}}%
+	\edef\EnvParamFour{\unexpanded{#4}}%	
+	\edef\EnvParamFive{\unexpanded{#5}}%	
+	\begin{equ}[H]%
+		% https://tex.stackexchange.com/questions/316646/renaming-the-label-of-figure-just-in-some-cases
+		%		\renewcommand{\figurename}{Equation}
+%		\vspace{-0.6cm}%
+		\begin{changemargin}{#1}{#2}%
+			\begin{eqfigure}[H]%	
+			}{%
+				\vspace{-0.7cm}%
+				\centercaptionequation{\EnvParamFour}%
+				\label{\EnvParamThree}%
+				\ifthenelse{\equal{\EnvParamFive}{true}}{%
+					\addequations{\EnvParamFour} % this is for equations listing
+				}{}%
+			\end{eqfigure}%
+		\end{changemargin}%	
+		\vspace{-1.5cm}%
+	\end{equ}%
+}%
+
 \newcommand{\setequation}[5] {
 	
 	\begin{equ}[H]
@@ -241,6 +266,31 @@
 	\end{equ}
 }
 
+\newenvironment{addequationboxed}[6] {%
+	\edef\EnvParamThree{\unexpanded{#3}}%
+	\edef\EnvParamFour{\unexpanded{#4}}%	
+	\edef\EnvParamFive{\unexpanded{#5}}%	
+	\edef\EnvParamSix{\unexpanded{#6}}%
+	%
+	\begin{equ}[H]%
+		% https://tex.stackexchange.com/questions/316646/renaming-the-label-of-figure-just-in-some-cases
+		%		\renewcommand{\figurename}{Equation}
+		\begin{changemargin}{#1}{#2}%
+			\begin{eqfigure}[H]%
+			}{%
+				\vspace{\EnvParamFive}%
+				\centercaptionequation{\EnvParamFour}%
+				%				\centercaptionformula{#5}
+				\label{\EnvParamThree}%
+				\ifthenelse{\equal{\EnvParamSix}{true}}{%
+					\addequations{\EnvParamFour} % this is for equations listing
+				}{}%
+			\end{eqfigure}%
+		\end{changemargin}%
+		\vspace{-1.5cm}%
+	\end{equ}%
+}%
+
 \newcommand{\setequationboxed}[6] {
 	
 	\begin{equ}[H]
@@ -258,6 +308,13 @@
 		\end{changemargin}
 		\vspace{-1.5cm}
 	\end{equ}
+}
+
+% https://tex.stackexchange.com/questions/436165/capture-the-content-within-an-environment
+\NewEnviron{colorequbox}[2]{%
+	\colorboxed{#1}{#2}{
+		\BODY
+	}
 }
 
 \newcommand{\centerformula}[1]{
@@ -869,6 +926,22 @@
 		%		\renewcommand*{\thesubsection}{\thesection.\Alph{subsection}}
 	}{}%
 }%
+
+
+% Check if counter exists
+% https://tex.stackexchange.com/questions/155776/check-if-counter-exists
+\makeatletter
+\newcommand*\ifcounter[1]{%
+	\ifcsname c@#1\endcsname%
+	\expandafter\@firstoftwo%
+	\else%
+	\expandafter\@secondoftwo%
+	\fi%
+}%
+\makeatother
+
+% Create new counter
+\newcommand{\checkorcreatecounter}[1]{\ifcounter{#1}{\relax}{\newcounter{#1}}}%
 
 % only for overleaf in local installation, solve glossary extra space on the left
 %\let\oldgls\gls

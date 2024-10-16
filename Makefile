@@ -81,6 +81,14 @@ endif
 	echo ""
 endif
 
+bbl:
+	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	bibtex $(DOC).aux
+	bibtex $(PUBS).aux
+	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	pdflatex -enable-write18 --shell-escape $(DOC).tex
+	makeglossaries $(DOC)
+	make all
 # compile with index and without bibliography
 simple: nobib
 
