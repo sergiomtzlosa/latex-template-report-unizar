@@ -943,6 +943,12 @@
 % Create new counter
 \newcommand{\checkorcreatecounter}[1]{\ifcounter{#1}{\relax}{\newcounter{#1}}}%
 
+% addition two numbers
+% https://stackoverflow.com/questions/49393784/how-can-i-sum-two-numbers-in-latex-with-my-own-command
+\newcommand{\addNums}[2]{%
+	\the\numexpr #1 + #2 \relax%
+}%
+
 % only for overleaf in local installation, solve glossary extra space on the left
 %\let\oldgls\gls
 %\renewcommand{\gls}[1]{\hspace{-1.9em}\oldgls{#1}}

@@ -92,7 +92,14 @@
 \printunizarfalse
 
 % set document title
-\global\def\THETITLE{Report workbook}
+\def\ctitle{Report workbook}
+
+% set main title to thesis
+\global\let\THETHESISTITLE\ctitle
+
+% set document title
+%\global\def\THETITLE{Micromagnetic simulations with quantum light}
+\global\let\THETITLE\ctitle
 
 % set document author
 \global\def\THEAUTHOR{John Doe}
@@ -105,3 +112,4 @@
 
 % ser PhD programme
 \global\def\THEPHDPROGRAMME{Physics PhD Program}
+\global\def\THEMASTERPROGRAMME{\THEPHDPROGRAMME}

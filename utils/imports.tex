@@ -542,49 +542,49 @@
 		% https://tex.stackexchange.com/a/511461
 	% https://tex.stackexchange.com/questions/544569/koma-toc-constant-distance-between-section-title-and-pagenumber
 	
-	\DeclareTOCStyleEntry[%
-		entryformat=\chapterentryformat,%
-		pagenumberformat=\chapterentryformat,%
-		pagenumberbox=\pagenumberboxsimple,%
-%		linefill=\dotfillcustomentryformat,%
-%		indent=0pt
-	]{tocline}{chapter}%
-	
-	\DeclareTOCStyleEntries[%
-		entryformat=\sectionentryformat,%
-		pagenumberformat=\sectionentryformat,%
-		pagenumberbox=\pagenumberboxsimple,%
-%		linefill=\dotfillcustomentryformat,%
-%		indent=0pt
-	]{tocline}{section}%
-	
 %	\DeclareTOCStyleEntry[%
-%		entryformat=\subsectionentryformat,%
-%		pagenumberformat=\subsectionentryformat,%
+%		entryformat=\chapterentryformat,%
+%		pagenumberformat=\chapterentryformat,%
 %		pagenumberbox=\pagenumberboxsimple,%
-%		%linefill=\dotfill,%
-%		%indent=0pt
-%	]{tocline}{subsection}%
-	
-	\DeclareTOCStyleEntry[%
-		pagenumberbox={\mbox}%
-	]{tocline}{figure}%
-	
-	\newif\ifmainmatterintoc
-	
-	%	\newcommand*\pagenumberbox[1]{\mbox{\hspace{1em}#1}}
-	\newcommand*\pagenumberboxsimple[1]{\mbox{#1}\relax}%
-	
-	%	\newcommand*\dotfillcustomentryformat[1]{{\ifmainmatterintoc\dotfill\else\relax\fi#1}}%
-	
-	\newcommand*\subsectionentryformat[1]{{\ifmainmatterintoc\relax\else\normalfont\itshape\fi#1}}%
-	
-	\newcommand*\sectionentryformat[1]{{\ifmainmatterintoc\normalfont\else\normalfont\itshape\fi#1}}%
-	
-	\newcommand*\chapterentryformat[1]{{\ifmainmatterintoc\normalfont\bfseries\else\normalfont\itshape\fi#1}}%
-	
-	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{}{}%
-	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{}{}%
+%%		linefill=\dotfillcustomentryformat,%
+%%		indent=0pt
+%	]{tocline}{chapter}%
+%	
+%	\DeclareTOCStyleEntries[%
+%		entryformat=\sectionentryformat,%
+%		pagenumberformat=\sectionentryformat,%
+%		pagenumberbox=\pagenumberboxsimple,%
+%%		linefill=\dotfillcustomentryformat,%
+%%		indent=0pt
+%	]{tocline}{section}%
+%	
+%%	\DeclareTOCStyleEntry[%
+%%		entryformat=\subsectionentryformat,%
+%%		pagenumberformat=\subsectionentryformat,%
+%%		pagenumberbox=\pagenumberboxsimple,%
+%%		%linefill=\dotfill,%
+%%		%indent=0pt
+%%	]{tocline}{subsection}%
+%	
+%	\DeclareTOCStyleEntry[%
+%		pagenumberbox={\mbox}%
+%	]{tocline}{figure}%
+%	
+%	\newif\ifmainmatterintoc
+%	
+%	%	\newcommand*\pagenumberbox[1]{\mbox{\hspace{1em}#1}}
+%	\newcommand*\pagenumberboxsimple[1]{\mbox{#1}\relax}%
+%	
+%	%	\newcommand*\dotfillcustomentryformat[1]{{\ifmainmatterintoc\dotfill\else\relax\fi#1}}%
+%	
+%	\newcommand*\subsectionentryformat[1]{{\ifmainmatterintoc\relax\else\normalfont\itshape\fi#1}}%
+%	
+%	\newcommand*\sectionentryformat[1]{{\ifmainmatterintoc\normalfont\else\normalfont\itshape\fi#1}}%
+%	
+%	\newcommand*\chapterentryformat[1]{{\ifmainmatterintoc\normalfont\bfseries\else\normalfont\itshape\fi#1}}%
+%	
+%	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{}{}%
+%	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{}{}%
 
 \else
 
@@ -650,6 +650,167 @@
 	
 	\makeatother
 
+\fi
+
+
+\ifdefined\mainmatter
+	% https://tex.stackexchange.com/questions/159998/changing-the-dot-size-in-the-table-of-contents
+	\makeatletter          % to set the marginpar on the left side in showframe
+	\let\Gm@vrules@mpi\Gm@vrules@mpii
+	\makeatother
+	
+	%	\newcommand\mydot[1]{\scalebox{#1}{.}}
+	%	\renewcommand\cftdot{\mydot{2}}
+	
+	%	\setcounter{tocdepth}{2}% only parts and chapters in ToC
+	
+	%	\makeatletter
+	%	
+	%	\def\@dotsep{0.072}
+	%	\newcommand*\skillmon@pagenumberbox[1]{\makebox{#1}}
+	%	\newcommand*\skillmon@numsep{0pt}
+	
+	%	\DeclareTOCStyleEntry[%
+	%			,dynnumwidth=true%
+	%			,numwidth=0pt%
+	%			,numsep=\skillmon@numsep%
+	%			,pagenumberbox=\skillmon@pagenumberbox%
+	%			]{tocline}{figures}
+	
+	\DeclareTOCStyleEntries[%
+	%		afterskip = -0.65em plus 0pt, %
+	%		numsep=\skillmon@numsep,%
+			entryformat=\chapterentryformat,%
+			pagenumberformat=\chapterentryformat,%
+			pagenumberbox=\pagenumberboxsimple,%
+	%		numwidth=0pt,%
+	%		pagenumberbox=\skillmon@pagenumberbox,%
+	%		linefill=\dotfillcustomentryformat,%
+	%		indent=0pt
+	%		dynnumwidth=true%
+	]{tocline}{chapter}%
+	
+	%	\DeclareTOCStyleEntry[%
+	%%		dynnumwidth=true,%
+	%%		numsep=\skillmon@numsep,%
+	%%		entryformat=\sectionentryformat,%
+	%%		pagenumberformat=\sectionentryformat,%
+	%%		pagenumberbox=\pagenumberboxsimple,%
+	%%		pagenumberbox=\skillmon@pagenumberbox,%
+	%%		linefill=\dotfillcustomentryformat,%
+	%		indent=0cm
+	%	]{tocline}{figure}%
+	
+	% https://tex.stackexchange.com/questions/347807/bold-chapter-with-dottedtocline-and-tocbasic
+	%	\DeclareTOCStyleEntry[beforeskip=1pt]{tocline}{chapter}
+	
+	%	https://tex.stackexchange.com/questions/16422/indentation-in-toc-and-lists-of-figures-tables
+	\setlength{\cftfigindent}{0pt}
+	
+	% 	https://tex.stackexchange.com/questions/16422/indentation-in-toc-and-lists-of-figures-tables
+	\makeatletter
+	\renewcommand\@dotsep{2}% default is 4.5
+	\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% Default: 1.5em/2.3em
+	\let\l@table\l@figure
+	\makeatother
+	
+	\newif\ifembackmattertoc
+	
+	\embackmattertoctrue
+	
+	\ifembackmattertoc
+	\relax%
+		\DeclareTOCStyleEntry[%
+%			raggedentrytext=true,%
+%			beforeskip=0pt plus .2pt,
+%			beforeskip=0em,%
+			dynnumwidth=true,%
+%			dynindent=true,
+%			numsep=\skillmon@numsep,%
+%			onstarthigherlevel=\LastTOCLevelWasSame,
+			entryformat=\sectionentryformat,%
+			pagenumberformat=\sectionentryformat,%
+			pagenumberbox=\pagenumberboxsimple,%
+%			pagenumberbox=\skillmon@pagenumberbox,%
+%			linefill=\dotfillcustomentryformat,%
+%			indent=1pt
+		]{tocline}{section}%
+		%	
+		\DeclareTOCStyleEntry[%
+%			raggedentrytext=true,%
+%			raggedentrytext,
+%			beforeskip=0pt plus .2pt,
+%			numwidth=0pt,%
+%			onstarthigherlevel=\LastTOCLevelWasSame,
+			dynnumwidth=true,%
+%			beforeskip=0em,%
+%			dynindent=true,
+			entryformat=\subsectionentryformat,%
+			pagenumberformat=\subsectionentryformat,%
+			pagenumberbox=\pagenumberboxsimple,%
+%			pagenumberbox=\skillmon@pagenumberbox,%
+%			pagenumberbox={\mbox}%
+%			linefill=\dotfill,%
+%			indent=1pt
+		]{tocline}{subsection}%
+	
+	\fi
+	
+	%	\DeclareTOCStyleEntry[%
+	%		dynnumwidth=true,%
+	%%		pagenumberbox=\skillmon@pagenumberbox,%
+	%	]{tocline}{figure}%
+	
+	%	\DeclareTOCStyleEntry[%
+	%		dynnumwidth=true,%
+	%		pagenumberbox=\skillmon@pagenumberbox,%
+	%	]{tocline}{equation}%
+	%	\makeatother
+	
+	%\DeclareTOCStyleEntries[
+	%entryformat=\em
+	%]{tocline}{subsection}
+	
+	%	\DeclareTOCStyleEntry[%
+	%		pagenumberbox={\mbox}%
+	%	]{tocline}{figure}%
+	%	
+	%	\makeatother
+	
+	\renewcommand\cftdotsep{2}%
+	\renewcommand{\cftsecdotsep}{2}%
+	\renewcommand{\cftsubsecdotsep}{2}%
+	
+	\newif\ifmainmatterintoc
+	
+	%	\newcommand*\pagenumberbox[1]{\mbox{\hspace{1em}#1}}
+	\newcommand*\pagenumberboxsimple[1]{\mbox{#1}\relax}%
+	
+	%	\newcommand*\dotfillcustomentryformat[1]{{\ifmainmatterintoc\dotfill\else\relax\fi#1}}%
+	
+	\newcommand*\subsectionentryformat[1]{\ifmainmatterintoc\relax#1\else\normalfont\itshape#1\fi}%
+	
+	\newcommand*\sectionentryformat[1]{\ifmainmatterintoc\normalfont#1\else\normalfont\itshape#1\fi}%
+	
+	\newcommand*\chapterentryformat[1]{\ifmainmatterintoc\normalfont\bfseries#1\else\normalfont\itshape#1\fi}%
+	
+	\xapptocmd\mainmatter{\addtocontents{toc}{\protect\mainmatterintoctrue}}{\relax}{}%
+	\xapptocmd\backmatter{\addtocontents{toc}{\protect\mainmatterintocfalse}}{\relax}{}%
+	
+	%	\renewcommand*{\tableofcontents}{\listoftoc[\contentsname]{toc}}
+	%	\DeclareTOCStyleEntries[raggedentrytext]{tocline}{section,subsection,subsubsection,paragraph,subparagraph}
+	
+	\ifembackmattertoc
+		% FIX TOC BREAK PAGE
+		% https://tex.stackexchange.com/questions/211642/allow-page-breaks-in-the-toc-after-parts
+		\makeatletter%
+		\let\old@l@subsection\l@subsection%
+		\renewcommand{\l@subsection}[2]{%
+			\old@l@subsection{#1}{#2}% Regular setting of \part in ToC
+			\pagebreak[0]%
+		}% Add a zero penalty (for possible page break)
+		\makeatother%
+	\fi
 \fi
 
 %% END TOC STYLE

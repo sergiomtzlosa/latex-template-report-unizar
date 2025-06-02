@@ -1,0 +1,124 @@
+\definecolor{titlepagecolor-uimp}{HTML}{A92D35}
+\definecolor{titlepagecolor-unizar}{HTML}{436491}
+\definecolor{cream}{HTML}{FFFBF0}
+
+\pagecolor{titlepagecolor-unizar}
+
+% Acoplo de dispositivos superconductores a nanomateriales magnéticos: una plataforma para tecnologías cuánticas
+\def\UPPERTITLE{Ph.D. Thesis}
+\def\LOWERTITLE{\THETITLE}
+\def\amount{2.3in}
+%
+\protect\thispagestyle{empty}
+%
+\newgeometry{left=1.3cm, right=1.0cm, top=2.0cm, bottom=2.0cm}
+%\newgeometry{left=0cm, right=0cm, top=0cm, bottom=0cm}
+\noindent%
+%
+\begin{tikzpicture}[overlay,remember picture]
+% https://tex.stackexchange.com/questions/527916/make-tikz-rectangle-fill-whole-paperwidth-including-margin
+%https://tex.stackexchange.com/questions/236949/how-to-change-the-background-color-within-a-page
+
+%\draw (current page.north west) node[draw=none, below right, fill=cream, color=cream, minimum  width=\paperwidth, minimum height=5.5cm] (box){};
+%\draw ($(current page.north west)+(-1cm,0.1cm)$) rectangle ($(current page.south east)+(0.1cm,24cm)$) [draw=none, below right, fill=cream, color=cream] ;
+\fill[draw=none, below right, fill=cream, color=cream] ([yshift=-\amount]current page.north west) rectangle (current page.north east);%
+%\fill[draw=none, below right, fill=titlepagecolor-unizar, color=titlepagecolor-unizar] (current page.south west) rectangle ([yshift=-\amount]current page.north east);
+%
+% https://www.unizar.es/identidad-corporativa/logos/7
+\node at (0.5\textwidth,-0.5){%
+	\includegraphics[width=13cm]{unizar-hq}%
+};% 
+%
+\end{tikzpicture}%
+%
+\vskip 5cm%
+\begin{minipage}{\textwidth}\raggedright%
+    \spaceskip 0.5em\relax%
+    \vspace*{0.25cm}\color{white}{\fontsize{28pt}{25pt}\selectfont{\textsf{\UPPERTITLE}}}%
+\end{minipage}%
+%
+% https://tex.stackexchange.com/questions/252703/how-to-give-vertical-space-for-a-multiline-title
+% https://tex.stackexchange.com/questions/239056/handling-spacing-between-multiple-lines-of-a-title-text
+\vskip 0.5cm%
+\begin{minipage}{\textwidth}\raggedright%
+    \spaceskip 0.6em\relax%
+    \noindent%
+    \color{white}%
+    \hrule height 1.6pt%
+    \vspace{2pt}%
+    \hrule height 0.4pt%
+    \vspace{0.6cm}%
+    \begin{spacing}{2.7}%
+	    \centering\color{white}{\fontsize{32pt}{30pt}\selectfont\textbf{\textsf{\LOWERTITLE}}}%
+    \end{spacing}%
+	\vspace{-0.3cm}%
+	\hrule height 0.4pt%
+	\vspace{2pt}%
+	\hrule height 1.6pt%
+\end{minipage}%
+\vfill%
+\begin{minipage}{\textwidth}\raggedright%
+    \color{white}%
+    \noindent%
+    \textsf{\fontsize{13pt}{20pt}\spaceskip 0.2em \relax\selectfont\textbf{Author: \THEAUTHOR}}\\%
+    \vskip 0.1cm%
+    \noindent%
+    \textsf{\fontsize{13pt}{20pt}\spaceskip 0.2em \relax\selectfont\textbf{Supervisors: Dr. John Doe \& Dr. John Doe}}\\%
+    \vskip 0.1cm%
+    \noindent%
+    \textbf{\fontsize{13pt}{20pt}\spaceskip 0.2em \relax\selectfont\textsf{Somewhere, \coverdate\today}}%
+\end{minipage}%
+%
+\begin{tikzpicture}[overlay, remember picture]%
+%
+	\node[align=center,opacity=0.20] at ($(current page.south)+(6.50,4.0)$) {%
+%		{\includegraphics[scale=2.2]{logo-simple-white}}%\\[1cm]
+		{\includegraphics[scale=11.0]{unizar-logo-white}}%	
+	};%
+%
+\end{tikzpicture}%
+%
+%
+\begin{tikzpicture}[remember picture,overlay]
+\draw[white, line width=1mm] ($(current page.north west)+(2.5mm,-62.50mm)$) -- ($(current page.north west)+(80mm,-62.50mm)$);
+\draw[white, line width=1mm] ($(current page.north west)+(3mm,-62.95mm)$) -- ($(current page.north west)+(3mm,-220mm)$);
+\draw[white, opacity=0.5, line width=0.5mm] ($(current page.north west)+(4.5mm,-64mm)$) -- ($(current page.north west)+(4.5mm,-200mm)$);
+\draw[white, opacity=0.5, line width=0.5mm] ($(current page.north west)+(4.25mm,-64mm)$) -- ($(current page.north west)+(60mm,-64mm)$);
+%%%%%%%%
+\draw[white, line width=1mm] ($(current page.south east)+(-3mm,2.5mm)$) -- ($(current page.south east)+(-3mm,150mm)$);
+\draw[white, line width=1mm] ($(current page.south east)+(-3mm,3mm)$) -- ($(current page.south east)+(-80mm,3mm)$);
+\draw[white, opacity=0.5, line width=0.5mm] ($(current page.south east)+(-4.5mm,4.25mm)$) -- ($(current page.south east)+(-4.5mm,130mm)$);
+\draw[white, opacity=0.5, line width=0.5mm] ($(current page.south east)+(-4.25mm,4.5mm)$) -- ($(current page.south east)+(-60mm,4.5mm)$);
+\end{tikzpicture}
+%
+% https://tex.stackexchange.com/questions/580299/afterpage-not-working-for-newgeometry-and-restoregeometry
+\makeatletter
+
+\newcommand{\globalsetgeometry}{%
+%	
+	\global\textheight\textheight
+	\global\@colht\textheight
+	\global\@colroom\textheight
+	\global\vsize\textheight
+	\global\headheight\headheight
+	\global\topskip\topskip
+	\global\headsep\headsep
+	\global\topmargin\topmargin
+	\global\footskip\footskip
+	%% The following are not used in most cases
+	\global\textwidth\textwidth
+	\global\evensidemargin\evensidemargin
+	\global\oddsidemargin\oddsidemargin
+	\global\baselineskip\baselineskip
+	\global\marginparwidth\marginparwidth
+	\global\marginparsep\marginparsep
+	\global\columnsep\columnsep
+	\global\hoffset\hoffset
+	\global\voffset\voffset
+}%
+
+\makeatother
+%
+% import afterpage package
+\afterpage{\restoregeometry\globalsetgeometry}
+\afterpage{\nopagecolor} % Use this to restore the color pages to white
