@@ -1,0 +1,130 @@
+% Acoplo de dispositivos superconductores a nanomateriales magnéticos: una plataforma para tecnologías cuánticas
+\definecolor{border-unizar}{HTML}{436491}
+\def\amount{1.3in}
+%
+\pagecolor{white}
+\protect\thispagestyle{empty}
+%
+\newgeometry{left=3.0cm, right=3.0cm, top=2.5cm, bottom=2.5cm}
+%
+%\begin{minipage}
+\noindent%
+%
+% https://tex.stackexchange.com/questions/27843/level-of-boldness-changeable/445173#445173
+%\newcommand{\fbseries}{\unskip\setBold\aftergroup\unsetBold\aftergroup\ignorespaces}
+%\makeatletter
+%\newcommand{\setBoldness}[1]{\def\fake@bold{#1}}
+%\makeatother
+
+% https://tex.stackexchange.com/questions/399859/fake-semibold-bold-without-increasing-the-length-of-the-text
+\newcommand{\customTextBF}[2][0.8]{%
+%	\setBoldness{#1}{\fbseries #2}%
+	\pdfliteral direct {2 Tr #1 w}% the second factor is the boldness
+	#2%
+	\pdfliteral direct {0 Tr 0 w}%
+}%
+%
+\begin{tikzpicture}[overlay,remember picture]
+	\fill[draw=none, below right, fill=white, color=white] ([yshift=\amount]current page.north west) rectangle (current page.north east);%
+	\node at (0.5\textwidth,-1.5){%
+		\includegraphics[width=9cm]{logo-UZ-cover}%
+	};% 
+	%
+\end{tikzpicture}%
+%
+\vskip 5cm%
+\begin{center}
+	\begin{tikzpicture}
+		\spaceskip 0.5em\relax
+		\node[draw=border-unizar, minimum width=1.0\textwidth, line width=0.035cm, inner sep=10pt, align=center] at 
+		(0,0) {\fontsize{28pt}{25pt}\selectfont{\sffamily{\customTextBF{Tesis Doctoral}}}};
+	\end{tikzpicture}
+\end{center}
+%
+\vskip 2.0cm%
+\begin{minipage}{1.0\textwidth}\centering%
+%	\spaceskip 1.5em\relax%
+	\setstretch{1.8}\relax%
+	\vspace*{0.25cm}%
+	\color{black}{%
+		\fontsize{23pt}{24pt}%
+		\selectfont{\sffamily{\customTextBF[0.3]{\THETITLE}}}%
+	}%
+\end{minipage}%
+\vskip 1.0cm%
+\begin{minipage}{\textwidth}\centering%
+	\setstretch{1.0}
+	\spaceskip 0.5em\relax%
+	\vspace*{0.25cm}\color{black}{\fontsize{16pt}{16pt}\selectfont{\sffamily{Autor}}}%
+\end{minipage}%
+\vskip 0.1cm%
+\begin{minipage}{\textwidth}\centering%
+	\setstretch{1.0}
+	\spaceskip 0.5em\relax%
+	\vspace*{0.25cm}\color{black}{\fontsize{17pt}{17pt}\selectfont{\sffamily{\customTextBF[0.3]{\THEAUTHOR}}}}%
+\end{minipage}%
+\vskip 1.8cm%
+\begin{minipage}{\textwidth}\centering%
+	\setstretch{1.0}
+	\spaceskip 0.5em\relax%
+	\vspace*{0.25cm}\color{black}{\fontsize{16pt}{16pt}\selectfont{\sffamily{Director/es}}}%
+\end{minipage}%
+\vskip 0.1cm%
+\begin{minipage}{\textwidth}\centering%
+%	\setstretch{1.0}
+	\spaceskip 0.5em\relax%
+	\vspace*{0.25cm}\color{black}{\fontsize{17pt}{17pt}\selectfont{\sffamily{\customTextBF[0.3]{John Doe\\[0.3cm]John Doe}}}}%
+\end{minipage}%
+\vskip 1.0cm%
+\begin{minipage}{\textwidth}\centering%
+%	\setstretch{0.5}
+	\spaceskip 0.5em\relax%
+	\vspace*{0.25cm}\color{black}{\fontsize{14pt}{14pt}\selectfont{\sffamily{\customTextBF[0.3]{UNIVERSIDAD DE ZARAGOZA}\\[0.1cm]%
+	\customTextBF[0.3]{Escuela de Doctorado}\\[0.1cm]%
+	Programa de Doctorado en XXXXX\\[0.1cm]%
+	\the\year}}}%
+\end{minipage}%
+\vskip 0.3cm%
+\begin{center}
+	\begin{tikzpicture}
+		\spaceskip 0.5em\relax
+		\node[fill=border-unizar!20, minimum width=1.0\textwidth, align=center] at 
+		(0,0) {%
+			\color{border-unizar!100}\fontsize{10pt}{10pt}\selectfont{\fontseries{b}\sffamily{Repositorio de la Universidad de Zaragoza – Zaguan http://zaguan.unizar.es}}%
+		};
+		\draw[line width=2.3, color=border-unizar!80] (-0.5\textwidth,-0.3) -- (0.5\textwidth,-0.3);
+	\end{tikzpicture}
+\end{center}
+\clearpage
+%%
+%% https://tex.stackexchange.com/questions/580299/afterpage-not-working-for-newgeometry-and-restoregeometry
+%\makeatletter
+%%
+%\newcommand{\globalsetgeometry}{%
+%%	
+%	\global\textheight\textheight
+%	\global\@colht\textheight
+%	\global\@colroom\textheight
+%	\global\vsize\textheight
+%	\global\headheight\headheight
+%	\global\topskip\topskip
+%	\global\headsep\headsep
+%	\global\topmargin\topmargin
+%	\global\footskip\footskip
+%	%% The following are not used in most cases
+%	\global\textwidth\textwidth
+%	\global\evensidemargin\evensidemargin
+%	\global\oddsidemargin\oddsidemargin
+%	\global\baselineskip\baselineskip
+%	\global\marginparwidth\marginparwidth
+%	\global\marginparsep\marginparsep
+%	\global\columnsep\columnsep
+%	\global\hoffset\hoffset
+%	\global\voffset\voffset
+%}%
+%%
+%\makeatother
+%
+% import afterpage package
+%\afterpage{\restoregeometry\globalsetgeometry}
+%\afterpage{\nopagecolor} % Use this to restore the color pages to white
